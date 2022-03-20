@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cha",
+				"character"
+			],
+			[
 				"inc",
 				"include"
 			]
@@ -49,6 +53,7 @@
 	},
 	"file_history":
 	[
+		"/home/sreemanti/Desktop/COP290/COP290-Task2/SDL game1/src/entity.cpp",
 		"/home/sreemanti/.config/sublime-text/Packages/Default/exec.py"
 	],
 	"find":

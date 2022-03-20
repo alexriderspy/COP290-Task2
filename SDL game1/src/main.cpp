@@ -13,14 +13,15 @@ int main(int argc, char* args[])
 	if (!(IMG_Init(IMG_INIT_PNG)))
 		std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl;
 
-	RenderWindow window("GAME v1.0", 3000, 200);
+	RenderWindow window("GAME v1.0", 1280, 720);
 
 	SDL_Texture* start_screen = window.loadTexture("res/gfx/start_screen.png");
 
 	SDL_Texture* character1 = window.loadTexture("res/gfx/character1.png");
 
     Entity entity0(0, 0, 1280, 720, start_screen);
-    Entity entity1(0, 100, 40, 40, character1);
+    Entity entity1(0, 600, 40, 40, character1);
+
 
 	bool gameRunning = true;
 
