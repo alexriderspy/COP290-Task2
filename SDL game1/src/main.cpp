@@ -15,9 +15,12 @@ int main(int argc, char* args[])
 
 	RenderWindow window("GAME v1.0", 1280, 720);
 
-	SDL_Texture* grassTexture = window.loadTexture("res/gfx/start_screen.png");
+	SDL_Texture* start_screen = window.loadTexture("res/gfx/start_screen.png");
 
-    Entity entity0(100, 50, grassTexture);
+	SDL_Texture* character1 = window.loadTexture("res/gfx/character1.png");
+
+    Entity entity0(0, 0, 1280, 720, start_screen);
+    Entity entity1(0, 600, 40, 40, character1);
 
 	bool gameRunning = true;
 
@@ -35,7 +38,7 @@ int main(int argc, char* args[])
 		window.clear();
 		
 		window.render(entity0);
-
+		window.render(entity1);
 		window.display();
 
 	}
