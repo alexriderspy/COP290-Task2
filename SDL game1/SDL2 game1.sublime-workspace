@@ -105,13 +105,19 @@
 	},
 	"file_history":
 	[
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/map_gen.cpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/matrix.txt",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/map_generate.cpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/include/game.hpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/game.cpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/game.hpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/main.cpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/include/texture.hpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/texture.cpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/Makefile",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/main.o",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/07_texture_loading_and_rendering.cpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/name.cpp",
-		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/game.hpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/main2.o",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/main2.cpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/readme",
@@ -120,7 +126,7 @@
 	],
 	"find":
 	{
-		"height": 77.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -161,7 +167,7 @@
 	},
 	"incremental_find":
 	{
-		"height": 65.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -179,7 +185,7 @@
 	"pinned_build_system": "Debug",
 	"replace":
 	{
-		"height": 126.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -216,7 +222,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 183.0,
+	"side_bar_width": 129.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

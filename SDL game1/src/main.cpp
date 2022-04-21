@@ -312,7 +312,7 @@ bool loadMedia()
     //Loading success flag
     bool success = true;
 
-    gFont = TTF_OpenFont( "res/gfx/SF Atarian System.ttf", 28 );
+    gFont = TTF_OpenFont( "res/SF Atarian System.ttf", 28 );
     if( gFont == NULL )
     {
         printf( "Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError() );
@@ -331,38 +331,38 @@ bool loadMedia()
     }
 
     //Load screen1 texture
-    if( !gScreen1Texture.loadFromFile( "res/gfx/screen1.png" ) )
+    if( !gScreen1Texture.loadFromFile( "res/screen1.png" ) )
     {
         printf( "Failed to load screen1 texture!\n" );
         success = false;
     }
     
     //Load screen2 texture
-    if( !gScreen2Texture.loadFromFile( "res/gfx/screen2.png" ) )
+    if( !gScreen2Texture.loadFromFile( "res/screen2.png" ) )
     {
         printf( "Failed to load screen2 texture!\n" );
         success = false;
     }
 
-    if( !gGameTexture.loadFromFile( "res/gfx/maze.png" ) )
+    if( !gGameTexture.loadFromFile( "res/maze.png" ) )
     {
         printf( "Failed to load screen1 texture!\n" );
         success = false;
     }
 
-    if( !gCharacterTexture.loadFromFile( "res/gfx/character1.png" ) )
+    if( !gCharacterTexture.loadFromFile( "res/character1.png" ) )
     {
         printf( "Failed to load character1 texture!\n" );
         success = false;
     }
 
-    gMusic = Mix_LoadMUS("res/gfx/beat.wav");
+    gMusic = Mix_LoadMUS("res/beat.wav");
     if (gMusic == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
         success = false;
     }   
      
-    gScratch = Mix_LoadWAV("res/gfx/beat.wav");
+    gScratch = Mix_LoadWAV("res/beat.wav");
     if (gScratch == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
         success = false;

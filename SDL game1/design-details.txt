@@ -1,0 +1,11 @@
+Designing 
+
+Screens
+Game title only with a loading bar – the pic I have sent same as that – the name I thought was DR racing, would be cool.
+2nd screen - select character – we will give 2 choices, boy/girl and enter name, we will show name moving with the character
+3rd screen – show the levels – 1 and 2, there will be 2 levels, where level 2 can be cracked by some number of coins(say 1000)
+4th screen – the maze – make different mazes based on levels 1 and 2, change color and we shall have maybe more obstacles, different speeds and tougher time limits
+Make the obstacles – as in make guards (with black uniform), yulu (with blue color ), dogs (any color u want), canteens of different color, lhc, biotech lawns green i.e. overall design the maze and obstacles properly
+Make a game pause screen – with options to resume/exit
+Make a game over screen
+Make a statistics screen where we shall store data of the 2 players and show them to the players at the end- as in total coins of one player, total gems, total lives of one, vs the other.
