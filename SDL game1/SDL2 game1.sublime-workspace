@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"load",
+				"loadFromFile"
+			],
+			[
+				"gM",
+				"gGameTexture"
+			],
+			[
+				"getmPo",
+				"getmPosY"
+			],
+			[
+				"SDLK_",
+				"SDLK_RETURN"
+			],
+			[
+				"SD",
+				"SDL_Renderer"
+			],
+			[
+				"iso",
+				"iostream"
+			],
+			[
+				"SC",
+				"SCREEN_HEIGHT"
+			],
+			[
+				"gS",
+				"gSpriteSheetTexture"
+			],
+			[
+				"gSpr",
+				"gSpriteSheetTexture"
+			],
+			[
+				"SDL_Set",
+				"SDL_SetRenderDrawColor"
+			],
+			[
+				"SDL",
+				"SDL_CreateRenderer"
+			],
+			[
+				"KEY",
+				"KEY_PRESS_SURFACE_RIGHT"
+			],
+			[
+				"gSre",
+				"gScreenSurface"
+			],
+			[
 				"cha",
 				"character"
 			],
@@ -53,13 +105,22 @@
 	},
 	"file_history":
 	[
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/include/texture.hpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/texture.cpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/Makefile",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/main.o",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/07_texture_loading_and_rendering.cpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/name.cpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/game.hpp",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/main2.o",
+		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/main2.cpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/readme",
 		"/home/sreemanti/Desktop/COP290/COP290-Task2/SDL game1/src/entity.cpp",
 		"/home/sreemanti/.config/sublime-text/Packages/Default/exec.py"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 77.0
 	},
 	"find_in_files":
 	{
@@ -73,6 +134,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Character_HEIGHT",
+			"Character_WIDTH",
+			"Character_VEL",
+			"Dot",
+			"Curren"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -80,6 +146,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"CHARACTER_HEIGHT",
+			"CHARACTER_WIDTH",
+			"CHARACTER_VEL",
+			"Character"
 		],
 		"reverse": false,
 		"scrollbar_highlights": true,
@@ -91,11 +161,11 @@
 	},
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 65.0
 	},
 	"input":
 	{
-		"height": 36.0
+		"height": 65.0
 	},
 	"menu_visible": true,
 	"output.exec":
@@ -109,7 +179,7 @@
 	"pinned_build_system": "Debug",
 	"replace":
 	{
-		"height": 0.0
+		"height": 126.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -146,7 +216,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 183.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
