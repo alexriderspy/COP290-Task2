@@ -91,7 +91,7 @@ int get_bullet_array(struct node *list, int16_t **array) {
         n++;
         temp = temp->next;
     }
-    *array = malloc(sizeof(int16_t) + (n * 2 * sizeof(int16_t)));
+    *array = static_cast<int16_t *>(malloc(sizeof(int16_t) + (n * 2 * sizeof(int16_t))));
     (*array)[0] = -2;
     int i = 0; 
     temp = list;

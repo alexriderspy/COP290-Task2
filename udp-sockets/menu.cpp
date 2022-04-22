@@ -1,7 +1,7 @@
 #include <menu.h>
+#include<string.h>
 
-
-void server_or_client(SDL_Renderer *renderer, char *menu, TTF_Font *font){
+void server_or_client(SDL_Renderer *renderer, char* menu, TTF_Font *font){
     SDL_Event e;
     int pressed = false;
     while (!pressed) {
@@ -24,7 +24,7 @@ void server_or_client(SDL_Renderer *renderer, char *menu, TTF_Font *font){
 }
 
 
-void ask_for_ip(SDL_Renderer *renderer, TTF_Font *font, char *ip) {
+void ask_for_ip(SDL_Renderer *renderer, TTF_Font *font, char* ip) {
     memset(ip, ' ', 15);
     SDL_Event e;
     int position = 0;

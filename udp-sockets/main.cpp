@@ -12,6 +12,7 @@
 #include "constans.h"
 #include "font.h"
 #include "menu.h"
+#include <string>
 
 struct Player players[MAX_PLAYERS];
 int number_of_players = 0;
@@ -19,7 +20,7 @@ int16_t my_id = -1;
 int16_t bullets_client[256];
 int bullets_number = 0;
 
-SDL_Texture* load_texture(SDL_Renderer *renderer, char *file) {
+SDL_Texture* load_texture(SDL_Renderer *renderer, char* file) {
     SDL_Surface *bitmap = NULL;
     SDL_Texture *texture = NULL;
     bitmap = SDL_LoadBMP(file);
@@ -135,7 +136,7 @@ int main(){
     int i;
     server_or_client(renderer, &menu, font);
     if (menu == 'c') {
-        server_ip_addr = malloc(16 * sizeof(char));
+        server_ip_addr = static_cast<char* >(malloc(16 * sizeof(char)));
         ask_for_ip(renderer, font, server_ip_addr);
     }
     pthread_t thread_id_server, thread_id_client, thread_id_server_send;

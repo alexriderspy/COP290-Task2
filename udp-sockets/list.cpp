@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void push_element(struct node **head, void *data, size_t data_size) {
-    struct node* new_node = malloc(sizeof(struct node));
+    struct node* new_node = static_cast<node *>(malloc(sizeof(struct node)));
     new_node->data = malloc(data_size);
     new_node->next = *head;
     memcpy(new_node->data, data, data_size);
