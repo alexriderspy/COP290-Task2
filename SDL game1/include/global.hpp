@@ -8,10 +8,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "../include/timer.hpp"
-#include "../include/character.hpp"
-#include "../include/map.hpp"
-#include "../include/ltexture.hpp"
+#include "ltexture.hpp"
 
 extern SDL_Window* gWindow;
 

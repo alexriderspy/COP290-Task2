@@ -11,7 +11,6 @@
 #include "../include/timer.hpp"
 #include "../include/character.hpp"
 #include "../include/map.hpp"
-#include "../include/global.hpp"
 #include "../include/constants.hpp"
 
 class LTexture

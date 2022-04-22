@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"include"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
 				"load",
 				"loadFromFile"
 			],
@@ -58,10 +66,6 @@
 			[
 				"cha",
 				"character"
-			],
-			[
-				"inc",
-				"include"
 			]
 		]
 	},
@@ -105,6 +109,11 @@
 	},
 	"file_history":
 	[
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/game_title.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/game.o",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/constants.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/map.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/ltexture.hpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/map_gen.cpp",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/matrix.txt",
 		"/home/sreemanti/Desktop/COP290-Task2/SDL game1/src/map_generate.cpp",
@@ -140,6 +149,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"SCREEN_WID",
 			"Character_HEIGHT",
 			"Character_WIDTH",
 			"Character_VEL",
@@ -222,7 +232,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 129.0,
+	"side_bar_width": 180.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

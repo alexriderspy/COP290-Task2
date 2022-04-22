@@ -164,3 +164,4 @@ SDL_Texture* LTexture::getTexture(){
 void LTexture::setTexture(SDL_Texture* tex){
     mTexture=tex;
 }
+

@@ -11,6 +11,7 @@
 #include "../include/map.hpp"
 #include "../include/global.hpp"
 #include "../include/constants.hpp"
+#include "../include/ltexture.hpp"
 //Screen dimension constants
 
 enum KeyPressTextures
@@ -249,8 +250,11 @@ int main( int argc, char* args[] )
                             currentTexture = &gScreen1Texture;
                             startTime = SDL_GetTicks();
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
-                            LTexture* temp;
+                            LTexture* temp = NULL;
                             temp->setTexture(get_map_texture(gRenderer));
+                            if(temp==NULL){
+                                std::cout<<"LOL\n";
+                            }
                             currentTexture = temp;
                             Mix_PlayMusic(gMusic,-1);
                             startTime = SDL_GetTicks();
