@@ -22,8 +22,6 @@ enum KeyPressTextures
     KEY_PRESS_TEXTURE_TOTAL
 };
 
-
-
 //Starts up SDL and creates window
 bool init();
 
@@ -250,11 +248,9 @@ int main( int argc, char* args[] )
                             currentTexture = &gScreen1Texture;
                             startTime = SDL_GetTicks();
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
-                            LTexture* temp = NULL;
-                            temp->setTexture(get_map_texture(gRenderer));
-                            if(temp==NULL){
-                                std::cout<<"LOL\n";
-                            }
+                            LTexture* temp=NULL;
+                            SDL_Texture* tex = get_map_texture(gRenderer);
+                            temp->setTexture(tex);
                             currentTexture = temp;
                             Mix_PlayMusic(gMusic,-1);
                             startTime = SDL_GetTicks();

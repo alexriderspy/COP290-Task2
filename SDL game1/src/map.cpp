@@ -6,13 +6,15 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <map.hpp>
+#include "../include/map.hpp"
 #include <iostream>
 #include "../include/character.hpp"
 #include "../include/constants.hpp"
 #include<vector>
 
-std::vector<std::vector<int>> map=
+
+SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
+int map[66][61]=
 {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0},
 {1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0},
@@ -79,8 +81,6 @@ std::vector<std::vector<int>> map=
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
-
-SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
     SDL_Surface *bitmap = NULL;
     SDL_Texture *map_texture;
     SDL_Rect rect;
@@ -101,6 +101,7 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
             }
         }
     }
+    std::cout<<"NOOOOOOOOO";
     SDL_SetRenderTarget(renderer, NULL);
     return map_texture;
 }
