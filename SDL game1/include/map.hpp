@@ -10,3 +10,4 @@
 #include <sstream>
 
 SDL_Texture* get_map_texture(SDL_Renderer *renderer);
+void save_texture(SDL_Renderer* ren, SDL_Texture* tex, const char* filename);

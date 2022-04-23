@@ -49,7 +49,6 @@ class LTexture
         int getHeight();
 
         SDL_Texture* getTexture();
-        void setTexture(SDL_Texture* texture);
 
     private:
         //The actual hardware texture

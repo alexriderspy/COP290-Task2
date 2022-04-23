@@ -14,13 +14,13 @@
 #include "../include/ltexture.hpp"
 //Screen dimension constants
 
-enum KeyPressTextures
-{
-    KEY_PRESS_TEXTURE_DEFAULT,
-    KEY_PRESS_TEXTURE_LEFT,
-    KEY_PRESS_TEXTURE_RIGHT,
-    KEY_PRESS_TEXTURE_TOTAL
-};
+// enum KeyPressTextures
+// {
+//     KEY_PRESS_TEXTURE_DEFAULT,
+//     KEY_PRESS_TEXTURE_LEFT,
+//     KEY_PRESS_TEXTURE_RIGHT,
+//     KEY_PRESS_TEXTURE_TOTAL
+// };
 
 //Starts up SDL and creates window
 bool init();
@@ -55,7 +55,7 @@ bool init()
         }
 
         //Create window
-        gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        gWindow = SDL_CreateWindow( "DR Racing", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         if( gWindow == NULL )
         {
             printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -134,6 +134,15 @@ bool loadMedia()
         printf( "Failed to load screen2 texture!\n" );
         success = false;
     }
+
+    SDL_Texture* tex = get_map_texture(gRenderer);
+    if(!tex){
+        printf("can't load map texture");
+        success=false;
+    }
+
+    save_texture(gRenderer,tex,"res/maze.png");
+    
 
     if( !gGameTexture.loadFromFile( "res/maze.png" ) )
     {
@@ -228,6 +237,7 @@ int main( int argc, char* args[] )
             LTexture* currentTexture = &gScreen1Texture;
             Character dot;
 
+            SDL_Rect camera = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
             //While application is running
             while( !quit )
             {
@@ -248,10 +258,7 @@ int main( int argc, char* args[] )
                             currentTexture = &gScreen1Texture;
                             startTime = SDL_GetTicks();
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
-                            LTexture* temp=NULL;
-                            SDL_Texture* tex = get_map_texture(gRenderer);
-                            temp->setTexture(tex);
-                            currentTexture = temp;
+                            currentTexture = &gGameTexture;
                             Mix_PlayMusic(gMusic,-1);
                             startTime = SDL_GetTicks();
                         }else if(e.key.keysym.sym == SDLK_s){
@@ -288,6 +295,31 @@ int main( int argc, char* args[] )
 
                 }
 
+                //Move the dot
+                dot.move();
+
+                //Center the camera over the dot
+                camera.x = ( dot.getmPosX() + Character::CHARACTER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
+                camera.y = ( dot.getmPosY() + Character::CHARACTER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
+
+                //Keep the camera in bounds
+                if( camera.x < 0 )
+                { 
+                    camera.x = 0;
+                }
+                if( camera.y < 0 )
+                {
+                    camera.y = 0;
+                }
+                if( camera.x > LEVEL_WIDTH - camera.w )
+                {
+                    camera.x = LEVEL_WIDTH - camera.w;
+                }
+                if( camera.y > LEVEL_HEIGHT - camera.h )
+                {
+                    camera.y = LEVEL_HEIGHT - camera.h;
+                }
+                                
                 timeText.str("");
                 timeText << "Seconds since start time : " <<(timer.getTicks()/1000.f);
 
@@ -301,14 +333,16 @@ int main( int argc, char* args[] )
                 SDL_RenderClear( gRenderer );
 
                 //Render current texture
-
-                SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+                if(currentTexture != &gGameTexture){
+                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+                }else{
+                    currentTexture->render(0,0,&camera);
+                }
                 // gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );
 
                 if (currentTexture == &gGameTexture){
                     gTimeTextTexture.render(0,0);
-                    gCharacterTexture.render(dot.getmPosX(),dot.getmPosY());
-
+                    dot.render(camera.x,camera.y);
                 }
                 if(currentTexture == &gScreen1Texture){
                     gTextTexture.render(100,400);

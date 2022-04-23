@@ -6,12 +6,21 @@
 #include <string>
 #include <sstream>
 #include <character.hpp>
+#include <global.hpp>
 
-Character::Character()
+Character::Character(int hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets
-    mPosX = 700;
-    mPosY = 600;
+    mPosX = 0;
+    mPosY = 0;
+
+    mVelX = 0;
+    mVelY = 0;
+
+    this.hostel=hostel;
+    this.name = name;
+    this.lives=lives;
+    this.points=points;
 }
 
 void Character::handleEvent( SDL_Event& e )
@@ -39,6 +48,24 @@ void Character::handleEvent( SDL_Event& e )
             case SDLK_RIGHT: mPosX -= CHARACTER_POS; break;
         }
     }
+}
+
+void Character::move(){
+    //mPosX += mVelX;
+
+    if(mPosX <0 || (mPosX + CHARACTER_WIDTH > LEVEL_WIDTH)){
+        mPosX = LEVEL_WIDTH-CHARACTER_WIDTH;
+    }
+
+    //mPosY += mVelY;
+
+    if(mPosY < 0 || (mPosY + CHARACTER_HEIGHT > LEVEL_HEIGHT)){
+        mPosY = LEVEL_HEIGHT-CHARACTER_HEIGHT;
+    }
+}
+
+void Character::render(int camX,int camY){
+    gCharacterTexture.render(mPosX - camX, mPosY - camY);
 }
 
 int Character::getmPosX(){

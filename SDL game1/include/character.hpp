@@ -8,9 +8,16 @@
 #include <string>
 #include <sstream>
 #include <character.hpp>
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 700;
+#include <constants.hpp>
 
+enum{
+    NONE,
+    HIMADRI,
+    KAILASH,
+    UDAIGIRI,
+    ZANSKAR
+
+};
 class Character
 {
     public:
@@ -21,8 +28,13 @@ class Character
         //Maximum axis velocity of the Character
         static const int CHARACTER_POS = 10;
 
+        int hostel;
+        int lives;
+        std::string name;
+        int points;
+        
         //Initializes the variables
-        Character();
+        Character(int startX,int startY);
 
         //Takes key presses and adjusts the Character's velocity
         void handleEvent( SDL_Event& e );
@@ -31,7 +43,7 @@ class Character
         void move();
 
         //Shows the Character on the screen
-//        void render();
+        void render(int camX,int camY);
 
         int getmPosX();
         int getmPosY();
@@ -41,6 +53,6 @@ class Character
         int mPosX, mPosY;
 
         //The velocity of the Character
-        //int mVelX, mVelY;
+        int mVelX, mVelY;
 };
 
