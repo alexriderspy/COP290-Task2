@@ -8,6 +8,17 @@
 #include <character.hpp>
 #include <global.hpp>
 
+Character::Character()
+{
+    //Initialize the offsets
+    mPosX = 0;
+    mPosY = 0;
+
+    mVelX = 0;
+    mVelY = 0;
+
+}
+
 Character::Character(int hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets
@@ -17,10 +28,10 @@ Character::Character(int hostel,std::string name, int lives,int points)
     mVelX = 0;
     mVelY = 0;
 
-    this.hostel=hostel;
-    this.name = name;
-    this.lives=lives;
-    this.points=points;
+    this->hostel=hostel;
+    this->name = name;
+    this->lives=lives;
+    this->points=points;
 }
 
 void Character::handleEvent( SDL_Event& e )

@@ -32,9 +32,10 @@ class Character
         int lives;
         std::string name;
         int points;
-        
+
         //Initializes the variables
-        Character(int startX,int startY);
+        Character();
+        Character(int hostel,std::string name, int lives,int points);
 
         //Takes key presses and adjusts the Character's velocity
         void handleEvent( SDL_Event& e );
