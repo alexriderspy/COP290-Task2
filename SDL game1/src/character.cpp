@@ -12,16 +12,16 @@
 Character::Character()
 {
     //Initialize the offsets
-    mPosX = 0;
-    mPosY = 0;
+    mPosX = 0*TILE_SIZE;
+    mPosY = 60*TILE_SIZE;
 
     mVelX = 0;
     mVelY = 0;
 
-    int map_flat[66*61] = MAP;
+    int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
     int id=0;
-    for(int i=0;i<66;++i){
-        for(int j=0;j<61;++j){
+    for(int i=0;i<MAP_HEIGHT;++i){
+        for(int j=0;j<MAP_WIDTH;++j){
             map[i][j]=map_flat[id++];
         }
     }
@@ -32,8 +32,8 @@ Character::Character()
 Character::Character(int hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets
-    mPosX = 0;
-    mPosY = 0;
+    mPosX = 0*TILE_SIZE;
+    mPosY = 60*TILE_SIZE;
 
     mVelX = 0;
     mVelY = 0;
@@ -44,6 +44,14 @@ Character::Character(int hostel,std::string name, int lives,int points)
     this->points=points;
 }
 
+int getTileX(int mPosX,int mPosY){
+    return mPosY/TILE_SIZE;
+}
+
+int getTileY(int mPosX,int mPosY){
+    return mPosX/TILE_SIZE;
+}
+
 void Character::handleEvent( SDL_Event& e )
 {
     //If a key was pressed
@@ -52,31 +60,16 @@ void Character::handleEvent( SDL_Event& e )
         //Adjust the velocity
         switch( e.key.keysym.sym )
         {
-            case SDLK_UP: mPosY -= CHARACTER_POS; break;
-            case SDLK_DOWN: mPosY += CHARACTER_POS; break;
-            case SDLK_LEFT: mPosX -= CHARACTER_POS; break;
-            case SDLK_RIGHT: mPosX += CHARACTER_POS; break;
-        }
-    }
-    else if( e.type == SDL_KEYUP)
-    {
-        //Adjust the velocity
-        switch( e.key.keysym.sym )
-        {
-            case SDLK_UP: mPosY += CHARACTER_POS; break;
-            case SDLK_DOWN: mPosY -= CHARACTER_POS; break;
-            case SDLK_LEFT: mPosX += CHARACTER_POS; break;
-            case SDLK_RIGHT: mPosX -= CHARACTER_POS; break;
+            case SDLK_UP: mPosY -= CHARACTER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= CHARACTER_POS; break;
+            case SDLK_DOWN: mPosY += CHARACTER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= CHARACTER_POS;break;
+            case SDLK_LEFT: mPosX -= CHARACTER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= CHARACTER_POS;break;
+            case SDLK_RIGHT: mPosX += CHARACTER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= CHARACTER_POS;break;
         }
     }
 }
 
 void Character::move(){
     //mPosX += mVelX;
-
-    int tileX = mPosX/TILE_SIZE;
-    int tileY = mPosY/TILE_SIZE;
-
     if(mPosX <0){
         mPosX = 0;
     }
@@ -95,25 +88,6 @@ void Character::move(){
     if(mPosY + CHARACTER_HEIGHT > LEVEL_HEIGHT){
         mPosY = LEVEL_HEIGHT-CHARACTER_HEIGHT;
     }
-
-    // if(map[tileX][tileY]==1){
-    //     if(tileY>=1 && map[tileX][tileY-1]==0){
-    //         mPosX=tileX*TILE_SIZE;
-    //         mPosY=(tileY-1)*TILE_SIZE;
-    //     }
-    //     if(tileX>=1 && map[tileX-1][tileY]==0){
-    //         mPosX=(tileX-1)*TILE_SIZE;
-    //         mPosY=tileY*TILE_SIZE;
-    //     }
-    //     if(tileY+1<MAP_HEIGHT && map[tileX][tileY+1]==0){
-    //         mPosX=tileX*TILE_SIZE;
-    //         mPosY=(tileY+1)*TILE_SIZE;
-    //     }
-    //     if(tileX+1<MAP_WIDTH && map[tileX+1][tileY]==0){
-    //         mPosX=(tileX+1)*TILE_SIZE;
-    //         mPosY=tileY*TILE_SIZE;
-    //     }
-    // }
 
 }
 
