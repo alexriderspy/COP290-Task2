@@ -9,18 +9,22 @@
 #include "../include/map.hpp"
 #include <iostream>
 #include "../include/character.hpp"
-#include "../include/constants.hpp"
-
+#include "constants.hpp"
 
 SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
-    int map_flat[66*61] = MAP;
-    int map[66][61];
+    int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
+
+    int map[MAP_HEIGHT][MAP_WIDTH];
     int id=0;
-    for(int i=0;i<66;++i){
-        for(int j=0;j<61;++j){
-            map[i][j]=map_flat[id++];
+    for(int i=0;i<MAP_HEIGHT;++i){
+        for(int j=0;j<MAP_WIDTH;++j){
+            map[i][j]=map_flat[id];
+            std::cout<<map[i][j]<<' ';
+            ++id;
         }
+        std::cout<<'\n';
     }
+
     SDL_Surface *bitmap = NULL;
     SDL_Texture *map_texture;
     SDL_Rect rect;

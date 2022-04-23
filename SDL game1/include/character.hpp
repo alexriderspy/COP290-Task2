@@ -32,6 +32,7 @@ class Character
         int lives;
         std::string name;
         int points;
+        int map[MAP_HEIGHT][MAP_WIDTH];
 
         //Initializes the variables
         Character();
