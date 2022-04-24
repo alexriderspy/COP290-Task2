@@ -20,12 +20,8 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
         for(int j=0;j<MAP_WIDTH;++j){
             map[i][j]=map_flat[id];
             ++id;
-            std::cout<<map[i][j]<<' ';
         }
-        std::cout<<'\n';
     }
-
-    std::cout<<map[65][0]<<'\n';
 
     SDL_Surface *bitmap = NULL;
     SDL_Texture *map_texture;

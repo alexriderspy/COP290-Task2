@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"mPO",
+				"mPosY"
+			],
+			[
+				"mp",
+				"mPosY"
+			],
+			[
+				"m",
+				"mPosY"
+			],
+			[
+				"get",
+				"getTileX"
+			],
+			[
+				"MAP",
+				"MAP_WIDTH"
+			],
+			[
+				"tile",
+				"tileX"
+			],
+			[
+				"mPos",
+				"mPosY"
+			],
+			[
+				"mPo",
+				"mPosX"
+			],
+			[
+				"L",
+				"LEVEL_HEIGHT"
+			],
+			[
 				"SCREE",
 				"SCREEN_HEIGHT"
 			],
@@ -12,16 +48,8 @@
 				"mVelY"
 			],
 			[
-				"mPos",
-				"mPosY"
-			],
-			[
 				"g",
 				"gGameTexture"
-			],
-			[
-				"m",
-				"mWidth"
 			],
 			[
 				"in",
@@ -130,13 +158,17 @@
 	"file_history":
 	[
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/character.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/map.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/constants.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/maze.png",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/character.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/coin.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/coin.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/ltexture.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/main.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/global.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/global.hpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/main.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/game_title.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/ltexture.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/map.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/ltexture.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/map.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/game.o",
