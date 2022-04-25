@@ -30,3 +30,6 @@ LTexture gGameTexture;
 LTexture gTextTexture;
 LTexture gTimeTextTexture;
 LTexture gCharacterTexture;
+LTexture gCoinTexture;
+LTexture gFlagTexture;
+LTexture gScoreBoardTexture;

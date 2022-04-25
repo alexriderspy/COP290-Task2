@@ -27,3 +27,6 @@ extern LTexture gTextTexture;
 extern LTexture gGameTexture;
 extern LTexture gTimeTextTexture;
 extern LTexture gCharacterTexture;
+extern LTexture gCoinTexture;
+extern LTexture gFlagTexture;
+extern LTexture gScoreBoardTexture;

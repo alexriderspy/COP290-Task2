@@ -1,9 +1,15 @@
+#include <ltexture.hpp>
+
 class Coin{
 public:
-	int val;
+	int value;
 	int mPosX, mPosY;
 	
-	Coin(int val,int posX,int posY);
+	LTexture* coinTexture;
+
+	Coin(int val,int posX,int posY,LTexture* coinTexture);
 
 	~Coin();
+
+	void render(int cameraX, int cameraY);
 };

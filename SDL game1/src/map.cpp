@@ -6,10 +6,10 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "../include/map.hpp"
-#include <iostream>
-#include "../include/character.hpp"
-#include "constants.hpp"
+
+#include <map.hpp>
+#include <character.hpp>
+#include <constants.hpp>
 
 SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
     int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
@@ -124,8 +124,6 @@ void save_texture(SDL_Renderer *ren, SDL_Texture *tex, const char *filename)
         SDL_Log("Failed saving image: %s\n", SDL_GetError());
         goto cleanup;
     }
-
-    SDL_Log("Saved texture as BMP to \"%s\"\n", filename);
 
 cleanup:
     SDL_FreeSurface(surf);
