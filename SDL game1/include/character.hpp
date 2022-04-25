@@ -1,3 +1,6 @@
+#ifndef _CHARACTER_H
+#define _CHARACTER_H
+
 #pragma once
 
 #include <SDL2/SDL.h>
@@ -57,4 +60,6 @@ class Character
         //The velocity of the Character
         int mVelX, mVelY;
 };
+
+#endif
 

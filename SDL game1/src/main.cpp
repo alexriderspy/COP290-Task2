@@ -208,6 +208,7 @@ int main( int argc, char* args[] )
                         currentTexture=&gScoreBoardTexture;
                     }
 
+
                 }
                 // gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );
 
@@ -217,7 +218,6 @@ int main( int argc, char* args[] )
                 //Update screen
                 SDL_RenderPresent( gRenderer );
             }
-            std::cout<<dot.points<<'\n';
         }
     }
 

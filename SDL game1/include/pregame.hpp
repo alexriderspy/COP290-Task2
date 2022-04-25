@@ -1,3 +1,7 @@
+#ifndef _PREGAME_H
+
+#define _PREGAME_H
+
 #pragma once
 
 #include <SDL2/SDL.h>
@@ -11,3 +15,5 @@
 bool init();
 bool loadMedia();
 void close();
+
+#endif

@@ -1,3 +1,8 @@
+#ifndef _FLAG_H
+#define _FLAG_H
+
+#pragma once
+
 #include <ltexture.hpp>
 
 class Flag{
@@ -9,3 +14,5 @@ public:
 
 	void render(int cameraX,int cameraY);
 };
+
+#endif

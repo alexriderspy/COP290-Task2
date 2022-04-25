@@ -1,3 +1,6 @@
+#ifndef _GLOBAL_H
+
+#define _GLOBAL_H
 #pragma once
 
 #include <SDL2/SDL.h>
@@ -30,3 +33,5 @@ extern LTexture gCharacterTexture;
 extern LTexture gCoinTexture;
 extern LTexture gFlagTexture;
 extern LTexture gScoreBoardTexture;
+
+#endif
