@@ -1,11 +1,9 @@
 #include <character.hpp>
-#include <flag.hpp>
-#include <coin.hpp>
 
 #include <constants.hpp>
 #include <global.hpp>
 
-//character
+
 Character::Character()
 {
     //Initialize the offsets
@@ -97,39 +95,3 @@ int Character::getmPosX(){
 int Character::getmPosY(){
     return mPosY;
 }
-
-//flag
-Flag::Flag(int posX,int posY,LTexture* texture){
-	mPosX = posX;
-	mPosY = posY;
-	flagTexture = texture;
-}
-
-void Flag::render(int cameraX,int cameraY){
-    SDL_Rect renderQuad = { mPosX-cameraX, mPosY-cameraY, TILE_SIZE/2, TILE_SIZE/2 };
-
-    //Render to screen
-    SDL_RenderCopy( gRenderer, flagTexture->getTexture(), NULL, &renderQuad);
-
-}
-
-//coin
-Coin::Coin(int val,int mPosX,int mPosY, LTexture* coinTexture){
-	this->value=val;
-	this->mPosX=mPosX;
-	this->mPosY=mPosY;
-	this->coinTexture=coinTexture;
-}
-
-Coin::~Coin(){
-	this->coinTexture=NULL;
-}
-
-void Coin::render(int cameraX,int cameraY){
-    SDL_Rect renderQuad = { mPosX-cameraX, mPosY-cameraY, TILE_SIZE/2, TILE_SIZE/2 };
-
-    //Render to screen
-    SDL_RenderCopy( gRenderer, coinTexture->getTexture(), NULL, &renderQuad);
-
-}
-
