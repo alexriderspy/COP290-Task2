@@ -12,7 +12,7 @@
 #include <ltexture.hpp>
 #include <coin.hpp>
 #include <flag.hpp>
-#include <pregame.hpp>
+#include <prenpostgame.hpp>
 
 #include <stdlib.h>
 #include <time.h>
@@ -157,7 +157,6 @@ int main( int argc, char* args[] )
                 camera.x = ( dot.getmPosX() + Character::CHARACTER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
                 camera.y = ( dot.getmPosY() + Character::CHARACTER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
 
-                std::cout<<dot.getmPosX()<<' '<<dot.getmPosY()<<' '<<camera.x<<' '<<camera.y<<'\n';
                 //Keep the camera in bounds
                 if( camera.x < 0 )
                 { 
@@ -207,7 +206,6 @@ int main( int argc, char* args[] )
                     if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
                         currentTexture=&gScoreBoardTexture;
                     }
-
 
                 }
                 // gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );

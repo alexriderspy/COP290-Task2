@@ -1,14 +1,11 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
-#include <iostream>
-#include <string>
-#include <sstream>
 #include <character.hpp>
-#include <global.hpp>
-#include <constants.hpp>
+#include <flag.hpp>
+#include <coin.hpp>
 
+#include <constants.hpp>
+#include <global.hpp>
+
+//character
 Character::Character()
 {
     //Initialize the offsets
@@ -25,8 +22,6 @@ Character::Character()
             map[i][j]=map_flat[id++];
         }
     }
- 
-
 }
 
 Character::Character(int hostel,std::string name, int lives,int points)
@@ -101,5 +96,40 @@ int Character::getmPosX(){
 
 int Character::getmPosY(){
     return mPosY;
+}
+
+//flag
+Flag::Flag(int posX,int posY,LTexture* texture){
+	mPosX = posX;
+	mPosY = posY;
+	flagTexture = texture;
+}
+
+void Flag::render(int cameraX,int cameraY){
+    SDL_Rect renderQuad = { mPosX-cameraX, mPosY-cameraY, TILE_SIZE/2, TILE_SIZE/2 };
+
+    //Render to screen
+    SDL_RenderCopy( gRenderer, flagTexture->getTexture(), NULL, &renderQuad);
+
+}
+
+//coin
+Coin::Coin(int val,int mPosX,int mPosY, LTexture* coinTexture){
+	this->value=val;
+	this->mPosX=mPosX;
+	this->mPosY=mPosY;
+	this->coinTexture=coinTexture;
+}
+
+Coin::~Coin(){
+	this->coinTexture=NULL;
+}
+
+void Coin::render(int cameraX,int cameraY){
+    SDL_Rect renderQuad = { mPosX-cameraX, mPosY-cameraY, TILE_SIZE/2, TILE_SIZE/2 };
+
+    //Render to screen
+    SDL_RenderCopy( gRenderer, coinTexture->getTexture(), NULL, &renderQuad);
+
 }
 
