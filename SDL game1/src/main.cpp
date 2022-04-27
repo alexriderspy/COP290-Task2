@@ -5,7 +5,7 @@
 #include <SDL2/SDL_net.h>
 
 #include <timer.hpp>
-#include <character.hpp>
+#include <player.hpp>
 #include <map.hpp>
 #include <global.hpp>
 #include <constants.hpp>
@@ -14,6 +14,7 @@
 #include <flag.hpp>
 #include <prenpostgame.hpp>
 #include <text.hpp>
+#include <ghost.hpp>
 
 #include <stdlib.h>
 #include <time.h>
@@ -40,23 +41,35 @@ int main( int argc, char* args[] )
         {   
             //Main loop flag
             bool quit = false;
-
-            //Event handler
-            SDL_Event e;
-
-            SDL_Color textColor = {0,0xFF,0xFF};
-
+            int flag=0;
+            std::stringstream timeText,score;
             Uint32 startTime = 0;
+
+            SDL_Event e;
+            SDL_Color textColor = {0,0xFF,0xFF};
+            SDL_Rect camera = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
+
             LTimer timer;
-
-            std::vector<Coin>coins;
-
+            LTexture* currentTexture = &gScreen1Texture;
+            LTexture p;
             Flag winflag(0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
-
             Text textVal("Your points are ");
+            Player dot;
+
+            std::vector<Ghost>ghosts;
+            srand(time(0));
+            int i=0;
+            while(i<MAX_GHOSTS){
+                int xTilecoor = rand()%MAP_HEIGHT;
+                int yTilecoor = rand()%MAP_WIDTH;
+
+                Ghost ghost(yTilecoor*TILE_SIZE,xTilecoor*TILE_SIZE,&gGhostTexture,1,1);
+                ghosts.push_back(ghost);
+                ++i;
+            }
+
 
             int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
-
             int map[MAP_HEIGHT][MAP_WIDTH];
             int id=0;
             for(int i=0;i<MAP_HEIGHT;++i){
@@ -66,8 +79,9 @@ int main( int argc, char* args[] )
                 }
             }
 
+            std::vector<Coin>coins;
             srand(time(0));
-            int i=0;
+            i=0;
             while(i<MAX_COINS){
                 int xTilecoor = rand()%MAP_HEIGHT;
                 int yTilecoor = rand()%MAP_WIDTH;
@@ -79,17 +93,6 @@ int main( int argc, char* args[] )
                 ++i;
             }
 
-            std::stringstream timeText,score;
-
-            //Current rendered texture
-            LTexture* currentTexture = &gScreen1Texture;
-            Character dot;
-
-            LTexture p;
-            SDL_Rect camera = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
-
-            int flag=0;
-            //While application is running
             while( !quit )
             {
                 //Handle events on queue
@@ -147,10 +150,9 @@ int main( int argc, char* args[] )
 
                 //Move the dot
                 dot.move();
-
                 //Center the camera over the dot
-                camera.x = ( dot.getmPosX() + Character::CHARACTER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
-                camera.y = ( dot.getmPosY() + Character::CHARACTER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
+                camera.x = ( dot.getmPosX() + PLAYER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
+                camera.y = ( dot.getmPosY() + PLAYER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
 
                 //Keep the camera in bounds
                 if( camera.x < 0 ){ 
@@ -193,6 +195,7 @@ int main( int argc, char* args[] )
                     }
                     gTimeTextTexture.render(0,0);
                     dot.render(camera.x,camera.y);
+
                     for(int i=0;i<(int)coins.size();++i){
                         coins[i].render(camera.x,camera.y);
                         if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
@@ -202,6 +205,14 @@ int main( int argc, char* args[] )
 
                     }
 
+                    for(int i=0;i<MAX_GHOSTS;++i){
+                        ghosts[i].render(camera.x,camera.y);
+                        ghosts[i].move();
+                        if(ghosts[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && ghosts[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+                        }
+                    }
+
+                    
                     winflag.render(camera.x,camera.y);
 
                     if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){

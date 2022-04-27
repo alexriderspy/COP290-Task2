@@ -3,14 +3,6 @@
 #define _GLOBAL_H
 #pragma once
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_net.h>
-#include <iostream>
-#include <string>
-#include <sstream>
 #include "ltexture.hpp"
 
 extern SDL_Window* gWindow;
@@ -29,10 +21,11 @@ extern LTexture gScreen2Texture;
 extern LTexture gTextTexture;
 extern LTexture gGameTexture;
 extern LTexture gTimeTextTexture;
-extern LTexture gCharacterTexture;
+extern LTexture gPlayerTexture;
 extern LTexture gCoinTexture;
 extern LTexture gFlagTexture;
 extern LTexture gScoreBoardTexture;
 extern LTexture gScoreTexture;
+extern LTexture gGhostTexture;
 
 #endif

@@ -2,13 +2,10 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_net.h>
+
 #include <iostream>
 #include <string>
-#include <sstream>
-#include "timer.hpp"
-#include "character.hpp"
-#include "map.hpp"
+
 #include "global.hpp"
 
 LTexture::LTexture()

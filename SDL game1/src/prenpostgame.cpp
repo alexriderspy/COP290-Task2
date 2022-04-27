@@ -116,7 +116,7 @@ bool loadMedia()
         success = false;
     }
 
-    if( !gCharacterTexture.loadFromFile( "res/character1.png" ) )
+    if( !gPlayerTexture.loadFromFile( "res/character1.png" ) )
     {
         printf( "Failed to load character1 texture!\n" );
         success = false;
@@ -131,6 +131,12 @@ bool loadMedia()
     if( !gFlagTexture.loadFromFile( "res/flag.png" ) )
     {
         printf( "Failed to load flag texture!\n" );
+        success = false;
+    }
+
+    if( !gGhostTexture.loadFromFile( "res/ghost.png" ) )
+    {
+        printf( "Failed to load ghost texture!\n" );
         success = false;
     }
 
@@ -163,7 +169,7 @@ void close()
     gScreen2Texture.free();
     gGameTexture.free();
     gTimeTextTexture.free();
-    gCharacterTexture.free();
+    gPlayerTexture.free();
     gCoinTexture.free();
     gScoreBoardTexture.free();
 

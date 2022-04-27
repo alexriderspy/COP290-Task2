@@ -7,14 +7,15 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_net.h>
+
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "../include/timer.hpp"
-#include "../include/character.hpp"
-#include "../include/map.hpp"
-#include "../include/constants.hpp"
+
+#include "timer.hpp"
+#include "player.hpp"
+#include "map.hpp"
+#include "constants.hpp"
 
 class LTexture
 {
