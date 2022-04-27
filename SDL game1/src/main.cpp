@@ -13,6 +13,7 @@
 #include <coin.hpp>
 #include <flag.hpp>
 #include <prenpostgame.hpp>
+#include <text.hpp>
 
 #include <stdlib.h>
 #include <time.h>
@@ -53,7 +54,7 @@ int main( int argc, char* args[] )
             //Event handler
             SDL_Event e;
 
-            SDL_Color textColor = {0,0,0,255};
+            SDL_Color textColor = {0,0xFF,0xFF};
 
             Uint32 startTime = 0;
             LTimer timer;
@@ -61,6 +62,8 @@ int main( int argc, char* args[] )
             std::vector<Coin>coins;
 
             Flag winflag(0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
+
+            Text textVal("Your points are ");
 
             int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
 
@@ -86,13 +89,16 @@ int main( int argc, char* args[] )
                 ++i;
             }
 
-            std::stringstream timeText;
+            std::stringstream timeText,score;
 
             //Current rendered texture
             LTexture* currentTexture = &gScreen1Texture;
             Character dot;
 
+            LTexture p;
             SDL_Rect camera = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
+
+            int flag=0;
             //While application is running
             while( !quit )
             {
@@ -178,9 +184,17 @@ int main( int argc, char* args[] )
                 timeText.str("");
                 timeText << "Seconds since start time : " <<(timer.getTicks()/1000.f);
 
+                score.str("");
+                score << textVal.text;
+
                 if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) )
                 {
                     printf( "Failed to load time texture!\n" );
+                }
+
+                if( !p.loadFromRenderedText( score.str().c_str(),textColor ) )
+                {
+                    printf( "Failed to load score texture!\n" );
                 }
 
                 //Clear screen
@@ -190,6 +204,16 @@ int main( int argc, char* args[] )
                 //Render current texture
                 if(currentTexture != &gGameTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+                    if(currentTexture == &gScoreBoardTexture){
+                        if(flag==0){
+                            textVal.addText(std::to_string(dot.points));
+                            std::cout<<textVal.text<<'\n';
+                            flag=1;
+                        }
+
+                        p.render(0,0);
+                    }
+
                 }else{
                     currentTexture->render(0,0,&camera);
                     gTimeTextTexture.render(0,0);
@@ -199,16 +223,18 @@ int main( int argc, char* args[] )
                         if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
                             dot.points+=coins[i].value;
                             coins.erase(coins.begin()+i);
-                        }                        
+                        }
+
                     }
 
                     winflag.render(camera.x,camera.y);
                     if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
                         currentTexture=&gScoreBoardTexture;
                     }
-
+                    
                 }
-                // gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );
+                // gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );2
+
 
                 if(currentTexture == &gScreen1Texture){
                     gTextTexture.render(100,400);

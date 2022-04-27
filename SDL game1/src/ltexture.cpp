@@ -6,10 +6,10 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "../include/timer.hpp"
-#include "../include/character.hpp"
-#include "../include/map.hpp"
-#include "../include/global.hpp"
+#include "timer.hpp"
+#include "character.hpp"
+#include "map.hpp"
+#include "global.hpp"
 
 LTexture::LTexture()
 {

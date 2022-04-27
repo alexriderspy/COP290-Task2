@@ -33,5 +33,6 @@ extern LTexture gCharacterTexture;
 extern LTexture gCoinTexture;
 extern LTexture gFlagTexture;
 extern LTexture gScoreBoardTexture;
+extern LTexture gScoreTexture;
 
 #endif

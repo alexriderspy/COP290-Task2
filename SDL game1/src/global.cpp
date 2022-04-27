@@ -33,3 +33,4 @@ LTexture gCharacterTexture;
 LTexture gCoinTexture;
 LTexture gFlagTexture;
 LTexture gScoreBoardTexture;
+LTexture gScoreTexture;
