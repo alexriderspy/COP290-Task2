@@ -53,9 +53,13 @@ int main( int argc, char* args[] )
             LTimer timer;
             LTexture* currentTexture = &gScreen1Texture;
             LTexture p;
+            LTexture gInputTextTexture;
             Flag winflag(0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
             Text textVal("Your points are ");
             Player dot("Himadri","Vag",3,0);
+
+            std::string inputText="";
+            std::string hostelText="";
 
             std::vector<Ghost>ghosts;
             srand(time(0));
@@ -94,8 +98,10 @@ int main( int argc, char* args[] )
                 ++i;
             }
 
+            SDL_StartTextInput();
             while( !quit )
             {
+                bool renderText = false;
                 //Handle events on queue
                 while( SDL_PollEvent( &e ) != 0 )
                 {
@@ -105,10 +111,21 @@ int main( int argc, char* args[] )
                         quit = true;
 
                     }else if(e.type == SDL_KEYDOWN){
-                        if (currentTexture == &gScreen1Texture && e.key.keysym.sym == SDLK_RETURN){
-                            currentTexture = &gScreen2Texture;
-                            startTime = SDL_GetTicks();
-                            
+                        if (currentTexture == &gScreen1Texture){
+                            if(e.key.keysym.sym == SDLK_RETURN){
+                                currentTexture = &gScreen2Texture;
+                                startTime = SDL_GetTicks();
+                                continue;
+                            }else if(e.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0){
+                                inputText.pop_back();
+                                renderText = true;
+                            }else if(e.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL){
+                                SDL_SetClipboardText(inputText.c_str());
+                            }else if( e.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL){
+                                inputText = SDL_GetClipboardText();
+                                renderText = true;
+                            }
+
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_LEFT){
                             currentTexture = &gScreen1Texture;
                             startTime = SDL_GetTicks();
@@ -120,12 +137,21 @@ int main( int argc, char* args[] )
                             if(currentTexture == &gGamePauseTexture && timer.isPaused()){
                                 timer.unpause();
                                 currentTexture = &gGameTexture;
-                            }else if(currentTexture == &gGameTexture && !timer.isPaused()){
+                        }else if(currentTexture == &gGameTexture && !timer.isPaused()){
                                 timer.pause();
                                 currentTexture = &gGamePauseTexture;
-                            }
                         }
-
+                    }
+                }
+                    else if(e.type == SDL_TEXTINPUT){
+                            if(currentTexture == &gScreen1Texture){
+                                if(!(SDL_GetModState() & KMOD_CTRL && (e.text.text[0] == 'c' || e.text.text[0] == 'C' || e.text.text[0] == 'v' || e.text.text[0] == 'V'))){
+                                    inputText += e.text.text;
+                                    renderText = true;
+                                    
+                                }
+                            }
+                    }
                         // if(e.key.keysym.sym == SDLK_1){
                         //     Mix_PlayChannel (-1,gScratch,0);
                             
@@ -142,9 +168,10 @@ int main( int argc, char* args[] )
                         // }
 
                         dot.handleEvent(e);
+                        dot.name = inputText;
                     }
 
-                }
+                
 
                 //Move the dot
                 dot.move();
@@ -175,7 +202,15 @@ int main( int argc, char* args[] )
                 //gScreen1Texture
                 if(currentTexture == &gScreen1Texture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-                    gTextTexture.render(100,400);
+                    gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );
+                    if(renderText){
+                        if(inputText != ""){
+                            gInputTextTexture.loadFromRenderedText(inputText.c_str(),textColor);
+                        }else{
+                            gInputTextTexture.loadFromRenderedText(" ",textColor);
+                        }
+                    }
+                    gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2, gTextTexture.getHeight() );
                 }
                 //gScreen2Texture
                 else if(currentTexture == &gScreen2Texture){
@@ -251,9 +286,12 @@ int main( int argc, char* args[] )
                 //Update screen
                 SDL_RenderPresent( gRenderer );
             }
+            //std::cout<<"Well"<<inputText<<'\n';
         }
+
     }
 
+    SDL_StopTextInput();
     //Free resources and close SDL
     close();
 
