@@ -26,6 +26,6 @@
 #define MAX_COINS 100
 #define MAX_GHOSTS 40
 
-#define LEVEL1_TIME 5
+#define LEVEL1_TIME 200
 
 #endif

@@ -220,7 +220,10 @@ int main( int argc, char* args[] )
                 //gGameTexture
                 else if(currentTexture == &gGameTexture){
                     Mix_PlayMusic(gMusic,-1);
+
                     currentTexture->render(0,0,&camera);
+                    SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
+                    SDL_RenderCopy(gRenderer,gScreen1Texture.getTexture(),NULL,&renderQuad);
                     timeText.str("");
                     timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
                     timeText << "Seconds since start time : " <<timeLeft;
@@ -232,6 +235,7 @@ int main( int argc, char* args[] )
                     if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) ){
                         printf( "Failed to load time texture!\n" );
                     }
+                    
                     gTimeTextTexture.render(0,0);
                     dot.render(camera.x,camera.y);
 

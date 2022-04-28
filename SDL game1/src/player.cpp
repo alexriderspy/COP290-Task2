@@ -3,24 +3,6 @@
 #include <constants.hpp>
 #include <global.hpp>
 
-// Player::Player()
-// {
-//     //Initialize the offsets
-//     mPosX = 0*TILE_SIZE;
-//     mPosY = 60*TILE_SIZE;
-
-//     mVelX = 0;
-//     mVelY = 0;
-
-//     int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
-//     int id=0;
-//     for(int i=0;i<MAP_HEIGHT;++i){
-//         for(int j=0;j<MAP_WIDTH;++j){
-//             map[i][j]=map_flat[id++];
-//         }
-//     }
-// }
-
 Player::Player(std::string hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets

@@ -88,7 +88,7 @@ bool loadMedia()
     }
 
     //Load screen1 texture
-    if( !gScreen1Texture.loadFromFile( "res/screen1.png" ) )
+    if( !gScreen1Texture.loadFromFile( "res/rcavs.png" ) )
     {
         printf( "Failed to load screen1 texture!\n" );
         success = false;
@@ -124,7 +124,7 @@ bool loadMedia()
 
     if( !gCoinTexture.loadFromFile( "res/coin.png" ) )
     {
-        printf( "Failed to load character1 texture!\n" );
+        printf( "Failed to load coin texture!\n" );
         success = false;
     }
 
