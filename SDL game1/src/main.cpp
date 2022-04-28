@@ -42,6 +42,7 @@ int main( int argc, char* args[] )
             //Main loop flag
             bool quit = false;
             int flag=0;
+            int timeLeft=LEVEL1_TIME;
             std::stringstream timeText,score;
             Uint32 startTime = 0;
 
@@ -114,6 +115,7 @@ int main( int argc, char* args[] )
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
                             currentTexture = &gGameTexture;
                             startTime = SDL_GetTicks();
+                            timer.start();
                         }else if(e.key.keysym.sym == SDLK_s){
                             if(timer.isStarted()){
                                 timer.stop();
@@ -189,7 +191,13 @@ int main( int argc, char* args[] )
                     Mix_PlayMusic(gMusic,-1);
                     currentTexture->render(0,0,&camera);
                     timeText.str("");
-                    timeText << "Seconds since start time : " <<(timer.getTicks()/1000.f);
+                    timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
+                    timeText << "Seconds since start time : " <<timeLeft;
+
+                    if(timeLeft==0){
+                        currentTexture = &gGameOverTexture;
+                        continue;
+                    }
                     if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) ){
                         printf( "Failed to load time texture!\n" );
                     }
@@ -237,6 +245,9 @@ int main( int argc, char* args[] )
 
                     p.render(0,0);
 
+                }else if(currentTexture == &gGameOverTexture){
+                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+                    
                 }
                 //Update screen
                 SDL_RenderPresent( gRenderer );

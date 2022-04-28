@@ -146,6 +146,12 @@ bool loadMedia()
         success = false;
     }
 
+    if( !gGameOverTexture.loadFromFile( "res/gameover.png" ) )
+    {
+        printf( "Failed to load gameover texture!\n" );
+        success = false;
+    }
+
     gMusic = Mix_LoadMUS("res/beat.wav");
     if (gMusic == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
