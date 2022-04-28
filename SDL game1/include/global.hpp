@@ -28,5 +28,6 @@ extern LTexture gScoreBoardTexture;
 extern LTexture gScoreTexture;
 extern LTexture gGhostTexture;
 extern LTexture gGameOverTexture;
+extern LTexture gGamePauseTexture;
 
 #endif

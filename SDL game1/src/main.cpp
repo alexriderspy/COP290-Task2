@@ -55,7 +55,7 @@ int main( int argc, char* args[] )
             LTexture p;
             Flag winflag(0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
             Text textVal("Your points are ");
-            Player dot;
+            Player dot("Himadri","Vag",3,0);
 
             std::vector<Ghost>ghosts;
             srand(time(0));
@@ -116,17 +116,13 @@ int main( int argc, char* args[] )
                             currentTexture = &gGameTexture;
                             startTime = SDL_GetTicks();
                             timer.start();
-                        }else if(e.key.keysym.sym == SDLK_s){
-                            if(timer.isStarted()){
-                                timer.stop();
-                            }else{
-                                timer.start();
-                            }
                         }else if(e.key.keysym.sym == SDLK_p){
-                            if(timer.isPaused()){
+                            if(currentTexture == &gGamePauseTexture && timer.isPaused()){
                                 timer.unpause();
-                            }else{
+                                currentTexture = &gGameTexture;
+                            }else if(currentTexture == &gGameTexture && !timer.isPaused()){
                                 timer.pause();
+                                currentTexture = &gGamePauseTexture;
                             }
                         }
 
@@ -217,10 +213,10 @@ int main( int argc, char* args[] )
                         ghosts[i].render(camera.x,camera.y);
                         ghosts[i].move();
                         if(ghosts[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && ghosts[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+
                         }
                     }
 
-                    
                     winflag.render(camera.x,camera.y);
 
                     if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
@@ -247,7 +243,10 @@ int main( int argc, char* args[] )
 
                 }else if(currentTexture == &gGameOverTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-                    
+
+                }else if (currentTexture == &gGamePauseTexture){
+                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+
                 }
                 //Update screen
                 SDL_RenderPresent( gRenderer );

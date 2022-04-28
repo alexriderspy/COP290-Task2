@@ -8,33 +8,29 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 
+#include <ltexture.hpp>
+
 #include <iostream>
 #include <string>
 #include <sstream>
 
 #include <constants.hpp>
 
-enum{
-    NONE,
-    HIMADRI,
-    KAILASH,
-    UDAIGIRI,
-    ZANSKAR
-
-};
 class Player
 {
     public:
         //The dimensions of the Player
-        int hostel;
+        std::string hostel;
         int lives;
         std::string name;
         int points;
         int map[MAP_HEIGHT][MAP_WIDTH];
 
+        LTexture nameTexture;
+
         //Initializes the variables
-        Player();
-        Player(int hostel,std::string name, int lives,int points);
+        
+        Player(std::string hostel,std::string name, int lives,int points);
 
         //Takes key presses and adjusts the Player's velocity
         void handleEvent( SDL_Event& e );

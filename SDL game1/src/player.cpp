@@ -3,25 +3,25 @@
 #include <constants.hpp>
 #include <global.hpp>
 
-Player::Player()
-{
-    //Initialize the offsets
-    mPosX = 0*TILE_SIZE;
-    mPosY = 60*TILE_SIZE;
+// Player::Player()
+// {
+//     //Initialize the offsets
+//     mPosX = 0*TILE_SIZE;
+//     mPosY = 60*TILE_SIZE;
 
-    mVelX = 0;
-    mVelY = 0;
+//     mVelX = 0;
+//     mVelY = 0;
 
-    int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
-    int id=0;
-    for(int i=0;i<MAP_HEIGHT;++i){
-        for(int j=0;j<MAP_WIDTH;++j){
-            map[i][j]=map_flat[id++];
-        }
-    }
-}
+//     int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
+//     int id=0;
+//     for(int i=0;i<MAP_HEIGHT;++i){
+//         for(int j=0;j<MAP_WIDTH;++j){
+//             map[i][j]=map_flat[id++];
+//         }
+//     }
+// }
 
-Player::Player(int hostel,std::string name, int lives,int points)
+Player::Player(std::string hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets
     mPosX = 0*TILE_SIZE;
@@ -91,6 +91,11 @@ void Player::move(){
 
 void Player::render(int camX,int camY){
     gPlayerTexture.render(mPosX - camX, mPosY - camY);
+    SDL_Color textColor = {0,0xFF,0xFF};
+    if(!nameTexture.loadFromRenderedText(name,textColor)){
+        printf("name cant be loaded");
+    }
+    nameTexture.render(mPosX-camX,mPosY-camY);
 }
 
 int Player::getmPosX(){

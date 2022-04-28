@@ -12,10 +12,8 @@
 #include <string>
 #include <sstream>
 
-#include "timer.hpp"
-#include "player.hpp"
-#include "map.hpp"
 #include "constants.hpp"
+#include "map.hpp"
 
 class LTexture
 {
