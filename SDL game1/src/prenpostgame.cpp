@@ -109,6 +109,13 @@ bool loadMedia()
 
     save_texture(gRenderer,tex,"res/maze.png");
     
+    SDL_Texture* texLHC = get_mapLHC_texture(gRenderer);
+    if(!texLHC){
+        printf("can't load map texture");
+        success=false;
+    }
+
+    save_texture(gRenderer,texLHC,"res/mazeLHC.png");
 
     if( !gGameTexture.loadFromFile( "res/maze.png" ) )
     {
@@ -117,6 +124,12 @@ bool loadMedia()
     }
 
     if( !gPlayerTexture.loadFromFile( "res/character1.png" ) )
+    {
+        printf( "Failed to load character1 texture!\n" );
+        success = false;
+    }
+
+    if( !gLHCTexture.loadFromFile( "res/mazeLHC.png" ) )
     {
         printf( "Failed to load character1 texture!\n" );
         success = false;

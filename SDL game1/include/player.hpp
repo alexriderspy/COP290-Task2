@@ -25,6 +25,7 @@ class Player
         std::string name;
         int points;
         int map[MAP_HEIGHT][MAP_WIDTH];
+        int mapLHC[MAPLHC_HEIGHT][MAPLHC_WIDTH];
 
         LTexture nameTexture;
 
@@ -34,17 +35,19 @@ class Player
 
         //Takes key presses and adjusts the Player's velocity
         void handleEvent( SDL_Event& e );
+        void handleEvent(SDL_Event&e, LTexture* currentTexture);
 
         //Moves the Player
         void move();
+        void move(LTexture* currentTexture);
 
         //Shows the Player on the screen
         void render(int camX,int camY);
+        void render(LTexture* currentTexture);
 
         int getmPosX();
         int getmPosY();
 
-    private:
         //The X and Y offsets of the Player
         int mPosX, mPosY;
 

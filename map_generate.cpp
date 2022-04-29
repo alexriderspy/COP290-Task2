@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 	fstream fin;
-	fin.open("matrix.txt");
+	fin.open("matrixLHC.txt");
 	string line="";
 	string map = "{";
 	getline(fin,line);
@@ -13,20 +13,24 @@ int main(){
 	for(int i=0;i<len;++i){
 		if(line[i]=='#'){
 			map+="1,";
-		}else{
+		}else if(line[i] == 'L'){
+			map+="2,";
+		}else if(line[i]==' '){
 			map+="0,";
 		}
-		cout<<"what\n";
 	}
+	
 	while(getline(fin,line)){
-		cout<<"lol\n";
 		for(int i=0;i<len;++i){
 			if(line[i]=='#'){
 				map+="1,";
-			}else{
+			}else if(line[i] == 'L'){
+				map+="2,";
+			}else if(line[i] == ' '){
 				map+="0,";
 			}
 		}
+		
 	}
 	map.pop_back();
 	map+="}";

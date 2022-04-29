@@ -168,6 +168,7 @@ int main( int argc, char* args[] )
                         // }
 
                         dot.handleEvent(e);
+                        dot.handleEvent(e,currentTexture);
                         dot.name = inputText;
                     }
 
@@ -175,6 +176,7 @@ int main( int argc, char* args[] )
 
                 //Move the dot
                 dot.move();
+                dot.move(currentTexture);
                 //Center the camera over the dot
                 camera.x = ( dot.getmPosX() + PLAYER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
                 camera.y = ( dot.getmPosY() + PLAYER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
@@ -222,8 +224,17 @@ int main( int argc, char* args[] )
                     Mix_PlayMusic(gMusic,-1);
 
                     currentTexture->render(0,0,&camera);
-                    SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
-                    SDL_RenderCopy(gRenderer,gScreen1Texture.getTexture(),NULL,&renderQuad);
+                    // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
+                    // SDL_RenderCopy(gRenderer,gScreen1Texture.getTexture(),NULL,&renderQuad);
+                    
+                    if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
+                        currentTexture = &gLHCTexture;
+                        std::cout<<"lol"<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
+
+                        dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
+                        dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
+                        
+                    }
                     timeText.str("");
                     timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
                     timeText << "Seconds since start time : " <<timeLeft;
@@ -286,6 +297,33 @@ int main( int argc, char* args[] )
                 }else if (currentTexture == &gGamePauseTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
 
+                }else if(currentTexture == &gLHCTexture){
+                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+                    timeText.str("");
+                    timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
+                    timeText << "Seconds since start time : " <<timeLeft;
+
+                    if(timeLeft==0){
+                        currentTexture = &gGameOverTexture;
+                        continue;
+                    }
+                    if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) ){
+                        printf( "Failed to load time texture!\n" );
+                    }
+                    
+                    gTimeTextTexture.render(0,0);
+                    dot.render(currentTexture);
+
+                    std::cout<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
+                    if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
+                        std::cout<<"hey"<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
+
+                        currentTexture = &gGameTexture;
+                        dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
+                        dot.mPosY = LHC_TILEX*TILE_SIZE;
+                        
+                    }
+                    
                 }
                 //Update screen
                 SDL_RenderPresent( gRenderer );

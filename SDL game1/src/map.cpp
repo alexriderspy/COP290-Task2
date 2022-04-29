@@ -22,6 +22,56 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
         }
     }
 
+    SDL_Surface *bitmap1 = NULL;
+    SDL_Surface *bitmap2 = NULL;
+    SDL_Texture *map_texture;
+    SDL_Rect rect;
+    rect.w = TILE_SIZE;
+    rect.h = TILE_SIZE;
+    bitmap1 = SDL_LoadBMP("res/tile.bmp");
+    bitmap2 = SDL_LoadBMP("res/LHC.bmp");
+    if(!bitmap1 || !bitmap2){
+        std::cout<<"can't load tile"<<'\n';
+    }
+    SDL_Texture *tex1 = NULL;
+    SDL_Texture *tex2 = NULL;
+    tex1 = SDL_CreateTextureFromSurface(renderer, bitmap1);
+    tex2 = SDL_CreateTextureFromSurface(renderer, bitmap2);
+    map_texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, LEVEL_WIDTH, LEVEL_HEIGHT);
+    SDL_SetRenderTarget(renderer, map_texture);
+    int i, j;
+
+    for (i = 0; i < LEVEL_HEIGHT / TILE_SIZE; i++) {
+        for (j = 0; j < LEVEL_WIDTH / TILE_SIZE; j++) {
+            if (map[i][j]==BLOCK) {
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex1, NULL, &rect);
+                
+            }else if(map[i][j]==LHC){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex2, NULL, &rect);
+
+            }
+        }
+    }
+    SDL_SetRenderTarget(renderer, NULL);
+    return map_texture;
+}
+
+SDL_Texture* get_mapLHC_texture(SDL_Renderer *renderer) {
+    int map_flat[MAPLHC_WIDTH*MAPLHC_HEIGHT] = MAPLHC;
+
+    int map[MAPLHC_HEIGHT][MAPLHC_WIDTH];
+    int id=0;
+    for(int i=0;i<MAPLHC_HEIGHT;++i){
+        for(int j=0;j<MAPLHC_WIDTH;++j){
+            map[i][j]=map_flat[id];
+            ++id;
+        }
+    }
+
     SDL_Surface *bitmap = NULL;
     SDL_Texture *map_texture;
     SDL_Rect rect;
@@ -33,16 +83,17 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
     }
     SDL_Texture *tex = NULL;
     tex = SDL_CreateTextureFromSurface(renderer, bitmap);
-    map_texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, LEVEL_WIDTH, LEVEL_HEIGHT);
+    map_texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
     SDL_SetRenderTarget(renderer, map_texture);
     int i, j;
 
-    for (i = 0; i < LEVEL_HEIGHT / TILE_SIZE; i++) {
-        for (j = 0; j < LEVEL_WIDTH / TILE_SIZE; j++) {
-            if (map[i][j]) {
+    for (i = 0; i < SCREEN_HEIGHT / TILE_SIZE; i++) {
+        for (j = 0; j < SCREEN_WIDTH / TILE_SIZE; j++) {
+            if (map[i][j]==BLOCK) {
                 rect.x = TILE_SIZE * j;
                 rect.y = TILE_SIZE * i;
                 SDL_RenderCopy(renderer, tex, NULL, &rect);
+                
             }
         }
     }
