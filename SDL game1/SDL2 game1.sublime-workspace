@@ -4,20 +4,44 @@
 		"selected_items":
 		[
 			[
+				"SDL_Render",
+				"SDL_RenderPresent"
+			],
+			[
+				"get",
+				"getTexture"
+			],
+			[
+				"gS",
+				"gScreen2Texture"
+			],
+			[
+				"SDL_",
+				"SDL_Rect"
+			],
+			[
+				"LHC",
+				"LHC_TILEY"
+			],
+			[
+				"mPos",
+				"getmPosX"
+			],
+			[
+				"getmPos",
+				"getmPosY"
+			],
+			[
+				"SDL",
+				"SDL_Event"
+			],
+			[
 				"gSc",
 				"gScreen1Texture"
 			],
 			[
 				"load",
 				"loadFromRenderedText"
-			],
-			[
-				"mPos",
-				"mPosY"
-			],
-			[
-				"SDL",
-				"SDL_Color"
 			],
 			[
 				"g",
@@ -88,10 +112,6 @@
 				"def"
 			],
 			[
-				"getmPos",
-				"getmPosX"
-			],
-			[
 				"camer",
 				"cameraX"
 			],
@@ -105,10 +125,6 @@
 			],
 			[
 				"getm",
-				"getmPosX"
-			],
-			[
-				"get",
 				"getmPosX"
 			],
 			[
@@ -176,10 +192,6 @@
 				"SCREEN_HEIGHT"
 			],
 			[
-				"gS",
-				"gSpriteSheetTexture"
-			],
-			[
 				"gSpr",
 				"gSpriteSheetTexture"
 			],
@@ -241,29 +253,33 @@
 	},
 	"file_history":
 	[
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/constants.hpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/text.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/flag.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/player.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/ghost.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/coin.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/rcavs.png",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/mazeLHC.png",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/map.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/map.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/prenpostgame.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/maze.png",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/constants.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/ltexture.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/ghost.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/global.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/global.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/text.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/coin.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/ltexture.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/matrix.txt",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/matrix.txt",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/global.hpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/ghost.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/flag.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/map_generate.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/prenpostgame.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/main.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/global.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/player.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/ghost.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/ltexture.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/SF Atarian System Bold.ttf",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/coin.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/ghost.png",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/player.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/coin.png",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/maze.png",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/dogs.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/dogs.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/entities.cpp",
@@ -271,19 +287,16 @@
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/titleScreen.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/text.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/res/winscreen.png",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/map.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/timer.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/character.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/entities.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/character.cpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/flag.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/game_close.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/game_load.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/game_init.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/screens.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/timer.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/pregame.hpp",
-		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/map.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/game.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/scoreScreen.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/shopScreen.cpp",
@@ -364,7 +377,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 228.0
+		"height": 98.0
 	},
 	"output.find_results":
 	{

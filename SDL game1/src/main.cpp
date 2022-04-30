@@ -229,11 +229,16 @@ int main( int argc, char* args[] )
                     
                     if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
                         currentTexture = &gLHCTexture;
-                        std::cout<<"lol"<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
 
                         dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
                         dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
                         
+                    }
+                    
+                    if(dot.getmPosX()/TILE_SIZE == LHC_TILEY+4 && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
+                        SDL_Rect renderQuad = {100,100,TILE_SIZE*5,TILE_SIZE};
+                        SDL_RenderCopy(gRenderer,gScreen2Texture.getTexture(),NULL,&renderQuad);
+
                     }
                     timeText.str("");
                     timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
