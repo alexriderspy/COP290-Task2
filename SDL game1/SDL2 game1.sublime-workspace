@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"gScree",
+				"gScreen2Texture"
+			],
+			[
 				"SDL_Render",
 				"SDL_RenderPresent"
 			],
