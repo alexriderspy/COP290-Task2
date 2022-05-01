@@ -9,9 +9,6 @@ Player::Player(std::string hostel,std::string name, int lives,int points)
     mPosX = 0*TILE_SIZE;
     mPosY = 60*TILE_SIZE;
 
-    mVelX = 0;
-    mVelY = 0;
-
     this->hostel=hostel;
     this->name = name;
     this->lives=lives;
@@ -56,6 +53,22 @@ void Player::handleEvent( SDL_Event& e )
             case SDLK_RIGHT: mPosX += PLAYER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_POS;break;
         }
     }
+    if(mPosX <0){
+        mPosX = 0;
+    }
+
+    if(mPosX + PLAYER_WIDTH > LEVEL_WIDTH){
+        mPosX = LEVEL_WIDTH-PLAYER_WIDTH;
+    }
+
+    if(mPosY < 0){
+        mPosY=0;
+    }
+
+    if(mPosY + PLAYER_HEIGHT > LEVEL_HEIGHT){
+        mPosY = LEVEL_HEIGHT-PLAYER_HEIGHT;
+    }
+
 }
 
 void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
@@ -73,27 +86,8 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
                 case SDLK_RIGHT: mPosX += PLAYER_POS; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_POS;break;
             }
         }
-    }
-}
 
-void Player::move(){
-    //mPosX += mVelX;
-    if(mPosX <0){
-        mPosX = 0;
     }
-
-    if(mPosX + PLAYER_WIDTH > LEVEL_WIDTH){
-        mPosX = LEVEL_WIDTH-PLAYER_WIDTH;
-    }
-
-    if(mPosY < 0){
-        mPosY=0;
-    }
-
-    if(mPosY + PLAYER_HEIGHT > LEVEL_HEIGHT){
-        mPosY = LEVEL_HEIGHT-PLAYER_HEIGHT;
-    }
-
 }
 
 void Player::move(LTexture* currentTexture){

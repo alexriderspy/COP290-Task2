@@ -27,6 +27,8 @@ class Player
         int map[MAP_HEIGHT][MAP_WIDTH];
         int mapLHC[MAPLHC_HEIGHT][MAPLHC_WIDTH];
 
+        bool yulu;
+
         LTexture nameTexture;
 
         //Initializes the variables
@@ -38,7 +40,6 @@ class Player
         void handleEvent(SDL_Event&e, LTexture* currentTexture);
 
         //Moves the Player
-        void move();
         void move(LTexture* currentTexture);
 
         //Shows the Player on the screen
@@ -52,7 +53,7 @@ class Player
         int mPosX, mPosY;
 
         //The velocity of the Player
-        int mVelX, mVelY;
+        
 };
 
 #endif

@@ -56,7 +56,9 @@ int main( int argc, char* args[] )
             LTexture gInputTextTexture;
             Flag winflag(0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
             Text textVal("Your points are ");
+            
             Player dot("Himadri","Vag",3,0);
+            Player dot2("Kailash","Vidu",3,0);
 
             std::string inputText="";
             std::string hostelText="";
@@ -132,6 +134,7 @@ int main( int argc, char* args[] )
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
                             currentTexture = &gGameTexture;
                             startTime = SDL_GetTicks();
+                            
                             timer.start();
                         }else if(e.key.keysym.sym == SDLK_p){
                             if(currentTexture == &gGamePauseTexture && timer.isPaused()){
@@ -175,7 +178,6 @@ int main( int argc, char* args[] )
                 
 
                 //Move the dot
-                dot.move();
                 dot.move(currentTexture);
                 //Center the camera over the dot
                 camera.x = ( dot.getmPosX() + PLAYER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
@@ -227,6 +229,7 @@ int main( int argc, char* args[] )
                     // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
                     // SDL_RenderCopy(gRenderer,gScreen1Texture.getTexture(),NULL,&renderQuad);
                     
+                    //to go to lhc
                     if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
                         currentTexture = &gLHCTexture;
 
@@ -234,12 +237,14 @@ int main( int argc, char* args[] )
                         dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
                         
                     }
-                    
+                    //pop up
                     if(dot.getmPosX()/TILE_SIZE == LHC_TILEY+4 && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
                         SDL_Rect renderQuad = {100,100,TILE_SIZE*5,TILE_SIZE};
                         SDL_RenderCopy(gRenderer,gScreen2Texture.getTexture(),NULL,&renderQuad);
 
                     }
+
+                    //timeLeft
                     timeText.str("");
                     timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
                     timeText << "Seconds since start time : " <<timeLeft;
@@ -253,7 +258,9 @@ int main( int argc, char* args[] )
                     }
                     
                     gTimeTextTexture.render(0,0);
+
                     dot.render(camera.x,camera.y);
+
 
                     for(int i=0;i<(int)coins.size();++i){
                         coins[i].render(camera.x,camera.y);
