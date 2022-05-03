@@ -183,14 +183,32 @@ bool loadMedia()
         success = false;
     }
 
-    gMusic = Mix_LoadMUS("res/beat.wav");
+    gMusic = Mix_LoadMUS("res/background_music.wav");
     if (gMusic == NULL){
-        std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
+        std::cout<<"failed to load music "<<Mix_GetError()<<'\n';
         success = false;
     }   
      
-    gCoin = Mix_LoadWAV("res/coin_wav.wav");
-    if (gCoin == NULL){
+    gArm = Mix_LoadWAV("res/gasping_zombie.wav");
+    if (gArm == NULL){
+        std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
+        success = false;
+    }   
+
+    gCreature = Mix_LoadWAV("res/creature.wav");
+    if (gCreature == NULL){
+        std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
+        success = false;
+    }   
+
+    gBlood = Mix_LoadWAV("res/blood_splash.wav");
+    if (gBlood == NULL){
+        std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
+        success = false;
+    }   
+
+    gEnterDarkness = Mix_LoadWAV("res/enter_darkness.wav");
+    if (gEnterDarkness == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
         success = false;
     }   
@@ -210,11 +228,21 @@ void close()
     gCoinTexture.free();
     gScoreBoardTexture.free();
 
-    Mix_FreeChunk(gCoin);
-    gCoin = NULL;
+    Mix_FreeChunk(gArm);
+    gArm = NULL;
+
+    Mix_FreeChunk(gCreature);
+    gCreature = NULL;
+
+    Mix_FreeChunk(gBlood);
+    gBlood = NULL;
+
+    Mix_FreeChunk(gEnterDarkness);
+    gEnterDarkness = NULL;
 
     Mix_FreeMusic(gMusic);
-
+    gMusic = NULL;
+    
     TTF_CloseFont(gFont);
     gFont = NULL;
 

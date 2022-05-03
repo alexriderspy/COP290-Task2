@@ -135,8 +135,9 @@ int main( int argc, char* args[] )
                             
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
                             currentTexture = &gGameTexture;
-                            
-                            
+                            if(Mix_PlayingMusic() == 0){
+                                Mix_PlayMusic(gMusic,-1);        
+                            }
                             timer.start();
                         }
                     }
@@ -257,7 +258,7 @@ int main( int argc, char* args[] )
                 }
                 //gGameTexture
                 else if(currentTexture == &gGameTexture){
-                    Mix_PlayMusic(gMusic,-1);
+                    
 
                     currentTexture->render(0,0,&camera);
                     // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
@@ -301,7 +302,7 @@ int main( int argc, char* args[] )
                         coins[i].render(camera.x,camera.y);
                         if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
                             dot.points+=coins[i].value;
-                            Mix_PlayChannel(-1,gCoin,0);
+                            Mix_PlayChannel(-1,gArm,0);
                             coins.erase(coins.begin()+i);
                         }
 
@@ -311,7 +312,7 @@ int main( int argc, char* args[] )
                         ghosts[i].render(camera.x,camera.y);
                         ghosts[i].move();
                         if(ghosts[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && ghosts[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
-
+                            Mix_PlayChannel(-1,gBlood,0);
                         }
                     }
 

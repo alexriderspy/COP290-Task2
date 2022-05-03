@@ -14,9 +14,8 @@ extern TTF_Font* gFont;
 extern Mix_Music* gMusic;
 
 //The sound effects that will be used
-extern Mix_Chunk *gScratch;
 
-extern Mix_Chunk *gCoin;
+extern Mix_Chunk* gArm,*gCreature,*gEnterDarkness,*gBlood;
 
 extern LTexture gScreen1Texture;
 
