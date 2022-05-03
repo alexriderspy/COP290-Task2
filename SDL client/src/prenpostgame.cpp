@@ -125,7 +125,7 @@ bool loadMedia()
         success=false;
     }
 
-    save_texture(gRenderer,tex,"res/maze.png");
+    save_texture(gRenderer,tex,"res/maze2.png");
     
     SDL_Texture* texLHC = get_mapLHC_texture(gRenderer);
     if(!texLHC){
