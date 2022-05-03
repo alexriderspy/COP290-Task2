@@ -78,7 +78,7 @@ bool loadMedia()
     else
     {
         //Render text
-        SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
+        SDL_Color textColor = { 0, 0xFF, 0xFF };
         if( !gTextTexture.loadFromRenderedText( "Choose your hostel: a) Udaigiri b) Kailash Press Enter to continue;", textColor ) ){
             printf( "Failed to render text texture!\n" );
             success = false;
@@ -190,6 +190,12 @@ bool loadMedia()
     }   
      
     gScratch = Mix_LoadWAV("res/beat.wav");
+    if (gScratch == NULL){
+        std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
+        success = false;
+    }   
+
+    gCoin = Mix_LoadWAV("res/coin_wav.wav");
     if (gScratch == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
         success = false;

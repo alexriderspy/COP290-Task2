@@ -11,7 +11,7 @@ Make a statistics screen where we shall store data of the 2 players and show the
 
 level 1
 
-start at sac circle
+start at himadri circle
 1) first go to lhc to attend a seminar
 2) next go to staff canteen to have lunch
 3) next go to library to borrow a book
@@ -19,4 +19,6 @@ start at sac circle
 5) finally reach sac
 
 level 2
+
+surprise obstacles - tile getting black
 

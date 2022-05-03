@@ -6,7 +6,7 @@
 Player::Player(std::string hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets
-    mPosX = 5*TILE_SIZE;
+    mPosX = 0*TILE_SIZE;
     mPosY = 60*TILE_SIZE;
 
     this->hostel=hostel;

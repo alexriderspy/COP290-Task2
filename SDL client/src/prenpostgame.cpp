@@ -189,8 +189,8 @@ bool loadMedia()
         success = false;
     }   
      
-    gScratch = Mix_LoadWAV("res/beat.wav");
-    if (gScratch == NULL){
+    gCoin = Mix_LoadWAV("res/coin_wav.wav");
+    if (gCoin == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';
         success = false;
     }   
@@ -210,11 +210,10 @@ void close()
     gCoinTexture.free();
     gScoreBoardTexture.free();
 
-    Mix_FreeChunk(gScratch);
-    gScratch = NULL;
+    Mix_FreeChunk(gCoin);
+    gCoin = NULL;
 
     Mix_FreeMusic(gMusic);
-    gScratch = NULL;
 
     TTF_CloseFont(gFont);
     gFont = NULL;

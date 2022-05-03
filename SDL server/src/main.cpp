@@ -315,6 +315,7 @@ int main( int argc, char* args[] )
                     for(int i=0;i<(int)coins.size();++i){
                         coins[i].render(camera.x,camera.y);
                         if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+                       	Mix_PlayChannel(-1,gCoin,0);
                             dot.points+=coins[i].value;
                             coins.erase(coins.begin()+i);
                         }

@@ -16,22 +16,32 @@ extern Mix_Music* gMusic;
 //The sound effects that will be used
 extern Mix_Chunk *gScratch;
 
+extern Mix_Chunk *gCoin;
+
 extern LTexture gScreen1Texture;
+
 extern LTexture gBlankTexture;
+
 extern LTexture gScreen2Texture;
+
 extern LTexture gTextTexture;
+
 extern LTexture gLoading1Texture;
 extern LTexture gLoading2Texture;
 extern LTexture gLoading3Texture;
+
 extern LTexture gGameTexture;
+extern LTexture gLHCTexture;
+
 extern LTexture gTimeTextTexture;
+
 extern LTexture gPlayerTexture;
 extern LTexture gCoinTexture;
 extern LTexture gFlagTexture;
 extern LTexture gScoreBoardTexture;
+
 extern LTexture gScoreTexture;
 extern LTexture gGhostTexture;
 extern LTexture gGameOverTexture;
-extern LTexture gLHCTexture;
 
 #endif

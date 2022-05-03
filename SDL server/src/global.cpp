@@ -10,7 +10,7 @@ TTF_Font* gFont = NULL;
 Mix_Music* gMusic = NULL;
 
 //The sound effects that will be used
-Mix_Chunk *gScratch = NULL;
+Mix_Chunk *gCoin = NULL;
 
 LTexture gScreen1Texture;
 LTexture gScreen2Texture;
@@ -29,3 +29,4 @@ LTexture gScoreTexture;
 LTexture gGhostTexture;
 LTexture gGameOverTexture;
 LTexture gLHCTexture;
+

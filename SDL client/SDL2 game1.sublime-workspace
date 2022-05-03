@@ -265,6 +265,27 @@
 	},
 	"file_history":
 	[
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/dog.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/dog.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/zombie.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/zombie.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/coin.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/ghost.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/constants.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/coin.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/guard.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/guard.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/global.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/prenpostgame.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/global.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/player.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/main.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/design-details.txt",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/client.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/include/flag.hpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/res/maze.png",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/flag.cpp",
+		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL client/src/map.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/global.cpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/include/global.hpp",
 		"/home/sreemanti/Desktop/cop/COP290-Task2/SDL game1/src/prenpostgame.cpp",
@@ -338,7 +359,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -352,6 +373,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Scra",
+			"Scratch",
 			"SCREEN_WID",
 			"Character_HEIGHT",
 			"Character_WIDTH",
