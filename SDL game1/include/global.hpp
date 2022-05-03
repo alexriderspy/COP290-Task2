@@ -17,8 +17,12 @@ extern Mix_Music* gMusic;
 extern Mix_Chunk *gScratch;
 
 extern LTexture gScreen1Texture;
+extern LTexture gBlankTexture;
 extern LTexture gScreen2Texture;
 extern LTexture gTextTexture;
+extern LTexture gLoading1Texture;
+extern LTexture gLoading2Texture;
+extern LTexture gLoading3Texture;
 extern LTexture gGameTexture;
 extern LTexture gTimeTextTexture;
 extern LTexture gPlayerTexture;

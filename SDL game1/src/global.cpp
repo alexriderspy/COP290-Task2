@@ -14,8 +14,12 @@ Mix_Chunk *gScratch = NULL;
 
 LTexture gScreen1Texture;
 LTexture gScreen2Texture;
+LTexture gBlankTexture;
 LTexture gGameTexture;
 LTexture gTextTexture;
+LTexture gLoading1Texture;
+LTexture gLoading2Texture;
+LTexture gLoading3Texture;
 LTexture gTimeTextTexture;
 LTexture gPlayerTexture;
 LTexture gCoinTexture;

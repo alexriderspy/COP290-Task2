@@ -79,21 +79,39 @@ bool loadMedia()
     {
         //Render text
         SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
-        if( !gTextTexture.loadFromRenderedText( "Choose your hostel: a) Udaigiri b) Kailash Press Enter to continue;", textColor ) )
-        {
+        if( !gTextTexture.loadFromRenderedText( "Choose your hostel: a) Udaigiri b) Kailash Press Enter to continue;", textColor ) ){
+            printf( "Failed to render text texture!\n" );
+            success = false;
+        }
+        if( !gLoading1Texture.loadFromRenderedText( "Loading . ", textColor ) ){
+            printf( "Failed to render text texture!\n" );
+            success = false;
+        }
+        if( !gLoading2Texture.loadFromRenderedText( "Loading . . ", textColor ) ){
+            printf( "Failed to render text texture!\n" );
+            success = false;
+        }
+        if( !gLoading3Texture.loadFromRenderedText( "Loading . . . ", textColor ) ){
             printf( "Failed to render text texture!\n" );
             success = false;
         }
 
+
     }
 
     //Load screen1 texture
-    if( !gScreen1Texture.loadFromFile( "res/rcavs.png" ) )
+    if( !gScreen1Texture.loadFromFile( "res/titleScreen.png" ) )
     {
         printf( "Failed to load screen1 texture!\n" );
         success = false;
     }
     
+    if( !gBlankTexture.loadFromFile( "res/Blank.png" ) )
+    {
+        printf( "Failed to load blank texture!\n" );
+        success = false;
+    }
+
     //Load screen2 texture
     if( !gScreen2Texture.loadFromFile( "res/screen2.png" ) )
     {

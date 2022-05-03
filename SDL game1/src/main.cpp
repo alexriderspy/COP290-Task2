@@ -41,7 +41,7 @@ int main( int argc, char* args[] )
         {   
             //Main loop flag
             bool quit = false;
-            int flag=0;
+            int flag=0,flagLoading=0;
             int timeLeft=LEVEL1_TIME;
             std::stringstream timeText,score;
             Uint32 startTime = 0;
@@ -50,7 +50,7 @@ int main( int argc, char* args[] )
             SDL_Color textColor = {0,0xFF,0xFF};
             SDL_Rect camera = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
 
-            LTimer timer;
+            LTimer timer,timerLoading;
             LTexture* currentTexture = &gScreen1Texture;
             LTexture p;
             LTexture gInputTextTexture;
@@ -101,6 +101,7 @@ int main( int argc, char* args[] )
             }
 
             SDL_StartTextInput();
+            timerLoading.start();
             while( !quit )
             {
                 bool renderText = false;
@@ -113,7 +114,7 @@ int main( int argc, char* args[] )
                         quit = true;
 
                     }else if(e.type == SDL_KEYDOWN){
-                        if (currentTexture == &gScreen1Texture){
+                        if (currentTexture == &gBlankTexture){
                             if(e.key.keysym.sym == SDLK_RETURN){
                                 currentTexture = &gScreen2Texture;
                                 startTime = SDL_GetTicks();
@@ -136,18 +137,11 @@ int main( int argc, char* args[] )
                             startTime = SDL_GetTicks();
                             
                             timer.start();
-                        }else if(e.key.keysym.sym == SDLK_p){
-                            if(currentTexture == &gGamePauseTexture && timer.isPaused()){
-                                timer.unpause();
-                                currentTexture = &gGameTexture;
-                        }else if(currentTexture == &gGameTexture && !timer.isPaused()){
-                                timer.pause();
-                                currentTexture = &gGamePauseTexture;
                         }
                     }
-                }
+                
                     else if(e.type == SDL_TEXTINPUT){
-                            if(currentTexture == &gScreen1Texture){
+                            if(currentTexture == &gBlankTexture){
                                 if(!(SDL_GetModState() & KMOD_CTRL && (e.text.text[0] == 'c' || e.text.text[0] == 'C' || e.text.text[0] == 'v' || e.text.text[0] == 'V'))){
                                     inputText += e.text.text;
                                     renderText = true;
@@ -206,6 +200,39 @@ int main( int argc, char* args[] )
                 //gScreen1Texture
                 if(currentTexture == &gScreen1Texture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+                    if(flagLoading == 0)
+                        gLoading1Texture.render(0,0);
+                    else if(flagLoading==1)
+                        gLoading2Texture.render(0,0);
+                    else if(flagLoading==2)
+                        gLoading3Texture.render(0,0);
+
+                    timeText.str("");
+                    timeLeft = SCREEN1_TIME - timerLoading.getTicks()/1000;
+
+                    if(timeLeft==0){
+                        if(flagLoading==0){
+                                gLoading2Texture.render(0,0);
+                                std::cout<<"Helo";
+                                timerLoading.start();
+                                flagLoading++;
+                                continue;
+                            }
+                        else if(flagLoading==1){
+                                gLoading3Texture.render(0,0);
+                                timerLoading.start();
+                                flagLoading++;
+                                continue;
+                            }
+                        else if(flagLoading==2){
+                                currentTexture=&gBlankTexture;
+                                continue;
+                            }
+                        }
+                    }
+                
+                else if(currentTexture == &gBlankTexture){
+                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
                     gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );
                     if(renderText){
                         if(inputText != ""){
@@ -215,6 +242,7 @@ int main( int argc, char* args[] )
                         }
                     }
                     gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2, gTextTexture.getHeight() );
+
                 }
                 //gScreen2Texture
                 else if(currentTexture == &gScreen2Texture){

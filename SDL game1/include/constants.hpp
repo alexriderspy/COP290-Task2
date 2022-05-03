@@ -32,6 +32,7 @@
 #define MAX_GHOSTS 40
 
 #define LEVEL1_TIME 200
+#define SCREEN1_TIME 2
 
 #define PATH 0
 #define BLOCK 1
