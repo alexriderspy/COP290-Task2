@@ -203,6 +203,7 @@ int main( int argc, char* args[] )
                 std::string server_data = obj.receiveCS();
 
                 std::cout<<server_data<<'\n';
+
                 int cnt=0; int s=0; int i=0;
                 while (cnt<2){
                     if(server_data[i]=='#'){
@@ -219,7 +220,6 @@ int main( int argc, char* args[] )
                 }
 
                 
-
                 if(currentTexture == &gScreen1Texture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
                     if(flagLoading == 0)
