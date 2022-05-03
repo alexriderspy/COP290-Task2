@@ -36,11 +36,7 @@ class Player
         Player(std::string hostel,std::string name, int lives,int points);
 
         //Takes key presses and adjusts the Player's velocity
-        void handleEvent( SDL_Event& e );
         void handleEvent(SDL_Event&e, LTexture* currentTexture);
-
-        //Moves the Player
-        void move(LTexture* currentTexture);
 
         //Shows the Player on the screen
         void render(int camX,int camY);

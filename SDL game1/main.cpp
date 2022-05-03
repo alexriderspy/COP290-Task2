@@ -171,7 +171,7 @@ int main( int argc, char* args[] )
                         //     Mix_HaltMusic();
                         // }
 
-                        dot.handleEvent(e);
+                        
                         dot.handleEvent(e,currentTexture);
                         dot.name = inputText;
                     }
@@ -179,7 +179,7 @@ int main( int argc, char* args[] )
                 
 
                 //Move the dot
-                dot.move(currentTexture);
+                
                 //Center the camera over the dot
                 // camera.x = ( dot.getmPosX() + PLAYER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
                 // camera.y = ( dot.getmPosY() + PLAYER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
@@ -260,6 +260,8 @@ int main( int argc, char* args[] )
                     
                     gTimeTextTexture.render(0,0);
                     
+                    std::cout<<"Hello";
+                    
                     Client obj;
                     //string client_data = obj.server_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"+to_string(dot.lives)+"#"+to_string(dot.points)); 
                     string server_data = obj.client_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"); 
@@ -278,6 +280,7 @@ int main( int argc, char* args[] )
                         i++;
                     }
 
+                    
                     //dot.render(camera.x,camera.y);
                     dot.render(0,0);
                     dot2.render(0,0);

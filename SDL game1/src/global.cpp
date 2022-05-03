@@ -28,5 +28,4 @@ LTexture gScoreBoardTexture;
 LTexture gScoreTexture;
 LTexture gGhostTexture;
 LTexture gGameOverTexture;
-LTexture gGamePauseTexture;
 LTexture gLHCTexture;

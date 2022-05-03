@@ -4,6 +4,11 @@
 
 #pragma once
 
+// #define LEVEL_WIDTH 720
+// #define LEVEL_HEIGHT 780
+// #define SCREEN_WIDTH 720
+// #define SCREEN_HEIGHT 780
+
 #define LEVEL_WIDTH 2400
 #define LEVEL_HEIGHT 2600
 #define SCREEN_WIDTH 800
@@ -11,10 +16,13 @@
 
 #define PLAYER_WIDTH 20
 #define PLAYER_HEIGHT 20
-#define PLAYER_POS 10
+#define PLAYER_VEL 10
+#define PLAYER_VEL_YULU 15
 
 #define GHOST_WIDTH 20
 #define GHOST_HEIGHT 20
+
+// #define TILE_SIZE 12
 
 #define TILE_SIZE 40
 
@@ -37,6 +45,7 @@
 #define PATH 0
 #define BLOCK 1
 #define LHC 2
+#define YULU_STAND 3
 
 #define LHC_TILEX 44
 #define LHC_TILEY 22

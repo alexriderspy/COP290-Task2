@@ -183,12 +183,6 @@ bool loadMedia()
         success = false;
     }
 
-    if( !gGamePauseTexture.loadFromFile( "res/gamepause.png" ) )
-    {
-        printf( "Failed to load gamepause texture!\n" );
-        success = false;
-    }
-
     gMusic = Mix_LoadMUS("res/beat.wav");
     if (gMusic == NULL){
         std::cout<<"failed to load beat "<<Mix_GetError()<<'\n';

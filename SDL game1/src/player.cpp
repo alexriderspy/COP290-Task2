@@ -29,6 +29,7 @@ Player::Player(std::string hostel,std::string name, int lives,int points)
             mapLHC[i][j]=mapLHC_flat[id++];
         }
     }
+    yulu = false;
 }
 
 int getTileX(int mPosX,int mPosY){
@@ -39,60 +40,50 @@ int getTileY(int mPosX,int mPosY){
     return mPosX/TILE_SIZE;
 }
 
-void Player::handleEvent( SDL_Event& e )
-{
-    //If a key was pressed
-    if( e.type == SDL_KEYDOWN)
-    {
-        //Adjust the velocity
-        switch( e.key.keysym.sym )
-        {
-            case SDLK_UP: mPosY -= PLAYER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= PLAYER_POS; break;
-            case SDLK_DOWN: mPosY += PLAYER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= PLAYER_POS;break;
-            case SDLK_LEFT: mPosX -= PLAYER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= PLAYER_POS;break;
-            case SDLK_RIGHT: mPosX += PLAYER_POS; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_POS;break;
-        }
-    }
-    if(mPosX <0){
-        mPosX = 0;
-    }
-
-    if(mPosX + PLAYER_WIDTH > LEVEL_WIDTH){
-        mPosX = LEVEL_WIDTH-PLAYER_WIDTH;
-    }
-
-    if(mPosY < 0){
-        mPosY=0;
-    }
-
-    if(mPosY + PLAYER_HEIGHT > LEVEL_HEIGHT){
-        mPosY = LEVEL_HEIGHT-PLAYER_HEIGHT;
-    }
-
-}
-
 void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
 {
     //If a key was pressed
-    if(currentTexture == &gLHCTexture){
+    if(currentTexture == &gGameTexture){
         if( e.type == SDL_KEYDOWN)
         {
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_POS; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= PLAYER_POS; break;
-                case SDLK_DOWN: mPosY += PLAYER_POS; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= PLAYER_POS;break;
-                case SDLK_LEFT: mPosX -= PLAYER_POS; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= PLAYER_POS;break;
-                case SDLK_RIGHT: mPosX += PLAYER_POS; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_POS;break;
+                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_VEL;break;
             }
+        }
+        if(mPosX <0){
+            mPosX = 0;
+        }
+
+        if(mPosX + PLAYER_WIDTH > LEVEL_WIDTH){
+            mPosX = LEVEL_WIDTH-PLAYER_WIDTH;
+        }
+
+        if(mPosY < 0){
+            mPosY=0;
+        }
+
+        if(mPosY + PLAYER_HEIGHT > LEVEL_HEIGHT){
+            mPosY = LEVEL_HEIGHT-PLAYER_HEIGHT;
         }
 
     }
-}
-
-void Player::move(LTexture* currentTexture){
-    //mPosX += mVelX;
-    if(currentTexture == &gLHCTexture){
+    else if(currentTexture == &gLHCTexture){
+        if( e.type == SDL_KEYDOWN)
+        {
+            //Adjust the velocity
+            switch( e.key.keysym.sym )
+            {
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_VEL;break;
+            }
+        }
         if(mPosX <0){
             mPosX = 0;
         }
@@ -108,8 +99,10 @@ void Player::move(LTexture* currentTexture){
         if(mPosY + PLAYER_HEIGHT > SCREEN_HEIGHT){
             mPosY = SCREEN_HEIGHT-PLAYER_HEIGHT;
         }
+
     }
 }
+
 
 void Player::render(int camX,int camY){
     gPlayerTexture.render(mPosX - camX, mPosY - camY);

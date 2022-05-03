@@ -15,6 +15,7 @@
 #include <prenpostgame.hpp>
 #include <text.hpp>
 #include <ghost.hpp>
+#include <client.hpp>
 
 #include <stdlib.h>
 #include <time.h>
@@ -44,7 +45,6 @@ int main( int argc, char* args[] )
             int flag=0,flagLoading=0;
             int timeLeft=LEVEL1_TIME;
             std::stringstream timeText,score;
-            Uint32 startTime = 0;
 
             SDL_Event e;
             SDL_Color textColor = {0,0xFF,0xFF};
@@ -117,7 +117,7 @@ int main( int argc, char* args[] )
                         if (currentTexture == &gBlankTexture){
                             if(e.key.keysym.sym == SDLK_RETURN){
                                 currentTexture = &gScreen2Texture;
-                                startTime = SDL_GetTicks();
+                                
                                 continue;
                             }else if(e.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0){
                                 inputText.pop_back();
@@ -131,10 +131,10 @@ int main( int argc, char* args[] )
 
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_LEFT){
                             currentTexture = &gScreen1Texture;
-                            startTime = SDL_GetTicks();
+                            
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
                             currentTexture = &gGameTexture;
-                            startTime = SDL_GetTicks();
+                            
                             
                             timer.start();
                         }
@@ -164,7 +164,6 @@ int main( int argc, char* args[] )
                         //     Mix_HaltMusic();
                         // }
 
-                        dot.handleEvent(e);
                         dot.handleEvent(e,currentTexture);
                         dot.name = inputText;
                     }
@@ -172,7 +171,6 @@ int main( int argc, char* args[] )
                 
 
                 //Move the dot
-                dot.move(currentTexture);
                 //Center the camera over the dot
                 camera.x = ( dot.getmPosX() + PLAYER_WIDTH / 2 ) - SCREEN_WIDTH / 2;
                 camera.y = ( dot.getmPosY() + PLAYER_HEIGHT / 2 ) - SCREEN_HEIGHT / 2;
@@ -213,7 +211,6 @@ int main( int argc, char* args[] )
                     if(timeLeft==0){
                         if(flagLoading==0){
                                 gLoading2Texture.render(0,0);
-                                std::cout<<"Helo";
                                 timerLoading.start();
                                 flagLoading++;
                                 continue;
@@ -287,7 +284,27 @@ int main( int argc, char* args[] )
                     
                     gTimeTextTexture.render(0,0);
 
+                    // Client obj;
+                    // //string client_data = obj.server_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"+to_string(dot.lives)+"#"+to_string(dot.points)); 
+                    // string server_data = obj.client_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"); 
+                    // int cnt=0; int s=0; int i=0;
+                    // while (cnt<2){
+                    //     if(server_data[i]=='#'){
+                    //         if(cnt == 0){
+                    //             dot2.mPosX=stoi(server_data.substr(s,i-s));
+                    //             s=i+1; cnt++;
+                    //         }
+                    //         else if(cnt == 1){
+                    //             dot2.mPosY=stoi(server_data.substr(s,i-s));
+                    //             s=i+1; cnt++;
+                    //         }
+                    //     }
+                    //     i++;
+                    // }
+
+                    // dot2.render(camera.x,camera.y);
                     dot.render(camera.x,camera.y);
+                    
 
 
                     for(int i=0;i<(int)coins.size();++i){
@@ -334,9 +351,6 @@ int main( int argc, char* args[] )
                 }else if(currentTexture == &gGameOverTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
 
-                }else if (currentTexture == &gGamePauseTexture){
-                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-
                 }else if(currentTexture == &gLHCTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
                     timeText.str("");
@@ -356,7 +370,6 @@ int main( int argc, char* args[] )
 
                     std::cout<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
                     if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
-                        std::cout<<"hey"<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
 
                         currentTexture = &gGameTexture;
                         dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
