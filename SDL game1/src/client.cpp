@@ -35,13 +35,13 @@ void Client::sendCS(std::string data){
 }
 
 std::string Client::receiveCS(){
-    int valread;
+
     char buffer[1024];
 
     for(int i=0;i<1024;i++){
         buffer[i]='\0';
     }
-    valread = read(sock, buffer, 1024);
+    read(sock, buffer, 1024);
 
     std::string s(buffer);
     return s;

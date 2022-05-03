@@ -199,24 +199,24 @@ int main( int argc, char* args[] )
 
                 //gScreen1Texture
                 //string client_data = obj.server_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"+to_string(dot.lives)+"#"+to_string(dot.points)); 
-                obj.sendCS(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"); 
+                obj.sendCS(std::to_string(dot.mPosX)+"#"+std::to_string(dot.mPosY)+"#"); 
                 std::string server_data = obj.receiveCS();
 
                 std::cout<<server_data<<'\n';
-                // int cnt=0; int s=0; int i=0;
-                // while (cnt<2){
-                //     if(server_data[i]=='#'){
-                //         if(cnt == 0){
-                //             dot2.mPosX=stoi(server_data.substr(s,i-s));
-                //             s=i+1; cnt++;
-                //         }
-                //         else if(cnt == 1){
-                //             dot2.mPosY=stoi(server_data.substr(s,i-s));
-                //             s=i+1; cnt++;
-                //         }
-                //     }
-                //     i++;
-                // }
+                int cnt=0; int s=0; int i=0;
+                while (cnt<2){
+                    if(server_data[i]=='#'){
+                        if(cnt == 0){
+                            dot2.mPosX=stoi(server_data.substr(s,i-s));
+                            s=i+1; cnt++;
+                        }
+                        else if(cnt == 1){
+                            dot2.mPosY=stoi(server_data.substr(s,i-s));
+                            s=i+1; cnt++;
+                        }
+                    }
+                    i++;
+                }
 
                 
 
