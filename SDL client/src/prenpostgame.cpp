@@ -183,7 +183,7 @@ bool loadMedia()
         success = false;
     }
 
-    gMusic = Mix_LoadMUS("res/background_music.wav");
+    gMusic = Mix_LoadMUS("res/DARKNESS.mp3");
     if (gMusic == NULL){
         std::cout<<"failed to load music "<<Mix_GetError()<<'\n';
         success = false;

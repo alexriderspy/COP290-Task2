@@ -135,9 +135,8 @@ int main( int argc, char* args[] )
                             
                         }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
                             currentTexture = &gGameTexture;
-                            if(Mix_PlayingMusic() == 0){
-                                Mix_PlayMusic(gMusic,-1);        
-                            }
+                            Mix_PlayMusic(gMusic,0);        
+                            
                             timer.start();
                         }
                     }
@@ -267,7 +266,7 @@ int main( int argc, char* args[] )
                     //to go to lhc
                     if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
                         currentTexture = &gLHCTexture;
-
+                        Mix_PlayChannel(-1,gEnterDarkness,0);
                         dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
                         dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
                         
@@ -305,7 +304,6 @@ int main( int argc, char* args[] )
                             Mix_PlayChannel(-1,gArm,0);
                             coins.erase(coins.begin()+i);
                         }
-
                     }
 
                     for(int i=0;i<MAX_GHOSTS;++i){
@@ -360,7 +358,6 @@ int main( int argc, char* args[] )
                     gTimeTextTexture.render(0,0);
                     dot.render(currentTexture);
 
-                    std::cout<<dot.getmPosX()<<' '<<dot.getmPosY()<<'\n';
                     if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
 
                         currentTexture = &gGameTexture;
