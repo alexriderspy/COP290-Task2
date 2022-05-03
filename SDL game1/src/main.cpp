@@ -57,6 +57,8 @@ int main( int argc, char* args[] )
             Flag winflag(0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
             Text textVal("Your points are ");
             
+            Client obj;
+            obj.connectCS();
             Player dot("Himadri","Vag",3,0);
             Player dot2("Kailash","Vidu",3,0);
 
@@ -196,6 +198,28 @@ int main( int argc, char* args[] )
                 //Render current texture
 
                 //gScreen1Texture
+                //string client_data = obj.server_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"+to_string(dot.lives)+"#"+to_string(dot.points)); 
+                obj.sendCS(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"); 
+                std::string server_data = obj.receiveCS();
+
+                std::cout<<server_data<<'\n';
+                // int cnt=0; int s=0; int i=0;
+                // while (cnt<2){
+                //     if(server_data[i]=='#'){
+                //         if(cnt == 0){
+                //             dot2.mPosX=stoi(server_data.substr(s,i-s));
+                //             s=i+1; cnt++;
+                //         }
+                //         else if(cnt == 1){
+                //             dot2.mPosY=stoi(server_data.substr(s,i-s));
+                //             s=i+1; cnt++;
+                //         }
+                //     }
+                //     i++;
+                // }
+
+                
+
                 if(currentTexture == &gScreen1Texture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
                     if(flagLoading == 0)
@@ -226,7 +250,7 @@ int main( int argc, char* args[] )
                                 continue;
                             }
                         }
-                    }
+                }
                 
                 else if(currentTexture == &gBlankTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
@@ -284,29 +308,10 @@ int main( int argc, char* args[] )
                     
                     gTimeTextTexture.render(0,0);
 
-                    // Client obj;
-                    // //string client_data = obj.server_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"+to_string(dot.lives)+"#"+to_string(dot.points)); 
-                    // string server_data = obj.client_send(to_string(dot.mPosX)+"#"+to_string(dot.mPosY)+"#"); 
-                    // int cnt=0; int s=0; int i=0;
-                    // while (cnt<2){
-                    //     if(server_data[i]=='#'){
-                    //         if(cnt == 0){
-                    //             dot2.mPosX=stoi(server_data.substr(s,i-s));
-                    //             s=i+1; cnt++;
-                    //         }
-                    //         else if(cnt == 1){
-                    //             dot2.mPosY=stoi(server_data.substr(s,i-s));
-                    //             s=i+1; cnt++;
-                    //         }
-                    //     }
-                    //     i++;
-                    // }
 
-                    // dot2.render(camera.x,camera.y);
+                    dot2.render(camera.x,camera.y);
                     dot.render(camera.x,camera.y);
                     
-
-
                     for(int i=0;i<(int)coins.size();++i){
                         coins[i].render(camera.x,camera.y);
                         if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
@@ -375,13 +380,11 @@ int main( int argc, char* args[] )
                         dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
                         dot.mPosY = LHC_TILEX*TILE_SIZE;
                         
-                    }
-                    
+                    }   
                 }
                 //Update screen
                 SDL_RenderPresent( gRenderer );
             }
-            //std::cout<<"Well"<<inputText<<'\n';
         }
 
     }

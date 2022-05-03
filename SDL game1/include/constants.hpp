@@ -4,15 +4,17 @@
 
 #pragma once
 
-// #define LEVEL_WIDTH 720
-// #define LEVEL_HEIGHT 780
-// #define SCREEN_WIDTH 720
-// #define SCREEN_HEIGHT 780
+#define PORT 8080
 
-#define LEVEL_WIDTH 2400
-#define LEVEL_HEIGHT 2600
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 800
+#define LEVEL_WIDTH 720
+#define LEVEL_HEIGHT 780
+#define SCREEN_WIDTH 720
+#define SCREEN_HEIGHT 780
+
+// #define LEVEL_WIDTH 2400
+// #define LEVEL_HEIGHT 2600
+// #define SCREEN_WIDTH 800
+// #define SCREEN_HEIGHT 800
 
 #define PLAYER_WIDTH 20
 #define PLAYER_HEIGHT 20
@@ -22,9 +24,9 @@
 #define GHOST_WIDTH 20
 #define GHOST_HEIGHT 20
 
-// #define TILE_SIZE 12
+#define TILE_SIZE 12
 
-#define TILE_SIZE 40
+// #define TILE_SIZE 40
 
 #define MAP_WIDTH 60
 #define MAP_HEIGHT 65

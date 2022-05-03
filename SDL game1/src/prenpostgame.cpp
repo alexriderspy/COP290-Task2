@@ -78,7 +78,7 @@ bool loadMedia()
     else
     {
         //Render text
-        SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
+        SDL_Color textColor = { 0, 0xFF, 0xFF };
         if( !gTextTexture.loadFromRenderedText( "Choose your hostel: a) Udaigiri b) Kailash Press Enter to continue;", textColor ) ){
             printf( "Failed to render text texture!\n" );
             success = false;
