@@ -39,7 +39,11 @@ void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, L
                         }
                     }
             }
-                dot.render(e,camera.x,camera.y);
+                if(currentTexture == &gGameTexture){
+                    dot.render(e,camera.x,camera.y);
+                }else if(currentTexture == &gLHCTexture){
+                    dot.render(e,0,0);
+                }
                 dot.handleEvent(e,currentTexture);
                 dot.name = inputText;
         }

@@ -47,7 +47,6 @@ class Player
         //Shows the Player on the screen
         void render(SDL_Event &e, int camX,int camY);
         void render(int camX,int camY);
-        void render(LTexture* currentTexture);
 
         int getmPosX();
         int getmPosY();

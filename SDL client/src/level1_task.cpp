@@ -64,3 +64,10 @@ bool Level1::checkFootball(Player & dot){
     }
     return true;
 }
+
+void Level1::print(){
+    std::cout<<lhc_vis[0]<<' '<<lhc_vis[1]<<' '<<lhc_vis[2]<<' '<<lhc_vis[3]<<'\n';
+    std::cout<<hasEaten[0]<<' '<<hasEaten[1]<<'\n';
+    std::cout<<football[0]<<' '<<football[1]<<' '<<football[2]<<' '<<football[3]<<'\n';
+    
+}

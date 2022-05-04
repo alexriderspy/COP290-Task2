@@ -4,6 +4,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
     if(currentTexture == &gGameTexture){
         currentTexture->render(0,0,&camera);
+        lev1.print();
         // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
         // SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
         
@@ -101,7 +102,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         
         gTimeTextTexture.render(0,0);
-        dot.render(currentTexture);
+        dot.render(0,0);
 
         lev1.checkLHC(dot,currentTexture,{0,5},{0,11},{31,11},{31,4});
 
@@ -126,7 +127,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         
         gTimeTextTexture.render(0,0);
-        dot.render(currentTexture);
+        dot.render(0,0);
 
         lev1.checkStaffCanteen(dot,currentTexture,{0,7},{16,0});
         

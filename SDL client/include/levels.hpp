@@ -27,6 +27,7 @@ public:
     bool checkLHC(Player&dot,LTexture* currentTexture,Coordinates c1,Coordinates c2,Coordinates c3,Coordinates c4);
     bool checkStaffCanteen(Player&dot,LTexture* currentTexture,Coordinates c1,Coordinates c2);
     bool checkFootball(Player&dot);
+    void print();
 
 };
 
