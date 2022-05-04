@@ -1,3 +1,6 @@
+#ifndef _TEXT_H
+#define _TEXT_H
+
 #pragma once
 
 #include <SDL2/SDL_ttf.h>
@@ -14,3 +17,5 @@ public:
 	void addText(std::string text);
 	LTexture load(SDL_Color textColor);
 };
+
+#endif

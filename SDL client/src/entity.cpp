@@ -3,11 +3,11 @@
 #include <constants.hpp>
 #include <global.hpp>
 
-Entity::Entity(int val,int mPosX,int mPosY, LTexture* coinTexture){
+Entity::Entity(int val,int mPosX,int mPosY, LTexture* tTexture){
 	this->value=val;
 	this->mPosX=mPosX;
 	this->mPosY=mPosY;
-	this->entityTexture=coinTexture;
+	this->entityTexture=tTexture;
 }
 
 Entity::~Entity(){

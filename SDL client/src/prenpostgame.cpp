@@ -21,7 +21,7 @@ bool init()
         }
 
         //Create window
-        gWindow = SDL_CreateWindow( "DR Racing", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        gWindow = SDL_CreateWindow( "Night Core", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         if( gWindow == NULL )
         {
             printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -106,16 +106,9 @@ bool loadMedia()
         success = false;
     }
     
-    if( !gBlankTexture.loadFromFile( "res/Blank.png" ) )
+    if( !gEnterTexture.loadFromFile( "res/Blank.png" ) )
     {
         printf( "Failed to load blank texture!\n" );
-        success = false;
-    }
-
-    //Load screen2 texture
-    if( !gScreen2Texture.loadFromFile( "res/screen2.png" ) )
-    {
-        printf( "Failed to load screen2 texture!\n" );
         success = false;
     }
 
@@ -141,7 +134,7 @@ bool loadMedia()
         success = false;
     }
 
-    if( !gPlayerTexture.loadFromFile( "res/character1.png" ) )
+    if( !gPlayerTexture.loadFromFile( "res/char1_up.png" ) )
     {
         printf( "Failed to load character1 texture!\n" );
         success = false;
@@ -221,7 +214,6 @@ void close()
 {
     //Free loaded images
     gScreen1Texture.free();
-    gScreen2Texture.free();
     gGameTexture.free();
     gTimeTextTexture.free();
     gPlayerTexture.free();

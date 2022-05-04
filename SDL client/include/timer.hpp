@@ -1,3 +1,6 @@
+#ifndef _TIMER_H
+#define _TIMER_H
+
 #pragma once
 
 #include <SDL2/SDL.h>
@@ -40,3 +43,4 @@ class LTimer
         bool mStarted;
 };
 
+#endif

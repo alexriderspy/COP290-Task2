@@ -15,6 +15,9 @@
 #include <text.hpp>
 #include <ghost.hpp>
 #include <client.hpp>
+#include <screens.hpp>
+#include <events.hpp>
+#include <levels.hpp>
 
 #include <stdlib.h>
 #include <time.h>
@@ -52,15 +55,15 @@ int main( int argc, char* args[] )
             LTimer timer,timerLoading;
             LTexture* currentTexture = &gScreen1Texture;
             LTexture p;
-            LTexture gInputTextTexture;
-            Entity winflag(0,0*TILE_SIZE,10*TILE_SIZE,&gFlagTexture);
-            Text textVal("Your points are ");
-            
+            Entity winflag(0,22*TILE_SIZE,21*TILE_SIZE,&gFlagTexture);
+            Text textPoints("");
+            Text lives("");
             // Client obj;
             // obj.connectCS();
             Player dot("Himadri","Vag",3,0);
             Player dot2("Kailash","Vidu",3,0);
 
+            int level=1;
             std::string inputText="";
             std::string hostelText="";
 
@@ -103,59 +106,13 @@ int main( int argc, char* args[] )
 
             SDL_StartTextInput();
             timerLoading.start();
+
             while( !quit )
             {
                 bool renderText = false;
                 //Handle events on queue
-                while( SDL_PollEvent( &e ) != 0 )
-                {
-                    //User requests quit
-                    if( e.type == SDL_QUIT )
-                    {
-                        quit = true;
 
-                    }else if(e.type == SDL_KEYDOWN){
-                        if (currentTexture == &gBlankTexture){
-                            if(e.key.keysym.sym == SDLK_RETURN){
-                                currentTexture = &gScreen2Texture;
-                                
-                                continue;
-                            }else if(e.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0){
-                                inputText.pop_back();
-                                renderText = true;
-                            }else if(e.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL){
-                                SDL_SetClipboardText(inputText.c_str());
-                            }else if( e.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL){
-                                inputText = SDL_GetClipboardText();
-                                renderText = true;
-                            }
-
-                        }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_LEFT){
-                            currentTexture = &gScreen1Texture;
-                            
-                        }else if(currentTexture == &gScreen2Texture && e.key.keysym.sym == SDLK_RETURN){
-                            currentTexture = &gGameTexture;
-                            Mix_PlayMusic(gMusic,0);        
-                            
-                            timer.start();
-                        }
-                    }
-                
-                    else if(e.type == SDL_TEXTINPUT){
-                            if(currentTexture == &gBlankTexture){
-                                if(!(SDL_GetModState() & KMOD_CTRL && (e.text.text[0] == 'c' || e.text.text[0] == 'C' || e.text.text[0] == 'v' || e.text.text[0] == 'V'))){
-                                    inputText += e.text.text;
-                                    renderText = true;
-                                    
-                                }
-                            }
-                    }
-
-                        dot.handleEvent(e,currentTexture);
-                        dot.name = inputText;
-                    }
-
-                
+                events(e,inputText,renderText,quit,timer,dot,currentTexture);
 
                 //Move the dot
                 //Center the camera over the dot
@@ -206,129 +163,20 @@ int main( int argc, char* args[] )
 
                 
                 if(currentTexture == &gScreen1Texture){
-                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-                    if(flagLoading == 0)
-                        gLoading1Texture.render(0,0);
-                    else if(flagLoading==1)
-                        gLoading2Texture.render(0,0);
-                    else if(flagLoading==2)
-                        gLoading3Texture.render(0,0);
-
-                    timeText.str("");
-                    timeLeft = SCREEN1_TIME - timerLoading.getTicks()/1000;
-
-                    if(timeLeft==0){
-                        if(flagLoading==0){
-                                gLoading2Texture.render(0,0);
-                                timerLoading.start();
-                                flagLoading++;
-                                continue;
-                            }
-                        else if(flagLoading==1){
-                                gLoading3Texture.render(0,0);
-                                timerLoading.start();
-                                flagLoading++;
-                                continue;
-                            }
-                        else if(flagLoading==2){
-                                currentTexture=&gBlankTexture;
-                                continue;
-                            }
-                        }
+                    title(flagLoading,currentTexture,timeLeft,timerLoading);
                 }
                 
-                else if(currentTexture == &gBlankTexture){
-                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-                    gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, 0 );
-                    if(renderText){
-                        if(inputText != ""){
-                            gInputTextTexture.loadFromRenderedText(inputText.c_str(),textColor);
-                        }else{
-                            gInputTextTexture.loadFromRenderedText(" ",textColor);
-                        }
-                    }
-                    gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2, gTextTexture.getHeight() );
-
-                }
-                //gScreen2Texture
-                else if(currentTexture == &gScreen2Texture){
-                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-
+                else if(currentTexture == &gEnterTexture){
+                    choose(renderText,currentTexture,inputText,textColor);
                 }
                 //gGameTexture
-                else if(currentTexture == &gGameTexture){
-                    
-
-                    currentTexture->render(0,0,&camera);
-                    // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
-                    // SDL_RenderCopy(gRenderer,gScreen1Texture.getTexture(),NULL,&renderQuad);
-                    
-                    //to go to lhc
-                    if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
-                        currentTexture = &gLHCTexture;
-                        Mix_PlayChannel(-1,gEnterDarkness,0);
-                        dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
-                        dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
-                        
-                    }
-                    //pop up
-                    if(dot.getmPosX()/TILE_SIZE == LHC_TILEY+4 && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
-                        SDL_Rect renderQuad = {100,100,TILE_SIZE*5,TILE_SIZE};
-                        SDL_RenderCopy(gRenderer,gScreen2Texture.getTexture(),NULL,&renderQuad);
-
-                    }
-
-                    //timeLeft
-                    timeText.str("");
-                    timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
-                    timeText << "Seconds since start time : " <<timeLeft;
-
-                    if(timeLeft==0){
-                        currentTexture = &gGameOverTexture;
-                        continue;
-                    }
-                    if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) ){
-                        printf( "Failed to load time texture!\n" );
-                    }
-                    
-                    gTimeTextTexture.render(0,0);
-
-
-                    dot2.render(camera.x,camera.y);
-                    dot.render(camera.x,camera.y);
-                    
-                    for(int i=0;i<(int)coins.size();++i){
-                        coins[i].render(camera.x,camera.y);
-                        if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
-                            dot.points+=coins[i].value;
-                            Mix_PlayChannel(-1,gArm,0);
-                            coins.erase(coins.begin()+i);
-                        }
-                    }
-
-                    for(int i=0;i<MAX_GHOSTS;++i){
-                        ghosts[i].render(camera.x,camera.y);
-                        ghosts[i].move();
-                        if(ghosts[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && ghosts[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
-                            Mix_PlayChannel(-1,gBlood,0);
-                        }
-                    }
-
-                    winflag.render(camera.x,camera.y);
-
-                    if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
-                        currentTexture=&gScoreBoardTexture;
-                    }
-
-                }
                 //gScoreBoardTexture
                 else if(currentTexture == &gScoreBoardTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
                     if(flag==0){
-                        textVal.addText(std::to_string(dot.points));
-                        std::cout<<textVal.text<<'\n';
+                        std::cout<<textPoints.text<<'\n';
                         score.str("");
-                        score << textVal.text;
+                        score << textPoints.text;
                         if( !p.loadFromRenderedText( score.str().c_str(),textColor ) )
                         {
                             printf( "Failed to load score texture!\n" );
@@ -341,31 +189,15 @@ int main( int argc, char* args[] )
                 }else if(currentTexture == &gGameOverTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
 
-                }else if(currentTexture == &gLHCTexture){
-                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
-                    timeText.str("");
-                    timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
-                    timeText << "Seconds since start time : " <<timeLeft;
-
-                    if(timeLeft==0){
-                        currentTexture = &gGameOverTexture;
-                        continue;
-                    }
-                    if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) ){
-                        printf( "Failed to load time texture!\n" );
-                    }
-                    
-                    gTimeTextTexture.render(0,0);
-                    dot.render(currentTexture);
-
-                    if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
-
-                        currentTexture = &gGameTexture;
-                        dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
-                        dot.mPosY = LHC_TILEX*TILE_SIZE;
-                        
-                    }   
                 }
+                else{
+                    if(level == 1){
+                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag);
+                    }else{
+                        level2();
+                    }
+                }
+                
                 //Update screen
                 SDL_RenderPresent( gRenderer );
             }

@@ -13,10 +13,10 @@ Mix_Music* gMusic = NULL;
 Mix_Chunk* gArm,*gCreature,*gEnterDarkness,*gBlood;
 
 LTexture gScreen1Texture;
-LTexture gScreen2Texture;
-LTexture gBlankTexture;
+LTexture gEnterTexture;
 LTexture gGameTexture;
 LTexture gTextTexture;
+LTexture gInputTextTexture;
 LTexture gLoading1Texture;
 LTexture gLoading2Texture;
 LTexture gLoading3Texture;

@@ -47,16 +47,16 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
     if(!bitmap1 || !bitmap2 || !bitmap3 || !bitmap4||!bitmap5 || !bitmap6 || !bitmap7){
         std::cout<<"can't load tile"<<'\n';
     }
-    SDL_Texture *tex1 = NULL;
-    SDL_Texture *tex2 = NULL;
+    // SDL_Texture *tex1 = NULL;
+    // SDL_Texture *tex2 = NULL;
     SDL_Texture *tex3 = NULL;
     SDL_Texture *tex4 = NULL;
     SDL_Texture *tex5 = NULL;
     SDL_Texture *tex6 = NULL;
     SDL_Texture *tex7 = NULL;
 
-    tex1 = SDL_CreateTextureFromSurface(renderer, bitmap1);
-    tex2 = SDL_CreateTextureFromSurface(renderer, bitmap2);
+    // tex1 = SDL_CreateTextureFromSurface(renderer, bitmap1);
+    // tex2 = SDL_CreateTextureFromSurface(renderer, bitmap2);
     tex3 = SDL_CreateTextureFromSurface(renderer, bitmap3);
     tex4 = SDL_CreateTextureFromSurface(renderer, bitmap4);
     tex5 = SDL_CreateTextureFromSurface(renderer, bitmap5);

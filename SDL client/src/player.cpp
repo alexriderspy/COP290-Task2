@@ -6,8 +6,8 @@
 Player::Player(std::string hostel,std::string name, int lives,int points)
 {
     //Initialize the offsets
-    mPosX = 0*TILE_SIZE;
-    mPosY = 60*TILE_SIZE;
+    mPosX = 95*TILE_SIZE;
+    mPosY = 12*TILE_SIZE;
 
     this->hostel=hostel;
     this->name = name;
@@ -49,10 +49,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
+                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
+                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= (yulu?PLAYER_VEL_YULU+40:PLAYER_VEL);break;
+                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
             }
         }
         if(mPosX <0){
@@ -73,15 +73,15 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
 
     }
     else if(currentTexture == &gLHCTexture){
-        if( e.type == SDL_KEYDOWN)
-        {
+        if( e.type == SDL_KEYDOWN){
+    
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==1) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
@@ -105,7 +105,7 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
 
 
 void Player::render(int camX,int camY){
-    gPlayerTexture.render(mPosX - camX, mPosY - camY);
+    gPlayerTexture.render(mPosX -20- camX, mPosY-40 - camY);
     SDL_Color textColor = {0,0xFF,0xFF};
     if(!nameTexture.loadFromRenderedText(name,textColor)){
         printf("name cant be loaded");
