@@ -112,13 +112,19 @@ bool loadMedia()
         success = false;
     }
 
+    if( !gMazeTexture.loadFromFile( "res/mazeImage.png" ) )
+    {
+        printf( "Failed to load blank texture!\n" );
+        success = false;
+    }
+
     SDL_Texture* tex = get_map_texture(gRenderer);
     if(!tex){
         printf("can't load map texture");
         success=false;
     }
 
-    save_texture(gRenderer,tex,"res/maze2.png");
+    save_texture(gRenderer,tex,"res/maze.png");
     
     SDL_Texture* texLHC = get_mapLHC_texture(gRenderer);
     if(!texLHC){
@@ -127,6 +133,14 @@ bool loadMedia()
     }
 
     save_texture(gRenderer,texLHC,"res/mazeLHC.png");
+
+    SDL_Texture* texStaffCanteen = get_mapStaffCanteen_texture(gRenderer);
+    if(!texStaffCanteen){
+        printf("can't load map texture");
+        success=false;
+    }
+
+    save_texture(gRenderer,texStaffCanteen,"res/mazeStaffCanteen.png");
 
     if( !gGameTexture.loadFromFile( "res/maze.png" ) )
     {
@@ -141,6 +155,12 @@ bool loadMedia()
     }
 
     if( !gLHCTexture.loadFromFile( "res/mazeLHC.png" ) )
+    {
+        printf( "Failed to load character1 texture!\n" );
+        success = false;
+    }
+
+    if( !gStaffCanteen.loadFromFile( "res/mazeStaffCanteen.png" ) )
     {
         printf( "Failed to load character1 texture!\n" );
         success = false;
@@ -215,6 +235,10 @@ void close()
     //Free loaded images
     gScreen1Texture.free();
     gGameTexture.free();
+    gMazeTexture.free();
+    gLHCTexture.free();
+    gStaffCanteen.free();
+
     gTimeTextTexture.free();
     gPlayerTexture.free();
     gCoinTexture.free();

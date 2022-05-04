@@ -60,10 +60,15 @@ int main( int argc, char* args[] )
             Text lives("");
             // Client obj;
             // obj.connectCS();
-            Player dot("Himadri","Vag",3,0);
-            Player dot2("Kailash","Vidu",3,0);
+            Player dot("Himadri","Vag",3,0,"res/char1_up.png","res/char1_down.png","res/char1_left.png","res/char1_right.png");
+            Player dot2("Kailash","Vidu",3,0,"res/char1_up.png","res/char1_down.png","res/char1_left.png","res/char1_right.png");
 
-            int level=1;
+            std::vector<bool> level1_status = {false,false,false};
+            std::vector<bool> level2_status = {false,false,false,false,false};
+
+            int level = 1;
+            Level1 lev1;
+
             std::string inputText="";
             std::string hostelText="";
 
@@ -78,7 +83,6 @@ int main( int argc, char* args[] )
                 ghosts.push_back(ghost);
                 ++i;
             }
-
 
             int map_flat[MAP_WIDTH*MAP_HEIGHT] = MAP;
             int map[MAP_HEIGHT][MAP_WIDTH];
@@ -112,7 +116,7 @@ int main( int argc, char* args[] )
                 bool renderText = false;
                 //Handle events on queue
 
-                events(e,inputText,renderText,quit,timer,dot,currentTexture);
+                events(e,inputText,renderText,quit,timer,dot,currentTexture,camera);
 
                 //Move the dot
                 //Center the camera over the dot
@@ -192,7 +196,7 @@ int main( int argc, char* args[] )
                 }
                 else{
                     if(level == 1){
-                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag);
+                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev1);
                     }else{
                         level2();
                     }

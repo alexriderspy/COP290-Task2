@@ -142,6 +142,47 @@ SDL_Texture* get_mapLHC_texture(SDL_Renderer *renderer) {
     return map_texture;
 }
 
+SDL_Texture* get_mapStaffCanteen_texture(SDL_Renderer *renderer) {
+    int map_flat[MAPSTAFF_WIDTH*MAPSTAFF_HEIGHT] = MAPLHC;
+
+    int map[MAPSTAFF_HEIGHT][MAPSTAFF_WIDTH];
+    int id=0;
+    for(int i=0;i<MAPSTAFF_HEIGHT;++i){
+        for(int j=0;j<MAPSTAFF_WIDTH;++j){
+            map[i][j]=map_flat[id];
+            ++id;
+        }
+    }
+
+    SDL_Surface *bitmap = NULL;
+    SDL_Texture *map_texture;
+    SDL_Rect rect;
+    rect.w = TILE_SIZE;
+    rect.h = TILE_SIZE;
+    bitmap = SDL_LoadBMP("res/tile.bmp");
+    if(!bitmap){
+        std::cout<<"can't load tile"<<'\n';
+    }
+    SDL_Texture *tex = NULL;
+    tex = SDL_CreateTextureFromSurface(renderer, bitmap);
+    map_texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
+    SDL_SetRenderTarget(renderer, map_texture);
+    int i, j;
+
+    for (i = 0; i < SCREEN_HEIGHT / TILE_SIZE; i++) {
+        for (j = 0; j < SCREEN_WIDTH / TILE_SIZE; j++) {
+            if (map[i][j]==BLOCK) {
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex, NULL, &rect);
+                
+            }
+        }
+    }
+    SDL_SetRenderTarget(renderer, NULL);
+    return map_texture;
+}
+
 void save_texture(SDL_Renderer *ren, SDL_Texture *tex, const char *filename)
 {
     SDL_Texture *ren_tex;

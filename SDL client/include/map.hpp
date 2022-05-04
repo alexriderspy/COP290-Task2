@@ -11,6 +11,8 @@
 
 SDL_Texture* get_map_texture(SDL_Renderer *renderer);
 SDL_Texture* get_mapLHC_texture(SDL_Renderer *renderer);
+SDL_Texture* get_mapStaffCanteen_texture(SDL_Renderer *renderer);
+
 void save_texture(SDL_Renderer* ren, SDL_Texture* tex, const char* filename);
 
 #endif

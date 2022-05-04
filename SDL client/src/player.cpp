@@ -3,7 +3,7 @@
 #include <constants.hpp>
 #include <global.hpp>
 
-Player::Player(std::string hostel,std::string name, int lives,int points)
+Player::Player(std::string hostel,std::string name, int lives,int points,std::string pathUp,std::string pathDown,std::string pathLeft,std::string pathRight)
 {
     //Initialize the offsets
     mPosX = 95*TILE_SIZE;
@@ -29,6 +29,23 @@ Player::Player(std::string hostel,std::string name, int lives,int points)
             mapLHC[i][j]=mapLHC_flat[id++];
         }
     }
+
+    if(!playerUpTexture.loadFromFile(pathUp)){
+        std::cout<<"failed to load texture";
+    }
+
+    if(!playerDownTexture.loadFromFile(pathDown)){
+        std::cout<<"failed to load texture";
+    }
+    if(!playerLeftTexture.loadFromFile(pathLeft)){
+        std::cout<<"failed to load texture";
+    }
+    if(!playerRightTexture.loadFromFile(pathRight)){
+        std::cout<<"failed to load texture";
+    }
+
+    lastTexture = playerDownTexture;
+
     yulu = false;
 }
 
@@ -51,7 +68,7 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             {
                 case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
                 case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
-                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= (yulu?PLAYER_VEL_YULU+40:PLAYER_VEL);break;
+                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= (yulu?PLAYER_VEL_YULU+20:PLAYER_VEL);break;
                 case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
             }
         }
@@ -105,7 +122,33 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
 
 
 void Player::render(int camX,int camY){
-    gPlayerTexture.render(mPosX -20- camX, mPosY-40 - camY);
+    lastTexture.render(mPosX -20- camX, mPosY-40 - camY);
+    SDL_Color textColor = {0,0xFF,0xFF};
+    if(!nameTexture.loadFromRenderedText(name,textColor)){
+        printf("name cant be loaded");
+    }
+    nameTexture.render(mPosX-camX,mPosY-camY);
+}
+
+void Player::render(SDL_Event&e,int camX,int camY){
+    if(e.type == SDL_KEYDOWN){
+        if(e.key.keysym.sym == SDLK_DOWN){
+            playerDownTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            lastTexture = playerDownTexture;
+        }
+        else if(e.key.keysym.sym == SDLK_UP){
+            playerUpTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            lastTexture = playerUpTexture;
+        }
+        else if(e.key.keysym.sym == SDLK_RIGHT){
+            playerRightTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            lastTexture = playerRightTexture;
+        }
+        else if(e.key.keysym.sym == SDLK_LEFT){
+            playerLeftTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            lastTexture = playerLeftTexture;
+        }
+    }
     SDL_Color textColor = {0,0xFF,0xFF};
     if(!nameTexture.loadFromRenderedText(name,textColor)){
         printf("name cant be loaded");

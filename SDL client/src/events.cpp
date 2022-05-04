@@ -1,6 +1,6 @@
 #include<events.hpp>
 
-void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, LTimer &timer, Player &dot, LTexture * &currentTexture){
+void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, LTimer &timer, Player &dot, LTexture * &currentTexture,SDL_Rect &camera){
         while( SDL_PollEvent( &e ) != 0 )
         {
             //User requests quit
@@ -39,7 +39,7 @@ void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, L
                         }
                     }
             }
-
+                dot.render(e,camera.x,camera.y);
                 dot.handleEvent(e,currentTexture);
                 dot.name = inputText;
         }

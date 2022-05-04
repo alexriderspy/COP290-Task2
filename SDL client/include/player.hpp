@@ -29,16 +29,23 @@ class Player
 
         bool yulu;
 
+        LTexture playerUpTexture;
+        LTexture playerDownTexture;
+        LTexture playerLeftTexture;
+        LTexture playerRightTexture;
+
+        LTexture lastTexture;
         LTexture nameTexture;
 
         //Initializes the variables
         
-        Player(std::string hostel,std::string name, int lives,int points);
+        Player(std::string hostel,std::string name, int lives,int points,std::string pathUp,std::string pathDown,std::string pathLeft,std::string pathRight);
 
         //Takes key presses and adjusts the Player's velocity
         void handleEvent(SDL_Event&e, LTexture* currentTexture);
 
         //Shows the Player on the screen
+        void render(SDL_Event &e, int camX,int camY);
         void render(int camX,int camY);
         void render(LTexture* currentTexture);
 

@@ -20,6 +20,7 @@ extern Mix_Chunk* gArm,*gCreature,*gEnterDarkness,*gBlood;
 extern LTexture gScreen1Texture;
 
 extern LTexture gEnterTexture;
+extern LTexture gMazeTexture;
 
 extern LTexture gTextTexture;
 
@@ -29,6 +30,7 @@ extern LTexture gLoading3Texture;
 
 extern LTexture gGameTexture;
 extern LTexture gLHCTexture;
+extern LTexture gStaffCanteen;
 
 extern LTexture gTimeTextTexture;
 extern LTexture gInputTextTexture;

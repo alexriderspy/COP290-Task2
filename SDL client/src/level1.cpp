@@ -1,11 +1,11 @@
 #include <levels.hpp>
 
-void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot2, std::stringstream &timeText, int &timeLeft,std::stringstream &score,LTexture &p,SDL_Color &textColor, Text &textPoints, Text &lives, LTimer &timer, std::vector <Entity>&coins, std::vector<Ghost>&ghosts,Entity &winflag){
+void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot2, std::stringstream &timeText, int &timeLeft,std::stringstream &score,LTexture &p,SDL_Color &textColor, Text &textPoints, Text &lives, LTimer &timer, std::vector <Entity>&coins, std::vector<Ghost>&ghosts,Entity &winflag,Level1&lev1){
 
     if(currentTexture == &gGameTexture){
         currentTexture->render(0,0,&camera);
         // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
-        // SDL_RenderCopy(gRenderer,gScreen1Texture.getTexture(),NULL,&renderQuad);
+        // SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
         
         //to go to lhc
         if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
@@ -13,7 +13,13 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             Mix_PlayChannel(-1,gEnterDarkness,0);
             dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
             dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
-            
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == STAFF_TILEY && dot.getmPosY()/TILE_SIZE == STAFF_TILEX){
+            currentTexture = &gStaffCanteen;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (MAPSTAFF_WIDTH-2)*TILE_SIZE;
+            dot.mPosY = (MAPSTAFF_HEIGHT-1)*TILE_SIZE;
         }
 
         //timeLeft
@@ -76,9 +82,11 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         winflag.render(camera.x,camera.y);
 
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
-            currentTexture=&gScoreBoardTexture;
+            if(lev1.checkFootball(dot) && lev1.checkLHC(dot,currentTexture,{0,5},{0,11},{31,11},{31,4}) && lev1.checkStaffCanteen(dot,currentTexture,{0,7},{16,0})){
+                currentTexture=&gScoreBoardTexture;
+            }
         }
-        
+
     }else if(currentTexture == &gLHCTexture){
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");
@@ -95,11 +103,38 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         gTimeTextTexture.render(0,0);
         dot.render(currentTexture);
 
+        lev1.checkLHC(dot,currentTexture,{0,5},{0,11},{31,11},{31,4});
+
         if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
             dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
             dot.mPosY = LHC_TILEX*TILE_SIZE;
+            
+        }   
+    }else if(currentTexture == &gStaffCanteen){
+        SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        timeText.str("");
+        timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
+        timeText << "Seconds since start time : " <<timeLeft;
+
+        if(timeLeft==0){
+            currentTexture = &gGameOverTexture;
+        }
+        if( !gTimeTextTexture.loadFromRenderedText( timeText.str().c_str(),textColor ) ){
+            printf( "Failed to load time texture!\n" );
+        }
+        
+        gTimeTextTexture.render(0,0);
+        dot.render(currentTexture);
+
+        lev1.checkStaffCanteen(dot,currentTexture,{0,7},{16,0});
+        
+        if(dot.getmPosX() >= (MAPSTAFF_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPSTAFF_HEIGHT-1)*TILE_SIZE){
+
+            currentTexture = &gGameTexture;
+            dot.mPosX = (STAFF_TILEY+1)*TILE_SIZE;
+            dot.mPosY = STAFF_TILEX*TILE_SIZE;
             
         }   
     }
