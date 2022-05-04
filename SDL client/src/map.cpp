@@ -44,7 +44,7 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
     if(!bitmap3){
         std::cout<<"Helo\n";
     }
-    if(!bitmap1 || !bitmap2 || !bitmap3 || !bitmap4||!bitmap5 || !bitmap6 || !bitmap7){
+    if(!bitmap1 || !bitmap2 || !bitmap3 || !bitmap4 || !bitmap5 || !bitmap6 || !bitmap7){
         std::cout<<"can't load tile"<<'\n';
     }
     // SDL_Texture *tex1 = NULL;
@@ -113,28 +113,78 @@ SDL_Texture* get_mapLHC_texture(SDL_Renderer *renderer) {
         }
     }
 
-    SDL_Surface *bitmap = NULL;
+    SDL_Surface *bitmap1 = NULL;
+    SDL_Surface *bitmap2 = NULL;
+    SDL_Surface *bitmap3 = NULL;
+    SDL_Surface *bitmap4 = NULL;
+    SDL_Surface *bitmap5 = NULL;
+    SDL_Surface *bitmap6 = NULL;
+    SDL_Surface *bitmap7 = NULL;
     SDL_Texture *map_texture;
     SDL_Rect rect;
     rect.w = TILE_SIZE;
     rect.h = TILE_SIZE;
-    bitmap = SDL_LoadBMP("res/tile.bmp");
-    if(!bitmap){
+    bitmap1 = SDL_LoadBMP("res/tile.bmp");
+    bitmap2 = SDL_LoadBMP("res/LHC.bmp");
+    bitmap3 = SDL_LoadBMP("res/deathpool.bmp");
+    bitmap4 = SDL_LoadBMP("res/hostelfront.bmp");
+    bitmap5 = SDL_LoadBMP("res/boundary.bmp");
+    bitmap6 = SDL_LoadBMP("res/mainpath.bmp");
+    bitmap7 = SDL_LoadBMP("res/lawn.bmp");
+    
+    if(!bitmap3){
+        std::cout<<"Helo\n";
+    }
+    if(!bitmap1 || !bitmap2 || !bitmap3 || !bitmap4 || !bitmap5 || !bitmap6 || !bitmap7){
         std::cout<<"can't load tile"<<'\n';
     }
-    SDL_Texture *tex = NULL;
-    tex = SDL_CreateTextureFromSurface(renderer, bitmap);
+    // SDL_Texture *tex1 = NULL;
+    // SDL_Texture *tex2 = NULL;
+    SDL_Texture *tex3 = NULL;
+    SDL_Texture *tex4 = NULL;
+    SDL_Texture *tex5 = NULL;
+    SDL_Texture *tex6 = NULL;
+    SDL_Texture *tex7 = NULL;
+
+    // tex1 = SDL_CreateTextureFromSurface(renderer, bitmap1);
+    // tex2 = SDL_CreateTextureFromSurface(renderer, bitmap2);
+    tex3 = SDL_CreateTextureFromSurface(renderer, bitmap3);
+    tex4 = SDL_CreateTextureFromSurface(renderer, bitmap4);
+    tex5 = SDL_CreateTextureFromSurface(renderer, bitmap5);
+    tex6 = SDL_CreateTextureFromSurface(renderer, bitmap6);
+    tex7 = SDL_CreateTextureFromSurface(renderer, bitmap7);
+
     map_texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
     SDL_SetRenderTarget(renderer, map_texture);
     int i, j;
 
     for (i = 0; i < SCREEN_HEIGHT / TILE_SIZE; i++) {
         for (j = 0; j < SCREEN_WIDTH / TILE_SIZE; j++) {
-            if (map[i][j]==BLOCK) {
+            if (map[i][j]== PATH) {
                 rect.x = TILE_SIZE * j;
                 rect.y = TILE_SIZE * i;
-                SDL_RenderCopy(renderer, tex, NULL, &rect);
+                SDL_RenderCopy(renderer, tex3, NULL, &rect);
                 
+            }else if(map[i][j]==HOSTEL_FRONT){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex4, NULL, &rect);
+
+            }else if(map[i][j]==LAWN){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex7, NULL, &rect);
+
+            }else if(map[i][j]==BOUNDARY){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex5, NULL, &rect);
+
+            }else if(map[i][j]==GROUND){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex6, NULL, &rect);
+
             }
         }
     }
@@ -143,7 +193,7 @@ SDL_Texture* get_mapLHC_texture(SDL_Renderer *renderer) {
 }
 
 SDL_Texture* get_mapStaffCanteen_texture(SDL_Renderer *renderer) {
-    int map_flat[MAPSTAFF_WIDTH*MAPSTAFF_HEIGHT] = MAPLHC;
+    int map_flat[MAPSTAFF_WIDTH*MAPSTAFF_HEIGHT] = MAPSTAFFCANTEEN;
 
     int map[MAPSTAFF_HEIGHT][MAPSTAFF_WIDTH];
     int id=0;
@@ -154,28 +204,78 @@ SDL_Texture* get_mapStaffCanteen_texture(SDL_Renderer *renderer) {
         }
     }
 
-    SDL_Surface *bitmap = NULL;
+    SDL_Surface *bitmap1 = NULL;
+    SDL_Surface *bitmap2 = NULL;
+    SDL_Surface *bitmap3 = NULL;
+    SDL_Surface *bitmap4 = NULL;
+    SDL_Surface *bitmap5 = NULL;
+    SDL_Surface *bitmap6 = NULL;
+    SDL_Surface *bitmap7 = NULL;
     SDL_Texture *map_texture;
     SDL_Rect rect;
     rect.w = TILE_SIZE;
     rect.h = TILE_SIZE;
-    bitmap = SDL_LoadBMP("res/tile.bmp");
-    if(!bitmap){
+    bitmap1 = SDL_LoadBMP("res/tile.bmp");
+    bitmap2 = SDL_LoadBMP("res/LHC.bmp");
+    bitmap3 = SDL_LoadBMP("res/deathpool.bmp");
+    bitmap4 = SDL_LoadBMP("res/hostelfront.bmp");
+    bitmap5 = SDL_LoadBMP("res/boundary.bmp");
+    bitmap6 = SDL_LoadBMP("res/mainpath.bmp");
+    bitmap7 = SDL_LoadBMP("res/lawn.bmp");
+    
+    if(!bitmap3){
+        std::cout<<"Helo\n";
+    }
+    if(!bitmap1 || !bitmap2 || !bitmap3 || !bitmap4 || !bitmap5 || !bitmap6 || !bitmap7){
         std::cout<<"can't load tile"<<'\n';
     }
-    SDL_Texture *tex = NULL;
-    tex = SDL_CreateTextureFromSurface(renderer, bitmap);
+    // SDL_Texture *tex1 = NULL;
+    // SDL_Texture *tex2 = NULL;
+    SDL_Texture *tex3 = NULL;
+    SDL_Texture *tex4 = NULL;
+    SDL_Texture *tex5 = NULL;
+    SDL_Texture *tex6 = NULL;
+    SDL_Texture *tex7 = NULL;
+
+    // tex1 = SDL_CreateTextureFromSurface(renderer, bitmap1);
+    // tex2 = SDL_CreateTextureFromSurface(renderer, bitmap2);
+    tex3 = SDL_CreateTextureFromSurface(renderer, bitmap3);
+    tex4 = SDL_CreateTextureFromSurface(renderer, bitmap4);
+    tex5 = SDL_CreateTextureFromSurface(renderer, bitmap5);
+    tex6 = SDL_CreateTextureFromSurface(renderer, bitmap6);
+    tex7 = SDL_CreateTextureFromSurface(renderer, bitmap7);
+
     map_texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT);
     SDL_SetRenderTarget(renderer, map_texture);
     int i, j;
 
     for (i = 0; i < SCREEN_HEIGHT / TILE_SIZE; i++) {
         for (j = 0; j < SCREEN_WIDTH / TILE_SIZE; j++) {
-            if (map[i][j]==BLOCK) {
+            if (map[i][j]== PATH) {
                 rect.x = TILE_SIZE * j;
                 rect.y = TILE_SIZE * i;
-                SDL_RenderCopy(renderer, tex, NULL, &rect);
+                SDL_RenderCopy(renderer, tex3, NULL, &rect);
                 
+            }else if(map[i][j]==HOSTEL_FRONT){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex4, NULL, &rect);
+
+            }else if(map[i][j]==LAWN){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex7, NULL, &rect);
+
+            }else if(map[i][j]==BOUNDARY){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex5, NULL, &rect);
+
+            }else if(map[i][j]==GROUND){
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex6, NULL, &rect);
+
             }
         }
     }
