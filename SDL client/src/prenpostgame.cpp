@@ -112,7 +112,7 @@ bool loadMedia()
         success = false;
     }
 
-    if( !gMazeTexture.loadFromFile( "res/mazeImage.png" ) )
+    if( !gMazeTexture.loadFromFile( "res/background.png" ) )
     {
         printf( "Failed to load blank texture!\n" );
         success = false;

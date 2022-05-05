@@ -10,9 +10,9 @@ Level1::Level1(){
 
     pos_football = {{47,34},{56,34},{47,60},{56,60}};
 
-    pos_LHC = {{0,5},{0,11},{31,11},{31,4}};
+    pos_LHC = {{3,11},{3,5},{28,5},{28,11}};
 
-    pos_staff_canteen = {{0,7},{16,0}};
+    pos_staff_canteen = {{5,7},{15,5}};
 }
 
 bool Level1::checkLHC(Player&dot,LTexture* currentTexture){

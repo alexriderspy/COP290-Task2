@@ -5,22 +5,22 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     if(currentTexture == &gGameTexture){
         currentTexture->render(0,0,&camera);
         lev1.print();
-        // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
-        // SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
+        SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
+        SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
         
         //to go to lhc
         if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
             currentTexture = &gLHCTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
-            dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
-            dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
+            dot.mPosX = (5)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
         }
 
         if(dot.getmPosX()/TILE_SIZE == STAFF_TILEY && dot.getmPosY()/TILE_SIZE == STAFF_TILEX){
             currentTexture = &gStaffCanteen;
             Mix_PlayChannel(-1,gEnterDarkness,0);
-            dot.mPosX = (MAPSTAFF_WIDTH-2)*TILE_SIZE;
-            dot.mPosY = (MAPSTAFF_HEIGHT-1)*TILE_SIZE;
+            dot.mPosX = (2)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
         }
 
         //timeLeft
@@ -79,6 +79,8 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         winflag.render(camera.x,camera.y);
 
+        lev1.checkFootball(dot);
+        
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
             if(lev1.checkFootball(dot) && lev1.checkLHC(dot,currentTexture) && lev1.checkStaffCanteen(dot,currentTexture)){
                 currentTexture=&gScoreBoardTexture;
@@ -122,6 +124,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         // SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderLHC);
         
     }else if(currentTexture == &gLHCTexture){
+        lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
@@ -139,14 +142,15 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev1.checkLHC(dot,currentTexture);
 
-        if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
+        if(dot.getmPosX() == (25)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (LHC_TILEY-2)*TILE_SIZE;
-            dot.mPosY = (LHC_TILEX-2)*TILE_SIZE;
+            dot.mPosX = (LHC_TILEY-3)*TILE_SIZE;
+            dot.mPosY = (LHC_TILEX-1)*TILE_SIZE;
             
         }   
     }else if(currentTexture == &gStaffCanteen){
+        lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
@@ -164,11 +168,11 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev1.checkStaffCanteen(dot,currentTexture);
         
-        if(dot.getmPosX() >= (MAPSTAFF_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPSTAFF_HEIGHT-1)*TILE_SIZE){
+        if(dot.getmPosX() == (28)*TILE_SIZE && dot.getmPosY() == (15)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (STAFF_TILEY+1)*TILE_SIZE;
-            dot.mPosY = STAFF_TILEX*TILE_SIZE;
+            dot.mPosX = (STAFF_TILEY-2)*TILE_SIZE;
+            dot.mPosY = (STAFF_TILEX-2)*TILE_SIZE;
             
         }   
     }

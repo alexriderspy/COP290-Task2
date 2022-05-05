@@ -5,22 +5,59 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     if(currentTexture == &gGameTexture){
         currentTexture->render(0,0,&camera);
         lev2.print();
-        // SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
-        // SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
+        SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
+        SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
         
         //to go to lhc
         if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
             currentTexture = &gLHCTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
-            dot.mPosX = (MAPLHC_WIDTH-2)*TILE_SIZE;
-            dot.mPosY = (MAPLHC_HEIGHT-1)*TILE_SIZE;
+            dot.mPosX = (5)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
         }
 
         if(dot.getmPosX()/TILE_SIZE == STAFF_TILEY && dot.getmPosY()/TILE_SIZE == STAFF_TILEX){
             currentTexture = &gStaffCanteen;
             Mix_PlayChannel(-1,gEnterDarkness,0);
-            dot.mPosX = (MAPSTAFF_WIDTH-2)*TILE_SIZE;
-            dot.mPosY = (MAPSTAFF_HEIGHT-1)*TILE_SIZE;
+            dot.mPosX = (2)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == SCOOPS_TILEY && dot.getmPosY()/TILE_SIZE == SCOOPS_TILEX){
+            currentTexture = &gScoopsTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (11)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Himadri"  && dot.getmPosX()/TILE_SIZE == HOSTEL_HIM_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_HIM_TILEX){
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Kailash"  && dot.getmPosX()/TILE_SIZE == HOSTEL_KAILASH_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_KAILASH_TILEX){
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Girnar"  && dot.getmPosX()/TILE_SIZE == HOSTEL_GIRNAR_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_GIRNAR_TILEX){
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Karakoram"  && dot.getmPosX()/TILE_SIZE == HOSTEL_KARA_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_KARA_TILEX){
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == LIB_TILEY && dot.getmPosY()/TILE_SIZE == LIB_TILEX){
+            currentTexture = &gLibraryTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (3)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
         }
 
         //timeLeft
@@ -82,6 +119,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         winflag.render(camera.x,camera.y);
 
+        lev2.checkLawn(dot);
+        lev2.checkSac(dot);
+
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
             if(lev2.checkLawn(dot) && lev2.checkHostel(dot,currentTexture) && lev2.checkScoops(dot,currentTexture) && lev2.checkLibrary(dot,currentTexture) && lev2.checkSac(dot)){
                 currentTexture=&gScoreBoardTexture;
@@ -89,6 +129,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
 
     }else if(currentTexture == &gHostelTexture){
+        lev2.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
@@ -106,14 +147,36 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev2.checkHostel(dot,currentTexture);
 
-        if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
+        if(dot.hostel == "Himadri" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
-            dot.mPosY = LHC_TILEX*TILE_SIZE;
+            dot.mPosX = (HOSTEL_HIM_TILEY)*TILE_SIZE;
+            dot.mPosY = (HOSTEL_HIM_TILEX+2)*TILE_SIZE;
+            
+        }   
+        if(dot.hostel == "Kailash" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+
+            currentTexture = &gGameTexture;
+            dot.mPosX = (HOSTEL_KAILASH_TILEY)*TILE_SIZE;
+            dot.mPosY = (HOSTEL_KAILASH_TILEX+2)*TILE_SIZE;
+            
+        }   
+        if(dot.hostel == "Girnar" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+
+            currentTexture = &gGameTexture;
+            dot.mPosX = (HOSTEL_GIRNAR_TILEY+1)*TILE_SIZE;
+            dot.mPosY = (HOSTEL_GIRNAR_TILEX+1)*TILE_SIZE;
+            
+        }   
+        if(dot.hostel == "Karakoram" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+
+            currentTexture = &gGameTexture;
+            dot.mPosX = (HOSTEL_KARA_TILEY+1)*TILE_SIZE;
+            dot.mPosY = (HOSTEL_KARA_TILEX+1)*TILE_SIZE;
             
         }   
     }else if(currentTexture == &gScoopsTexture){
+        lev2.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
@@ -131,14 +194,15 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev2.checkScoops(dot,currentTexture);
         
-        if(dot.getmPosX() >= (MAPSTAFF_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPSTAFF_HEIGHT-1)*TILE_SIZE){
+        if(dot.getmPosX() == (18)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (STAFF_TILEY+1)*TILE_SIZE;
-            dot.mPosY = STAFF_TILEX*TILE_SIZE;
+            dot.mPosX = (SCOOPS_TILEY-2)*TILE_SIZE;
+            dot.mPosY = (SCOOPS_TILEX+1)*TILE_SIZE;
             
         }   
     }else if(currentTexture == &gLibraryTexture){
+        lev2.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
@@ -156,11 +220,11 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev2.checkLibrary(dot,currentTexture);
         
-        if(dot.getmPosX() >= (MAPSTAFF_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPSTAFF_HEIGHT-1)*TILE_SIZE){
+        if(dot.getmPosX() == (27)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (STAFF_TILEY+1)*TILE_SIZE;
-            dot.mPosY = STAFF_TILEX*TILE_SIZE;
+            dot.mPosX = (LIB_TILEY+1)*TILE_SIZE;
+            dot.mPosY = (LIB_TILEX+3)*TILE_SIZE;
             
         }   
     }

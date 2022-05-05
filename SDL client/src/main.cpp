@@ -55,7 +55,7 @@ int main( int argc, char* args[] )
             LTimer timer,timerLoading;
             LTexture* currentTexture = &gScreen1Texture;
             LTexture p;
-            Entity winflag(0,22*TILE_SIZE,21*TILE_SIZE,&gFlagTexture);
+            Entity winflag(0,21*TILE_SIZE,43*TILE_SIZE,&gFlagTexture);
             Text textPoints("");
             Text lives("");
             // Client obj;
@@ -63,13 +63,37 @@ int main( int argc, char* args[] )
             Player dot("Himadri","Vag",3,0,"res/char1_up.png","res/char1_down.png","res/char1_left.png","res/char1_right.png");
             Player dot2("Kailash","Vidu",3,0,"res/char1_up.png","res/char1_down.png","res/char1_left.png","res/char1_right.png");
 
-            std::vector<bool> level1_status = {false,false,false};
-            std::vector<bool> level2_status = {false,false,false,false,false};
-
-            int level = 1;
+            int level = 2;
             Level1 lev1;
             Level2 lev2;
 
+            if(level == 1){
+                dot.mPosX = 95*TILE_SIZE;
+                dot.mPosY = 12*TILE_SIZE;
+                winflag.mPosX = 21*TILE_SIZE;
+                winflag.mPosY = 43*TILE_SIZE;
+
+            }else{
+                if (dot.hostel == "Himadri"){
+                    dot.mPosX = 113*TILE_SIZE;
+                    dot.mPosY = 9*TILE_SIZE;
+
+                }else if(dot.hostel == "Kailash"){
+                    dot.mPosX = 106*TILE_SIZE;
+                    dot.mPosY = 14*TILE_SIZE;
+
+                }else if(dot.hostel == "Girnar"){
+                    dot.mPosX = 54*TILE_SIZE;
+                    dot.mPosY = 14*TILE_SIZE;
+
+                }else if(dot.hostel == "Karakoram"){
+                    dot.mPosX = 13*TILE_SIZE;
+                    dot.mPosY = 43*TILE_SIZE;
+
+                }
+                winflag.mPosX = 21*TILE_SIZE;
+                winflag.mPosY = 43*TILE_SIZE;
+            }
             std::string inputText="";
             std::string hostelText="";
 
