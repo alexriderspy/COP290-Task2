@@ -129,6 +129,11 @@ SDL_Texture* get_map_texture(SDL_Renderer *renderer) {
                 rect.y = TILE_SIZE * i;
                 SDL_RenderCopy(renderer, tex6, NULL, &rect);
 
+            }else{
+                rect.x = TILE_SIZE * j;
+                rect.y = TILE_SIZE * i;
+                SDL_RenderCopy(renderer, tex14, NULL, &rect);
+
             }
         }
     }
