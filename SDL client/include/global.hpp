@@ -36,6 +36,11 @@ extern LTexture gScoopsTexture;
 extern LTexture gLibraryTexture;
 extern LTexture gHostelTexture;
 extern LTexture gHimadriTexture;
+extern LTexture gKailashTexture;
+extern LTexture gLHC_exTexture;
+extern LTexture gGirnarTexture;
+extern LTexture gKaraTexture;
+extern LTexture gSacTexture;
 
 extern LTexture gTimeTextTexture;
 extern LTexture gInputTextTexture;

@@ -87,9 +87,39 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         dot2.render(camera.x,camera.y);
         dot.render(camera.x,camera.y);
 
-        SDL_Rect renderHimadri = {107*TILE_SIZE-camera.x,0*TILE_SIZE-camera.y,15*TILE_SIZE,10*TILE_SIZE};
+        //himadri
+        SDL_Rect renderHimadri = {107*TILE_SIZE-camera.x,0*TILE_SIZE-camera.y,15*TILE_SIZE,9*TILE_SIZE};
         SDL_RenderCopy(gRenderer,gHimadriTexture.getTexture(),NULL,&renderHimadri);
 
+        //kailash
+        SDL_Rect renderKailash = {96*TILE_SIZE-camera.x,7*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
+        SDL_RenderCopy(gRenderer,gKailashTexture.getTexture(),NULL,&renderKailash);
+
+        //lhc
+        SDL_Rect renderLHC = {78*TILE_SIZE-camera.x,20*TILE_SIZE-camera.y,60*TILE_SIZE,30*TILE_SIZE};
+        SDL_RenderCopy(gRenderer,gLHC_exTexture.getTexture(),NULL,&renderLHC);
+
+        //girnar
+        SDL_Rect renderGirnar = {47*TILE_SIZE-camera.x,4*TILE_SIZE-camera.y,14*TILE_SIZE,9*TILE_SIZE};
+        SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderGirnar);
+
+        //sac
+        SDL_Rect renderSac = {10*TILE_SIZE-camera.x,30*TILE_SIZE-camera.y,25*TILE_SIZE,30*TILE_SIZE};
+        SDL_RenderCopy(gRenderer,gSacTexture.getTexture(),NULL,&renderSac);
+        
+        //kara
+        SDL_Rect renderKara = {(-5)*TILE_SIZE-camera.x,24*TILE_SIZE-camera.y,15*TILE_SIZE,25*TILE_SIZE};
+        SDL_RenderCopy(gRenderer,gKaraTexture.getTexture(),NULL,&renderKara);
+
+        // //girnar
+        // SDL_Rect renderGirnar = {49*TILE_SIZE-camera.x,8*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderLHC);
+        // //girnar
+        // SDL_Rect renderGirnar = {49*TILE_SIZE-camera.x,8*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderLHC);
+        // //girnar
+        // SDL_Rect renderGirnar = {49*TILE_SIZE-camera.x,8*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderLHC);
         
     }else if(currentTexture == &gLHCTexture){
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
@@ -112,8 +142,8 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (LHC_TILEY+1)*TILE_SIZE;
-            dot.mPosY = LHC_TILEX*TILE_SIZE;
+            dot.mPosX = (LHC_TILEY-2)*TILE_SIZE;
+            dot.mPosY = (LHC_TILEX-2)*TILE_SIZE;
             
         }   
     }else if(currentTexture == &gStaffCanteen){

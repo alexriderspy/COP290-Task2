@@ -25,6 +25,11 @@ LTexture gLibraryTexture;
 LTexture gHostelTexture;
 
 LTexture gHimadriTexture;
+LTexture gKailashTexture;
+LTexture gLHC_exTexture;
+LTexture gGirnarTexture;
+LTexture gKaraTexture;
+LTexture gSacTexture;
 
 LTexture gTextTexture;
 LTexture gInputTextTexture;

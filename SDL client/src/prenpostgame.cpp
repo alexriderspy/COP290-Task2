@@ -215,7 +215,38 @@ bool loadMedia()
         success = false;
     }
 
+    if( !gKailashTexture.loadFromFile( "res/kailash.png" ) )
+    {
+        printf( "Failed to load kailash texture!\n" );
+        success = false;
+    }
+
+    if( !gLHC_exTexture.loadFromFile( "res/lhc.png" ) )
+    {
+        printf( "Failed to load kailash texture!\n" );
+        success = false;
+    }
+
+    if( !gGirnarTexture.loadFromFile( "res/girnar.png" ) )
+    {
+        printf( "Failed to load kailash texture!\n" );
+        success = false;
+    }
+
+    if( !gKaraTexture.loadFromFile( "res/kara.png" ) )
+    {
+        printf( "Failed to load kara texture!\n" );
+        success = false;
+    }
+
+    if( !gSacTexture.loadFromFile( "res/sac.png" ) )
+    {
+        printf( "Failed to load sac texture!\n" );
+        success = false;
+    }
+
     if( !gBroomTexture.loadFromFile( "res/broom.png" ) )
+    
     {
         printf( "Failed to load broom texture!\n" );
         success = false;

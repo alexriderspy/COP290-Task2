@@ -64,6 +64,7 @@
 #define LEVEL1_TIME 500
 #define SCREEN1_TIME 1
 
+//main maze
 #define PATH 0
 #define BLOCK 1
 #define LHC 2
@@ -72,8 +73,49 @@
 #define BOUNDARY 5
 #define GROUND 6
 
-#define LHC_TILEX 32
-#define LHC_TILEY 94
+//lhc maze
+#define PATH_LHC 0
+#define ENTRY_EXIT_LHC 6
+#define DIAMOND 3
+#define OBSTACLES_LHC 1
+#define BOUNDARY_LHC 2
+#define ROOMS_LHC 4
+
+//staff canteen maze
+#define PATH_CANTEEN 0
+#define ENTRY_EXIT_CANTEEN 6
+#define OBSTACLES_CANTEEN 1
+#define BOUNDARY_CANTEEN 2
+#define SHOPS_CANTEEN 4
+#define CHAIRS_CANTEEN 3
+
+//lib maze
+#define PATH_LIB 0
+#define ENTRY_EXIT_LIB 6
+#define OBSTACLES_LIB 1
+#define BOUNDARY_LIB 2
+#define SHELVES_LIB 4
+#define TABLE_LIB 3
+
+//scoops maze
+#define PATH_SCOOPS 0
+#define ENTRY_EXIT_SCOOPS 6
+#define OBSTACLES_SCOOPS 1
+#define BOUNDARY_SCOOPS 2
+#define SHELVES_SCOOPS 4
+#define DESK_SCOOPS 3
+#define CARPET_SCOOPS 5
+
+//hostel maze
+#define PATH_HOSTEL 0
+#define ENTRY_EXIT_HOSTEL 6
+#define COURT_HOSTEL 1
+#define BOUNDARY_HOSTEL 2
+#define ROOMS_HOSTEL 4
+#define LOBBY_HOSTEL 3
+
+#define LHC_TILEX 33
+#define LHC_TILEY 96
 
 #define SCOOPS_TILEX 30
 #define SCOOPS_TILEY 40
