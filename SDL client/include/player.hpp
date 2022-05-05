@@ -26,6 +26,10 @@ class Player
         int points;
         int map[MAP_HEIGHT][MAP_WIDTH];
         int mapLHC[MAPLHC_HEIGHT][MAPLHC_WIDTH];
+        int mapStaffCanteen[MAPSTAFF_HEIGHT][MAPSTAFF_WIDTH];
+        int mapLibrary[MAPLIBRARY_HEIGHT][MAPLIBRARY_WIDTH];
+        int mapHostel[MAPHOSTEL_HEIGHT][MAPHOSTEL_WIDTH];
+        int mapScoops[MAPSCOOPS_HEIGHT][MAPSCOOPS_WIDTH];
 
         bool yulu;
 

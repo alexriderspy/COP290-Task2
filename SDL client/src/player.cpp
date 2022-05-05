@@ -30,6 +30,38 @@ Player::Player(std::string hostel,std::string name, int lives,int points,std::st
         }
     }
 
+    int mapStaffCanteen_flat[MAPSTAFF_WIDTH*MAPSTAFF_HEIGHT] = MAPSTAFFCANTEEN;
+    id=0;
+    for(int i=0;i<MAPSTAFF_HEIGHT;++i){
+        for(int j=0;j<MAPSTAFF_WIDTH;++j){
+            mapStaffCanteen[i][j]=mapStaffCanteen_flat[id++];
+        }
+    }
+
+    int mapScoops_flat[MAPSCOOPS_WIDTH*MAPSCOOPS_HEIGHT] = MAPSCOOPS;
+    id=0;
+    for(int i=0;i<MAPSCOOPS_HEIGHT;++i){
+        for(int j=0;j<MAPSCOOPS_WIDTH;++j){
+            mapScoops[i][j]=mapScoops_flat[id++];
+        }
+    }
+
+    int mapLibrary_flat[MAPLIBRARY_WIDTH*MAPLIBRARY_HEIGHT] = MAPLIBRARY;
+    id=0;
+    for(int i=0;i<MAPLIBRARY_HEIGHT;++i){
+        for(int j=0;j<MAPLIBRARY_WIDTH;++j){
+            mapLibrary[i][j]=mapLibrary_flat[id++];
+        }
+    }
+
+    int mapHostel_flat[MAPHOSTEL_WIDTH*MAPHOSTEL_HEIGHT] = MAPHOSTEL;
+    id=0;
+    for(int i=0;i<MAPHOSTEL_HEIGHT;++i){
+        for(int j=0;j<MAPHOSTEL_WIDTH;++j){
+            mapHostel[i][j]=mapHostel_flat[id++];
+        }
+    }
+
     if(!playerUpTexture.loadFromFile(pathUp)){
         std::cout<<"failed to load texture";
     }
@@ -118,6 +150,122 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
         }
 
     }
+    else if(currentTexture == &gStaffCanteen){
+        if( e.type == SDL_KEYDOWN){
+    
+            //Adjust the velocity
+            switch( e.key.keysym.sym )
+            {
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+            }
+        }
+        if(mPosX <0){
+            mPosX = 0;
+        }
+
+        if(mPosX + PLAYER_WIDTH > SCREEN_WIDTH){
+            mPosX = SCREEN_WIDTH-PLAYER_WIDTH;
+        }
+
+        if(mPosY < 0){
+            mPosY=0;
+        }
+
+        if(mPosY + PLAYER_HEIGHT > SCREEN_HEIGHT){
+            mPosY = SCREEN_HEIGHT-PLAYER_HEIGHT;
+        }
+
+    }
+    else if(currentTexture == &gScoopsTexture){
+        if( e.type == SDL_KEYDOWN){
+    
+            //Adjust the velocity
+            switch( e.key.keysym.sym )
+            {
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+            }
+        }
+        if(mPosX <0){
+            mPosX = 0;
+        }
+
+        if(mPosX + PLAYER_WIDTH > SCREEN_WIDTH){
+            mPosX = SCREEN_WIDTH-PLAYER_WIDTH;
+        }
+
+        if(mPosY < 0){
+            mPosY=0;
+        }
+
+        if(mPosY + PLAYER_HEIGHT > SCREEN_HEIGHT){
+            mPosY = SCREEN_HEIGHT-PLAYER_HEIGHT;
+        }
+
+    }
+    else if(currentTexture == &gHostelTexture){
+        if( e.type == SDL_KEYDOWN){
+    
+            //Adjust the velocity
+            switch( e.key.keysym.sym )
+            {
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+            }
+        }
+        if(mPosX <0){
+            mPosX = 0;
+        }
+
+        if(mPosX + PLAYER_WIDTH > SCREEN_WIDTH){
+            mPosX = SCREEN_WIDTH-PLAYER_WIDTH;
+        }
+
+        if(mPosY < 0){
+            mPosY=0;
+        }
+
+        if(mPosY + PLAYER_HEIGHT > SCREEN_HEIGHT){
+            mPosY = SCREEN_HEIGHT-PLAYER_HEIGHT;
+        }
+
+    }
+    else if(currentTexture == &gLibraryTexture){
+        if( e.type == SDL_KEYDOWN){
+    
+            //Adjust the velocity
+            switch( e.key.keysym.sym )
+            {
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+            }
+        }
+        if(mPosX <0){
+            mPosX = 0;
+        }
+
+        if(mPosX + PLAYER_WIDTH > SCREEN_WIDTH){
+            mPosX = SCREEN_WIDTH-PLAYER_WIDTH;
+        }
+
+        if(mPosY < 0){
+            mPosY=0;
+        }
+
+        if(mPosY + PLAYER_HEIGHT > SCREEN_HEIGHT){
+            mPosY = SCREEN_HEIGHT-PLAYER_HEIGHT;
+        }
+
+    }
 }
 
 
@@ -128,8 +276,10 @@ void Player::render(int camX,int camY){
         printf("name cant be loaded");
     }
     nameTexture.render(mPosX-camX,mPosY-camY);
+    if(yulu){
+        gBroomTexture.render(mPosX-camX,mPosY-camY);
+    }
 }
-
 void Player::render(SDL_Event&e,int camX,int camY){
     if(e.type == SDL_KEYDOWN){
         if(e.key.keysym.sym == SDLK_DOWN){
@@ -154,6 +304,10 @@ void Player::render(SDL_Event&e,int camX,int camY){
         printf("name cant be loaded");
     }
     nameTexture.render(mPosX-camX,mPosY-camY);
+
+    if(yulu){
+        gBroomTexture.render(mPosX-camX,mPosY-camY);
+    }
 }
 
 int Player::getmPosX(){

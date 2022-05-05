@@ -19,6 +19,10 @@ LTexture gGameTexture;
 LTexture gMazeTexture;
 LTexture gLHCTexture;
 LTexture gStaffCanteen;
+LTexture gBroomTexture;
+LTexture gScoopsTexture;
+LTexture gLibraryTexture;
+LTexture gHostelTexture;
 
 LTexture gTextTexture;
 LTexture gInputTextTexture;

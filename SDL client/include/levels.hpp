@@ -10,7 +10,6 @@
 #include <ghost.hpp>
 #include <entity.hpp>
 #include <timer.hpp>
-#include <coordinates.hpp>
 
 #include<vector>
 #include <utility>
@@ -20,18 +19,45 @@ public:
     std::vector<bool>lhc_vis;
     std::vector<bool> hasEaten;
     std::vector<bool>football;
-    std::vector<std::pair<int,int>>pos;
+    std::vector<std::pair<int,int>>pos_football;
+    std::vector<std::pair<int,int>>pos_LHC;
+    std::vector<std::pair<int,int>>pos_staff_canteen;
 
     Level1();
 
-    bool checkLHC(Player&dot,LTexture* currentTexture,Coordinates c1,Coordinates c2,Coordinates c3,Coordinates c4);
-    bool checkStaffCanteen(Player&dot,LTexture* currentTexture,Coordinates c1,Coordinates c2);
+    bool checkLHC(Player&dot,LTexture* currentTexture);
+    bool checkStaffCanteen(Player&dot,LTexture* currentTexture);
     bool checkFootball(Player&dot);
     void print();
 
 };
 
+class Level2{
+public:
+    std::vector <bool>hostel;
+    std::vector<bool>scoops;
+    std::vector<bool>library;
+    std::vector<bool>lawn;
+    std::vector<bool>sac;
+    std::vector <std::pair<int,int>>pos_hostel;
+    std::vector <std::pair<int,int>>pos_scoops;
+    std::vector <std::pair<int,int>>pos_library;
+    std::vector <std::pair<int,int>>pos_lawn;
+    std::vector <std::pair<int,int>>pos_sac;
+
+    Level2();
+
+    bool checkHostel(Player&dot,LTexture* currentTexture);
+    bool checkScoops(Player&dot,LTexture* currentTexture);
+    bool checkLibrary(Player&dot,LTexture* currentTexture);
+    bool checkLawn(Player&dot);
+    bool checkSac(Player&dot);
+    void print();
+    
+
+};
+
 void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot2, std::stringstream &timeText, int &timeLeft,std::stringstream &score,LTexture &p,SDL_Color &textColor, Text &textPoints, Text &lives, LTimer &timer, std::vector <Entity>&coins, std::vector<Ghost>&ghosts, Entity &winflag,Level1 &lev1);
-void level2();
+void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot2, std::stringstream &timeText, int &timeLeft,std::stringstream &score,LTexture &p,SDL_Color &textColor, Text &textPoints, Text &lives, LTimer &timer, std::vector <Entity>&coins, std::vector<Ghost>&ghosts, Entity &winflag,Level2 &lev2);
 
 #endif

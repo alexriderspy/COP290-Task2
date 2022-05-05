@@ -142,17 +142,36 @@ bool loadMedia()
 
     save_texture(gRenderer,texStaffCanteen,"res/mazeStaffCanteen.png");
 
+    SDL_Texture* texHostel = get_mapHostel_texture(gRenderer);
+    if(!texHostel){
+        printf("can't load map texture");
+        success=false;
+    }
+
+    save_texture(gRenderer,texHostel,"res/mazeHostel.png");
+
+    SDL_Texture* texLibrary = get_mapLibrary_texture(gRenderer);
+    if(!texLibrary){
+        printf("can't load map texture");
+        success=false;
+    }
+
+    save_texture(gRenderer,texLibrary,"res/mazeLibrary.png");
+
+    SDL_Texture* texScoops = get_mapScoops_texture(gRenderer);
+    if(!texScoops){
+        printf("can't load map texture");
+        success=false;
+    }
+
+    save_texture(gRenderer,texScoops,"res/mazeScoops.png");
+
     if( !gGameTexture.loadFromFile( "res/maze.png" ) )
     {
         printf( "Failed to load screen1 texture!\n" );
         success = false;
     }
 
-    if( !gPlayerTexture.loadFromFile( "res/char1_up.png" ) )
-    {
-        printf( "Failed to load character1 texture!\n" );
-        success = false;
-    }
 
     if( !gLHCTexture.loadFromFile( "res/mazeLHC.png" ) )
     {
@@ -166,9 +185,33 @@ bool loadMedia()
         success = false;
     }
 
+    if( !gHostelTexture.loadFromFile( "res/mazeHostel.png" ) )
+    {
+        printf( "Failed to load hostel texture!\n" );
+        success = false;
+    }
+
+    if( !gScoopsTexture.loadFromFile( "res/mazeScoops.png" ) )
+    {
+        printf( "Failed to load scoops texture!\n" );
+        success = false;
+    }
+
+    if( !gLibraryTexture.loadFromFile( "res/mazeLibrary.png" ) )
+    {
+        printf( "Failed to load mazelib texture!\n" );
+        success = false;
+    }
+
     if( !gCoinTexture.loadFromFile( "res/coin.png" ) )
     {
         printf( "Failed to load coin texture!\n" );
+        success = false;
+    }
+
+    if( !gBroomTexture.loadFromFile( "res/broom.png" ) )
+    {
+        printf( "Failed to load broom texture!\n" );
         success = false;
     }
 
@@ -238,6 +281,10 @@ void close()
     gMazeTexture.free();
     gLHCTexture.free();
     gStaffCanteen.free();
+    gScoopsTexture.free();
+    gHostelTexture.free();
+    gLibraryTexture.free();
+    gBroomTexture.free();
 
     gTimeTextTexture.free();
     gPlayerTexture.free();

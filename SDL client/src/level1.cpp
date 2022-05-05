@@ -83,7 +83,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         winflag.render(camera.x,camera.y);
 
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
-            if(lev1.checkFootball(dot) && lev1.checkLHC(dot,currentTexture,{0,5},{0,11},{31,11},{31,4}) && lev1.checkStaffCanteen(dot,currentTexture,{0,7},{16,0})){
+            if(lev1.checkFootball(dot) && lev1.checkLHC(dot,currentTexture) && lev1.checkStaffCanteen(dot,currentTexture)){
                 currentTexture=&gScoreBoardTexture;
             }
         }
@@ -104,7 +104,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         gTimeTextTexture.render(0,0);
         dot.render(0,0);
 
-        lev1.checkLHC(dot,currentTexture,{0,5},{0,11},{31,11},{31,4});
+        lev1.checkLHC(dot,currentTexture);
 
         if(dot.getmPosX() >= (MAPLHC_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPLHC_HEIGHT-1)*TILE_SIZE){
 
@@ -129,7 +129,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         gTimeTextTexture.render(0,0);
         dot.render(0,0);
 
-        lev1.checkStaffCanteen(dot,currentTexture,{0,7},{16,0});
+        lev1.checkStaffCanteen(dot,currentTexture);
         
         if(dot.getmPosX() >= (MAPSTAFF_WIDTH-1)*TILE_SIZE && dot.getmPosY() >= (MAPSTAFF_HEIGHT-1)*TILE_SIZE){
 

@@ -68,6 +68,7 @@ int main( int argc, char* args[] )
 
             int level = 1;
             Level1 lev1;
+            Level2 lev2;
 
             std::string inputText="";
             std::string hostelText="";
@@ -198,7 +199,7 @@ int main( int argc, char* args[] )
                     if(level == 1){
                         level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev1);
                     }else{
-                        level2();
+                        level2(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev2);
                     }
                 }
                 
