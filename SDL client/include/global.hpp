@@ -35,7 +35,7 @@ extern LTexture gBroomTexture;
 extern LTexture gScoopsTexture;
 extern LTexture gLibraryTexture;
 extern LTexture gHostelTexture;
-
+extern LTexture gHimadriTexture;
 
 extern LTexture gTimeTextTexture;
 extern LTexture gInputTextTexture;

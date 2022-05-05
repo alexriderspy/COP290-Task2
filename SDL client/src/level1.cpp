@@ -59,9 +59,6 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         
 
         p.render(SCREEN_WIDTH/2,20);
-
-        dot2.render(camera.x,camera.y);
-        dot.render(camera.x,camera.y);
         
         for(int i=0;i<(int)coins.size();++i){
             coins[i].render(camera.x,camera.y);
@@ -87,7 +84,13 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
                 currentTexture=&gScoreBoardTexture;
             }
         }
+        dot2.render(camera.x,camera.y);
+        dot.render(camera.x,camera.y);
 
+        SDL_Rect renderHimadri = {107*TILE_SIZE-camera.x,0*TILE_SIZE-camera.y,15*TILE_SIZE,10*TILE_SIZE};
+        SDL_RenderCopy(gRenderer,gHimadriTexture.getTexture(),NULL,&renderHimadri);
+
+        
     }else if(currentTexture == &gLHCTexture){
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         timeText.str("");

@@ -24,6 +24,8 @@ LTexture gScoopsTexture;
 LTexture gLibraryTexture;
 LTexture gHostelTexture;
 
+LTexture gHimadriTexture;
+
 LTexture gTextTexture;
 LTexture gInputTextTexture;
 

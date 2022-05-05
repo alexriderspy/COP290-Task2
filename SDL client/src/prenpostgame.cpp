@@ -209,6 +209,12 @@ bool loadMedia()
         success = false;
     }
 
+    if( !gHimadriTexture.loadFromFile( "res/himadri.png" ) )
+    {
+        printf( "Failed to load himadri texture!\n" );
+        success = false;
+    }
+
     if( !gBroomTexture.loadFromFile( "res/broom.png" ) )
     {
         printf( "Failed to load broom texture!\n" );
