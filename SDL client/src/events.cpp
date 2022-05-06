@@ -75,9 +75,7 @@ void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, L
                         dot.mPosY = 12*TILE_SIZE;
                         winflag.mPosX = 21*TILE_SIZE;
                         winflag.mPosY = 43*TILE_SIZE;
-                        currentTexture = &gGameTexture;
-                        Mix_PlayMusic(gMusic,-1);
-                        timer.start();
+                        currentTexture = &gWordOfAdvice;
 
                     }else if(e.key.keysym.sym == SDLK_h){
                         level = 2;
@@ -100,11 +98,25 @@ void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, L
                         }
                         winflag.mPosX = 43*TILE_SIZE;
                         winflag.mPosY = 19*TILE_SIZE;
-                        currentTexture = &gGameTexture;
+                        currentTexture = &gWordOfAdvice;
+
+                    }              
+                }else if(currentTexture == &gWordOfAdvice){
+                    if(e.key.keysym.sym == SDLK_RETURN){
+
+                        LTexture popUp;
+                        popUp.loadFromFile("res/riddle_LHC.png");
+                        SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+                        SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+                        SDL_RenderPresent(gRenderer);
+                        SDL_Delay(8000);
+            
+                        
+                        currentTexture=&gGameTexture;
                         Mix_PlayMusic(gMusic,-1);
                         timer.start();
 
-                    }              
+                    }
                 }
             }
         

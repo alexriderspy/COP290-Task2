@@ -133,6 +133,12 @@ bool loadMedia()
         success = false;
     }
 
+    if( !gWordOfAdvice.loadFromFile( "res/wordofadvice.png" ) )
+    {
+        printf( "Failed to load blank texture!\n" );
+        success = false;
+    }
+
     SDL_Texture* tex = get_map_texture(gRenderer);
     if(!tex){
         printf("can't load map texture");

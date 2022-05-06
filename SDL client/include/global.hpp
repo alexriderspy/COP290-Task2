@@ -58,4 +58,6 @@ extern LTexture gScoreTexture;
 extern LTexture gGhostTexture;
 extern LTexture gGameOverTexture;
 
+extern LTexture gWordOfAdvice;
+
 #endif

@@ -98,10 +98,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
-                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
-                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX+= (yulu?PLAYER_VEL_YULU+20:PLAYER_VEL);break;
-                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
+                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
+                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
+                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX+= (yulu?PLAYER_VEL_YULU+20:PLAYER_VEL);break;
+                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
             }
         }
         if(mPosX <0){

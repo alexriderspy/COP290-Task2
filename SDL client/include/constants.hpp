@@ -138,4 +138,13 @@
 #define STAFF_TILEX 81
 #define STAFF_TILEY 50
 
+#define FOOT_TILEX 33
+#define FOOT_TILEY 52
+
+#define LAWN_TILEX 21
+#define LAWN_TILEY 87
+
+#define SAC_TILEX 43
+#define SAC_TILEY 21
+
 #endif

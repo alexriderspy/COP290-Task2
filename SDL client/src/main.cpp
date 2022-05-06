@@ -190,6 +190,8 @@ int main( int argc, char* args[] )
                 }else if(currentTexture == &gGameOverTexture){
                     SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
 
+                }else if(currentTexture == &gWordOfAdvice){
+                    SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
                 }
                 else{
                     if(level == 1){

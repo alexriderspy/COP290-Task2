@@ -10,6 +10,14 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         
         //to go to lhc
         if(dot.getmPosX()/TILE_SIZE == LHC_TILEY && dot.getmPosY()/TILE_SIZE == LHC_TILEX){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/LHC1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+
             currentTexture = &gLHCTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
             dot.mPosX = (5)*TILE_SIZE;
@@ -80,7 +88,59 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         winflag.render(camera.x,camera.y);
 
         lev1.checkFootball(dot);
-        
+
+        if(dot.getmPosX()/TILE_SIZE == FOOT_TILEY && dot.getmPosY()/TILE_SIZE == FOOT_TILEX){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/football.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[0].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[1].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[2].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[3].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            
+        }
+
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
             if(lev1.checkFootball(dot) && lev1.checkLHC(dot,currentTexture) && lev1.checkStaffCanteen(dot,currentTexture)){
                 currentTexture=&gScoreBoardTexture;
@@ -127,6 +187,46 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
         
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[0].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/LHC2.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[1].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/LHC3.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[2].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/LHC4.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[3].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/LHC_exit.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            
+        }
 
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
@@ -146,6 +246,13 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX() >= (25)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
+            LTexture popUp;
+            popUp.loadFromFile("res/LHC_exit.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+
             currentTexture = &gGameTexture;
             dot.mPosX = (LHC_TILEY-3)*TILE_SIZE;
             dot.mPosY = (LHC_TILEX-1)*TILE_SIZE;
@@ -159,6 +266,29 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gStaffCanteen){
         lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[0].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[1].second){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            
+        }
+
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
         timeText << "Seconds since start time : " <<timeLeft;
@@ -177,6 +307,13 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         
         if(dot.getmPosX() >= (27)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
+            LTexture popUp;
+            popUp.loadFromFile("res/Riddle_football.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            
             currentTexture = &gGameTexture;
             dot.mPosX = (STAFF_TILEY-2)*TILE_SIZE;
             dot.mPosY = (STAFF_TILEX-2)*TILE_SIZE;

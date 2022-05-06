@@ -54,4 +54,6 @@ LTexture gGhostTexture;
 
 LTexture gGameOverTexture;
 
+LTexture gWordOfAdvice;
+
 
