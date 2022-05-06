@@ -78,7 +78,6 @@ Player::Player(std::string hostel,std::string name, int lives,int points,std::st
 
     lastTexture = playerDownTexture;
 
-    yulu = false;
 }
 
 int getTileX(int mPosX,int mPosY){
@@ -98,10 +97,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
-                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
-                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX+= (yulu?PLAYER_VEL_YULU+20:PLAYER_VEL);break;
-                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
+                case SDLK_UP: mPosY -= (PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY+= (PLAYER_VEL); break;
+                case SDLK_DOWN: mPosY += (PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY-= (PLAYER_VEL);break;
+                case SDLK_LEFT: mPosX -= (PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX+= (PLAYER_VEL);break;
+                case SDLK_RIGHT: mPosX += (PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK || map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX-= (PLAYER_VEL);break;
             }
         }
         if(mPosX <0){
@@ -276,9 +275,6 @@ void Player::render(int camX,int camY){
         printf("name cant be loaded");
     }
     nameTexture.render(mPosX-camX,mPosY-camY);
-    if(yulu){
-        gBroomTexture.render(mPosX-camX,mPosY-camY);
-    }
 }
 void Player::render(SDL_Event&e,int camX,int camY){
     if(e.type == SDL_KEYDOWN){
@@ -305,9 +301,6 @@ void Player::render(SDL_Event&e,int camX,int camY){
     }
     nameTexture.render(mPosX-camX,mPosY-camY);
 
-    if(yulu){
-        gBroomTexture.render(mPosX-camX,mPosY-camY);
-    }
 }
 
 int Player::getmPosX(){

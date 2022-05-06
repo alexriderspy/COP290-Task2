@@ -117,8 +117,8 @@
 #define LHC_TILEX 33
 #define LHC_TILEY 98
 
-#define SCOOPS_TILEX 12
-#define SCOOPS_TILEY 76
+#define SCOOPS_TILEX 15
+#define SCOOPS_TILEY 66
 
 #define HOSTEL_HIM_TILEX 7
 #define HOSTEL_HIM_TILEY 113
@@ -132,8 +132,8 @@
 #define HOSTEL_KARA_TILEX 37
 #define HOSTEL_KARA_TILEY 10
 
-#define LIB_TILEX 29
-#define LIB_TILEY 76
+#define LIB_TILEX 23
+#define LIB_TILEY 74
 
 #define STAFF_TILEX 50
 #define STAFF_TILEY 81
@@ -141,7 +141,7 @@
 #define FOOT_TILEX 33
 #define FOOT_TILEY 52
 
-#define LAWN_TILEX 21
+#define LAWN_TILEX 14
 #define LAWN_TILEY 87
 
 #define SAC_TILEX 43

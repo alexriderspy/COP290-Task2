@@ -97,7 +97,7 @@ void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, L
 
                         }
                         winflag.mPosX = 43*TILE_SIZE;
-                        winflag.mPosY = 19*TILE_SIZE;
+                        winflag.mPosY = 18*TILE_SIZE;
                         currentTexture = &gWordOfAdvice;
 
                     }              

@@ -31,7 +31,6 @@ class Player
         int mapHostel[MAPHOSTEL_HEIGHT][MAPHOSTEL_WIDTH];
         int mapScoops[MAPSCOOPS_HEIGHT][MAPSCOOPS_WIDTH];
 
-        bool yulu;
 
         LTexture playerUpTexture;
         LTexture playerDownTexture;

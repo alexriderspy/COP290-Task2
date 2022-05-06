@@ -107,7 +107,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[0].second){
@@ -119,7 +119,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[1].second){
 
@@ -130,7 +130,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[2].second){
 
@@ -141,7 +141,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[3].second){
 
@@ -152,7 +152,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
 
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
@@ -166,7 +166,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
                 SDL_RenderPresent(gRenderer);
                 SDL_Delay(2000);
                 popUp.free();
-
+                dot.mPosY-=TILE_SIZE;
             }
         }
         dot2.render(camera.x,camera.y);
@@ -219,7 +219,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[1].second){
 
@@ -230,7 +230,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[2].second){
 
@@ -241,7 +241,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[3].second){
 
@@ -252,7 +252,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
             popUp.free();
-            
+            dot.mPosX+=TILE_SIZE;
         }
 
         timeText.str("");
@@ -304,6 +304,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
+            dot.mPosX+=TILE_SIZE;
         }
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[1].second){
@@ -315,6 +316,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
+            dot.mPosX+=TILE_SIZE;
         }
 
         timeText.str("");

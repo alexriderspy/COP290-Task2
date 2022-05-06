@@ -4,17 +4,17 @@ Level2::Level2(){
     hostel = std::vector <bool>(5,false);
     scoops=std::vector <bool>(3,false);
     library= std::vector <bool>(3,false);
-    lawn= std::vector <bool>(4,false);
+    lawn= std::vector <bool>(3,false);
     sac=std::vector <bool>(5,false);
 
     pos_hostel = std::vector<std::pair<int,int>>(5);
     pos_scoops = std::vector<std::pair<int,int>>(3);
     pos_library = std::vector<std::pair<int,int>>(3);
-    pos_lawn = std::vector<std::pair<int,int>>(4);
+    pos_lawn = std::vector<std::pair<int,int>>(3);
     pos_sac = std::vector<std::pair<int,int>>(5);
 
-    pos_lawn = {{85,20},{77,12},{81,8},{89,16}};
-    pos_sac = {{25,34},{36,34},{23,42},{36,42},{12,57}};
+    pos_lawn = {{85,12},{79,10},{81,16}};
+    pos_sac = {{25,34},{36,34},{36,42},{25,42},{14,60}};
     pos_hostel = {{5,6},{11,6},{20,6},{11,10},{20,10}};
     pos_scoops = {{3,10},{27,10},{15,9}};
     pos_library = {{2,3},{28,5},{15,12}};
@@ -69,13 +69,13 @@ bool Level2::checkLibrary(Player&dot,LTexture* currentTexture){
 }
 
 bool Level2::checkLawn(Player & dot){
-    for(int i=0;i<4;++i){
+    for(int i=0;i<3;++i){
         if(dot.getmPosX()/TILE_SIZE == pos_lawn[i].first && dot.getmPosY()/TILE_SIZE == pos_lawn[i].second){
             lawn[i]=true;
         }
     }
     
-    for(int i=0;i<4;++i){
+    for(int i=0;i<3;++i){
 
         if(lawn[i]==false){
             return false;
