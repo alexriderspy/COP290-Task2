@@ -1,0 +1,525 @@
+#include <levels.hpp>
+
+void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot2, std::stringstream &timeText, int &timeLeft,std::stringstream &score,LTexture &p,SDL_Color &textColor, Text &textPoints, Text &lives, LTimer &timer, std::vector <Entity>&coins, std::vector<Ghost>&ghosts,Entity &winflag,Level2&lev2,int &tex_server,std::string &path){
+
+    if(currentTexture == &gGameTexture){
+        currentTexture->render(0,0,&camera);
+        lev2.print();
+        SDL_Rect renderQuad = {-camera.x,-camera.y,LEVEL_WIDTH,LEVEL_HEIGHT};
+        SDL_RenderCopy(gRenderer,gMazeTexture.getTexture(),NULL,&renderQuad);
+        
+        if(dot.getmPosX()/TILE_SIZE == SCOOPS_TILEY && dot.getmPosY()/TILE_SIZE == SCOOPS_TILEX){
+
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/scoops.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gScoopsTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (11)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+
+        if(dot.hostel == "Himadri"  && dot.getmPosX()/TILE_SIZE == HOSTEL_HIM_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_HIM_TILEX){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/hostel1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Kailash"  && dot.getmPosX()/TILE_SIZE == HOSTEL_KAILASH_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_KAILASH_TILEX){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/hostel1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Girnar"  && dot.getmPosX()/TILE_SIZE == HOSTEL_GIRNAR_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_GIRNAR_TILEX){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/hostel1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.hostel == "Karakoram"  && dot.getmPosX()/TILE_SIZE == HOSTEL_KARA_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_KARA_TILEX){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/hostel1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gHostelTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (1)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == LIB_TILEY && dot.getmPosY()/TILE_SIZE == LIB_TILEX){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/library1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gLibraryTexture;
+            Mix_PlayChannel(-1,gEnterDarkness,0);
+            dot.mPosX = (6)*TILE_SIZE;
+            dot.mPosY = (14)*TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == SAC_TILEY && dot.getmPosY()/TILE_SIZE == SAC_TILEX){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/SAC1.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[0].second){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            popUp.free();
+            dot.mPosX+=TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[1].second){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            popUp.free();
+            dot.mPosY+=TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[2].second){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            popUp.free();
+            dot.mPosX-=TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[3].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[3].second){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/SAC2.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            popUp.free();
+            dot.mPosY+=TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[4].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[4].second){
+
+            
+            lev2.checkSac(dot);
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            popUp.free();
+
+            popUp.loadFromFile("res/gate.png");
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            dot.mPosX-=2*TILE_SIZE;
+        }
+
+        if(tex_server == 0){
+            dot2.lastTexture.loadFromFile(path);
+            dot2.render(camera.x,camera.y);
+        }
+        dot.render(camera.x,camera.y);
+        
+        for(int i=0;i<(int)coins.size();++i){
+            coins[i].render(camera.x,camera.y);
+            if(coins[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && coins[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+                dot.points+=coins[i].value;
+                Mix_PlayChannel(-1,gArm,0);
+                coins.erase(coins.begin()+i);
+            }
+        }
+
+        for(int i=0;i<MAX_GHOSTS;++i){
+            ghosts[i].render(camera.x,camera.y);
+            ghosts[i].move();
+            if(ghosts[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && ghosts[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+                Mix_PlayChannel(-1,gBlood,0);
+                dot.lives --;
+            }
+        }
+
+        for(int i=0;i<MAX_WORMS;++i){
+            worms[i].render(camera.x,camera.y);
+            worms[i].move();
+            if(worms[i].mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && worms[i].mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+                Mix_PlayChannel(-1,gWorm,0);
+                dot.lives --;
+            }
+        }
+
+        winflag.render(camera.x,camera.y);
+
+        lev2.checkSac(dot);
+
+        if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
+            if(lev2.checkHostel(dot,currentTexture) && lev2.checkScoops(dot,currentTexture) && lev2.checkLibrary(dot,currentTexture) && lev2.checkSac(dot)){
+                currentTexture=&gScoreBoardTexture;
+            }
+        }
+
+    }else if(currentTexture == &gHostelTexture){
+        lev2.print();
+        SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_hostel.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[0].second){
+
+            lev2.checkHostel(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/hostel2.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[1].second){
+
+            lev2.checkHostel(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[2].second){
+
+            lev2.checkHostel(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[3].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[3].second){
+
+            lev2.checkHostel(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[4].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[4].second){
+
+            lev2.checkHostel(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(tex_server == 5){
+            dot2.lastTexture.loadFromFile(path);
+            dot2.render(0,0);
+        }
+        dot.render(0,0);
+
+        lev2.checkHostel(dot,currentTexture);
+        if(dot.getmPosX() >= (29)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/Blank.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            if(dot.hostel == "Himadri"){
+
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_HIM_TILEY)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_HIM_TILEX+1)*TILE_SIZE;
+                
+            }   
+            if(dot.hostel == "Kailash"){
+
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_KAILASH_TILEY)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_KAILASH_TILEX+1)*TILE_SIZE;
+                
+            }   
+            if(dot.hostel == "Girnar"){
+
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_GIRNAR_TILEY)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_GIRNAR_TILEX+1)*TILE_SIZE;
+                
+            }   
+            if(dot.hostel == "Karakoram"){
+
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_KARA_TILEY+1)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_KARA_TILEX+1)*TILE_SIZE;
+                
+            }
+        }   
+    }else if(currentTexture == &gScoopsTexture){
+        lev2.print();
+        SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_scoops.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[0].second){
+
+            lev2.checkScoops(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+            dot.mPosX+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[1].second){
+
+            lev2.checkScoops(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+            dot.mPosX-=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[2].second){
+
+            lev2.checkScoops(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+            dot.mPosY+=TILE_SIZE;
+        }
+
+        if(tex_server ==2){
+            dot2.lastTexture.loadFromFile(path);
+            dot2.render(0,0);
+        }
+        dot.render(0,0);
+
+        lev2.checkScoops(dot,currentTexture);
+        
+        if((dot.getmPosX() == (18)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE)||(dot.getmPosX() == (19)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE)){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(2000);
+            popUp.free();
+
+            popUp.loadFromFile("res/Riddle_library.png");
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gGameTexture;
+            dot.mPosX = (SCOOPS_TILEY-1)*TILE_SIZE;
+            dot.mPosY = (SCOOPS_TILEX-1)*TILE_SIZE;
+            
+        }   
+    }else if(currentTexture == &gLibraryTexture){
+        lev2.print();
+        SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_library.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
+
+        if(tex_server ==2){
+            dot2.lastTexture.loadFromFile(path);
+            dot2.render(0,0);
+        }
+
+        dot.render(0,0);
+
+        lev2.checkLibrary(dot,currentTexture);
+        
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[0].second){
+
+            lev2.checkLibrary(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/library2.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            dot.mPosX+=TILE_SIZE;
+        }
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[1].second){
+
+            lev2.checkLibrary(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/library3.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+            dot.mPosY+=TILE_SIZE;
+        }
+
+        if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[2].second){
+
+            lev2.checkLibrary(dot,currentTexture);
+            LTexture popUp;
+            popUp.loadFromFile("res/congrats.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(1000);
+            popUp.free();
+
+            dot.mPosX-=TILE_SIZE;
+        }
+
+        if((dot.getmPosX() == (24)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE) || (dot.getmPosX() == (25)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE)){
+
+            LTexture popUp;
+            popUp.loadFromFile("res/Blank.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
+            currentTexture = &gGameTexture;
+            dot.mPosX = (LIB_TILEY+1)*TILE_SIZE;
+            dot.mPosY = (LIB_TILEX+1)*TILE_SIZE;
+            
+        }   
+    }
+
+}

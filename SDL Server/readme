@@ -1,0 +1,5 @@
+Steps:
+
+1) watch https://youtu.be/19XFotvjx7I to know how I setup the game project in linux
+2) important point to note : Always copy .so files that are not linked to debug and release folders!! mentioned in the video of part 1 - timestamp 22.15
+3) fn + F7 for running
