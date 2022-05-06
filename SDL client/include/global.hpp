@@ -44,6 +44,7 @@ extern LTexture gLHC_exTexture;
 extern LTexture gGirnarTexture;
 extern LTexture gKaraTexture;
 extern LTexture gSacTexture;
+//extern LTexture gRoom1LHCTexture;
 
 extern LTexture gTimeTextTexture;
 extern LTexture gInputTextTexture;

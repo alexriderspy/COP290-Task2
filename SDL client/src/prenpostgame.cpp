@@ -194,6 +194,12 @@ bool loadMedia()
         success = false;
     }
 
+    // if( !gLHCTexture.loadFromFile( "res/mazeLHC.png" ) )
+    // {
+    //     printf( "Failed to load character1 texture!\n" );
+    //     success = false;
+    // }
+
     if( !gStaffCanteen.loadFromFile( "res/mazeStaffCanteen.png" ) )
     {
         printf( "Failed to load character1 texture!\n" );
@@ -322,6 +328,9 @@ bool loadMedia()
     }   
 
     return success;
+
+//chote mazes
+
 
 }
 

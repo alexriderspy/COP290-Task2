@@ -34,6 +34,7 @@ LTexture gLHC_exTexture;
 LTexture gGirnarTexture;
 LTexture gKaraTexture;
 LTexture gSacTexture;
+//LTexture gRoom1LHCTexture;
 
 LTexture gTextTexture;
 LTexture gInputTextTexture;
@@ -52,4 +53,5 @@ LTexture gScoreTexture;
 LTexture gGhostTexture;
 
 LTexture gGameOverTexture;
+
 

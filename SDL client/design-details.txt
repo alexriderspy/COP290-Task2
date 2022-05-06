@@ -22,3 +22,9 @@ level 2
 
 surprise obstacles - tile getting black
 
+
+changes
+
+1) loading - horror font- black - right 
+2) 
+

@@ -126,6 +126,8 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gLHCTexture){
         lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        
+
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
         timeText << "Seconds since start time : " <<timeLeft;
@@ -148,7 +150,12 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosX = (LHC_TILEY-3)*TILE_SIZE;
             dot.mPosY = (LHC_TILEX-1)*TILE_SIZE;
             
-        }   
+        }  
+
+        //x,y,width,height
+        // SDL_Rect renderRoom1 = {1*TILE_SIZE,3*TILE_SIZE,3*TILE_SIZE,4*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gRoom1LHCTexture.getTexture(),NULL,&renderRoom1);
+ 
     }else if(currentTexture == &gStaffCanteen){
         lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
