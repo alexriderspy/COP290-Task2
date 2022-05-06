@@ -104,13 +104,23 @@ void events(SDL_Event &e,std::string &inputText, bool &renderText, bool &quit, L
                 }else if(currentTexture == &gWordOfAdvice){
                     if(e.key.keysym.sym == SDLK_RETURN){
 
-                        LTexture popUp;
-                        popUp.loadFromFile("res/riddle_LHC.png");
-                        SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
-                        SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
-                        SDL_RenderPresent(gRenderer);
-                        SDL_Delay(8000);
-            
+                        if(level == 1){
+                            LTexture popUp;
+                            popUp.loadFromFile("res/riddle_LHC.png");
+                            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+                            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+                            SDL_RenderPresent(gRenderer);
+                            SDL_Delay(8000);
+                            popUp.free();
+                        }else{
+                            LTexture popUp;
+                            popUp.loadFromFile("res/riddle_hostel.png");
+                            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+                            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+                            SDL_RenderPresent(gRenderer);
+                            SDL_Delay(8000);
+                            popUp.free();
+                        }
                         
                         currentTexture=&gGameTexture;
                         Mix_PlayMusic(gMusic,-1);

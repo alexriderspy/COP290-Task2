@@ -55,7 +55,7 @@ int main( int argc, char* args[] )
             LTimer timer,timerLoading;
             LTexture* currentTexture = &gScreen1Texture;
             LTexture p;
-            Entity winflag(0,21*TILE_SIZE,43*TILE_SIZE,&gFlagTexture);
+            Entity winflag(0,21*TILE_SIZE,41*TILE_SIZE,&gFlagTexture);
             Text textPoints("");
             Text lives("");
             // Client obj;

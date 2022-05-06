@@ -16,6 +16,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gScoopsTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -33,6 +34,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gHostelTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -47,6 +49,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gHostelTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -61,6 +64,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gHostelTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -75,6 +79,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gHostelTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -89,6 +94,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gLibraryTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -104,6 +110,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
 
@@ -115,6 +122,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_lawn[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_lawn[1].second){
@@ -125,6 +133,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_lawn[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_lawn[2].second){
@@ -135,6 +144,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_lawn[3].first && dot.getmPosY()/TILE_SIZE == lev2.pos_lawn[3].second){
@@ -145,6 +155,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == SAC_TILEY && dot.getmPosY()/TILE_SIZE == SAC_TILEX){
@@ -155,6 +166,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
 
@@ -166,6 +178,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[1].second){
@@ -176,7 +189,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[2].second){
 
@@ -186,7 +199,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[3].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[3].second){
 
@@ -196,7 +209,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[4].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[4].second){
 
@@ -206,7 +219,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
         //timeLeft
         timeText.str("");
@@ -288,7 +301,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-            
+            popUp.free();
         }
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[1].second){
@@ -299,7 +312,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-            
+            popUp.free();
         }
 
         timeText.str("");
@@ -325,7 +338,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-            
+            popUp.free();
             if(dot.hostel == "Himadri"){
 
                 currentTexture = &gGameTexture;
@@ -382,6 +395,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gGameTexture;
             dot.mPosX = (SCOOPS_TILEY-2)*TILE_SIZE;
@@ -415,7 +429,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-            
+            popUp.free();
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[1].second){
 
@@ -425,7 +439,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-            
+            popUp.free();
         }
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[2].second){
@@ -436,7 +450,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
 
         if(dot.getmPosX() >= (27)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
@@ -447,7 +461,8 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-
+            popUp.free();
+            
             currentTexture = &gGameTexture;
             dot.mPosX = (LIB_TILEY+1)*TILE_SIZE;
             dot.mPosY = (LIB_TILEX+3)*TILE_SIZE;

@@ -17,6 +17,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gLHCTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
@@ -25,6 +26,14 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
 
         if(dot.getmPosX()/TILE_SIZE == STAFF_TILEY && dot.getmPosY()/TILE_SIZE == STAFF_TILEX){
+            LTexture popUp;
+            popUp.loadFromFile("res/SC.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
             currentTexture = &gStaffCanteen;
             Mix_PlayChannel(-1,gEnterDarkness,0);
             dot.mPosX = (2)*TILE_SIZE;
@@ -97,6 +106,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
 
@@ -108,6 +118,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[1].second){
@@ -118,6 +129,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[2].second){
@@ -128,6 +140,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[3].second){
@@ -138,12 +151,22 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
+            popUp.free();
             
         }
 
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
             if(lev1.checkFootball(dot) && lev1.checkLHC(dot,currentTexture) && lev1.checkStaffCanteen(dot,currentTexture)){
                 currentTexture=&gScoreBoardTexture;
+            }else {
+                LTexture popUp;
+                popUp.loadFromFile("res/incomplete.png");
+                SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+                SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+                SDL_RenderPresent(gRenderer);
+                SDL_Delay(2000);
+                popUp.free();
+
             }
         }
         dot2.render(camera.x,camera.y);
@@ -195,6 +218,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[1].second){
@@ -205,6 +229,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[2].second){
@@ -215,6 +240,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[3].second){
@@ -225,6 +251,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
             
         }
 
@@ -247,11 +274,12 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         if(dot.getmPosX() >= (25)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
             LTexture popUp;
-            popUp.loadFromFile("res/LHC_exit.png");
+            popUp.loadFromFile("res/Blank.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
+            popUp.free();
 
             currentTexture = &gGameTexture;
             dot.mPosX = (LHC_TILEY-3)*TILE_SIZE;
@@ -275,7 +303,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[1].second){
@@ -286,7 +314,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
-            
+            popUp.free();
         }
 
         timeText.str("");
@@ -313,7 +341,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(8000);
-            
+            popUp.free();           
             currentTexture = &gGameTexture;
             dot.mPosX = (STAFF_TILEY-2)*TILE_SIZE;
             dot.mPosY = (STAFF_TILEX-2)*TILE_SIZE;

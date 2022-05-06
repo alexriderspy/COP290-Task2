@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 	fstream fin;
-	fin.open("maze_LHC.txt");
+	fin.open("maze_lib.txt");
 	string line="";
 	string map = "{";	
 	while(getline(fin,line)){
@@ -15,13 +15,13 @@ int main(){
 			}else if(line[i] == '0'){
 				map+="0,"; 
 			}else if(line[i]=='2'){
-				map+="4,";
+				map+="3,";
 			}else if(line[i] =='1'){
-				map +="1,";
-			}else if(line[i] == '6' || line[i]=='7'){
+				map +="4,";
+			}else if(line[i] == '6'){
 				map+="6,";
 			}else if(line[i]=='3'){
-				map+="3,";
+				map+="1,";
 			}
 		}
 		
