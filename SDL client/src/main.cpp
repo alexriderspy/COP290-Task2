@@ -60,42 +60,14 @@ int main( int argc, char* args[] )
             Text lives("");
             // Client obj;
             // obj.connectCS();
-            Player dot("Himadri","Vag",3,0,"res/char1_up.png","res/char1_down.png","res/char1_left.png","res/char1_right.png");
-            Player dot2("Kailash","Vidu",3,0,"res/char1_up.png","res/char1_down.png","res/char1_left.png","res/char1_right.png");
+            Player dot("Himadri","Vag",3,0,"res/girl1_back.png","res/girl1_front.png","res/girl1_left.png","res/girl1_right.png");
+            Player dot2("Kailash","Vidu",3,0,"res/girl1_back.png","res/girl1_front.png","res/girl1_left.png","res/girl1_right.png");
 
             int level = 2;
             Level1 lev1;
             Level2 lev2;
 
-            if(level == 1){
-                dot.mPosX = 95*TILE_SIZE;
-                dot.mPosY = 12*TILE_SIZE;
-                winflag.mPosX = 21*TILE_SIZE;
-                winflag.mPosY = 43*TILE_SIZE;
-
-            }else{
-                if (dot.hostel == "Himadri"){
-                    dot.mPosX = 113*TILE_SIZE;
-                    dot.mPosY = 9*TILE_SIZE;
-
-                }else if(dot.hostel == "Kailash"){
-                    dot.mPosX = 106*TILE_SIZE;
-                    dot.mPosY = 14*TILE_SIZE;
-
-                }else if(dot.hostel == "Girnar"){
-                    dot.mPosX = 54*TILE_SIZE;
-                    dot.mPosY = 14*TILE_SIZE;
-
-                }else if(dot.hostel == "Karakoram"){
-                    dot.mPosX = 13*TILE_SIZE;
-                    dot.mPosY = 43*TILE_SIZE;
-
-                }
-                winflag.mPosX = 21*TILE_SIZE;
-                winflag.mPosY = 43*TILE_SIZE;
-            }
             std::string inputText="";
-            std::string hostelText="";
 
             std::vector<Ghost>ghosts;
             srand(time(0));
@@ -141,7 +113,7 @@ int main( int argc, char* args[] )
                 bool renderText = false;
                 //Handle events on queue
 
-                events(e,inputText,renderText,quit,timer,dot,currentTexture,camera);
+                events(e,inputText,renderText,quit,timer,dot,currentTexture,camera,level,winflag);
 
                 //Move the dot
                 //Center the camera over the dot
@@ -195,7 +167,7 @@ int main( int argc, char* args[] )
                     title(flagLoading,currentTexture,timeLeft,timerLoading);
                 }
                 
-                else if(currentTexture == &gEnterTexture){
+                else if(currentTexture == &gScreen2Texture || currentTexture == &gScreen2_2Texture || currentTexture == &gScreen2_3Texture || currentTexture == &gScreen2_4Texture){
                     choose(renderText,currentTexture,inputText,textColor);
                 }
                 //gGameTexture

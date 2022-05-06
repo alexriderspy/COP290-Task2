@@ -1,11 +1,13 @@
 1) Good morning, you are hungry now and you have a long journey ahead. Go have food first! see you there
 2) Now jog around the badminton court, you are still tired and you need to freshen yourself up, after you take a round of the court leave the hostel, we will see you outside.
 
-1) Now this is the ideal time to start studying. You have a COP290 project to do, so set your focus and buy a pen and copy from scoops. There may be obstacles in the way but do not lose your focus. All the best!
+1) Now this is the ideal time to start studying. You have a COP290 project to do, so set your focus and get a pen from shelf 10 and a copy from shelf 19 and then buy them from the man seating at the counter. There may be obstacles in the way but do not lose your focus. All the best!
 
-1) Okay so you have all the necessities to start your project. Go to shelf number 10 and grab a book on game designing. It will help you in your endeavour.
+1) Okay so you have all the necessities to start your project. 
+a) Go to shelf number 10 and grab a book on game designing. 
+b) Great, now go to shelf number 12 and grab a book on c++.
 
 1) Fine, enough studying, let's do some exercise. Take a round of the biotech lawn and energise yourself. Do look out for surprise obstacles, they are the speciality of the lawn!
 
-1) Ah, its peak of summer so you would definitely want a dip in the swimming pool at the end of a hectic day! So take a dive in the swimming pool
+1) Ah, its peak of summer so you would definitely want a dip in the swimming pool at the end of a hectic day! So take a dive in the swimming pool(diving spots are at the corners of the pool only)
 2) Oh you do deserve a treat since you have come so far. Hardly some can actually make it till here. Congratulations! Now you may watch a group dance performance in the oat. See ya there!

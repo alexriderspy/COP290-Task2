@@ -270,7 +270,7 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
 
 
 void Player::render(int camX,int camY){
-    lastTexture.render(mPosX -20- camX, mPosY-40 - camY);
+    lastTexture.render(mPosX -10-camX, mPosY-50 - camY);
     SDL_Color textColor = {0,0xFF,0xFF};
     if(!nameTexture.loadFromRenderedText(name,textColor)){
         printf("name cant be loaded");
@@ -283,19 +283,19 @@ void Player::render(int camX,int camY){
 void Player::render(SDL_Event&e,int camX,int camY){
     if(e.type == SDL_KEYDOWN){
         if(e.key.keysym.sym == SDLK_DOWN){
-            playerDownTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            playerDownTexture.render(mPosX - 10- camX, mPosY-50 - camY);
             lastTexture = playerDownTexture;
         }
         else if(e.key.keysym.sym == SDLK_UP){
-            playerUpTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            playerUpTexture.render(mPosX - 10-camX, mPosY-50 - camY);
             lastTexture = playerUpTexture;
         }
         else if(e.key.keysym.sym == SDLK_RIGHT){
-            playerRightTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            playerRightTexture.render(mPosX -10- camX, mPosY-50 - camY);
             lastTexture = playerRightTexture;
         }
         else if(e.key.keysym.sym == SDLK_LEFT){
-            playerLeftTexture.render(mPosX -20- camX, mPosY-40 - camY);
+            playerLeftTexture.render(mPosX -10- camX, mPosY-50 - camY);
             lastTexture = playerLeftTexture;
         }
     }

@@ -1,37 +1,38 @@
 #include <levels.hpp>
 
 Level2::Level2(){
-    hostel = std::vector <bool>(4,false);
+    hostel = std::vector <bool>(6,false);
     scoops=std::vector <bool>(3,false);
     library= std::vector <bool>(4,false);
     lawn= std::vector <bool>(4,false);
-    sac=std::vector <bool>(3,false);
+    sac=std::vector <bool>(5,false);
 
-    pos_hostel = std::vector<std::pair<int,int>>(4);
+    pos_hostel = std::vector<std::pair<int,int>>(6);
     pos_scoops = std::vector<std::pair<int,int>>(3);
     pos_library = std::vector<std::pair<int,int>>(4);
     pos_lawn = std::vector<std::pair<int,int>>(4);
-    pos_sac = std::vector<std::pair<int,int>>(3);
+    pos_sac = std::vector<std::pair<int,int>>(5);
 
     pos_lawn = {{59,46},{71,46},{59,34},{71,34}};
-    pos_sac = {{37,21},{28,31},{28,21}};
-    // pos_hostel = {};
-    // pos_scoops = {};
-    // pos_library = {};
+    pos_sac = {{25,34},{36,34},{23,42},{36,42},{12,57}};
+    pos_hostel = {{5,6},{11,6},{20,6},{11,10},{20,10},{27,3}};
+    pos_scoops = {{3,10},{27,10},{15,9}};
+    pos_library = {{2,3},{28,5},{3,11},{22,3}};
 
 }
 
 bool Level2::checkHostel(Player&dot,LTexture* currentTexture){
     
     if(currentTexture == &gHostelTexture){
-        for(int i=0;i<4;++i){
+        for(int i=0;i<6;++i){
             if(dot.getmPosX()/TILE_SIZE == pos_hostel[i].first && dot.getmPosY()/TILE_SIZE == pos_hostel[i].second){
                 hostel[i] = true;
             }
         }
     }
-
-    if(!hostel[0] || !hostel[1] || !hostel[2] || !hostel[3]) return false;
+    for(int i=0;i<6;++i){
+        if(hostel[i] == false) return false;
+    }
     return true;
 }
 
@@ -87,13 +88,15 @@ bool Level2::checkLawn(Player & dot){
 
 bool Level2::checkSac(Player&dot){
     
-        for(int i=0;i<3;++i){
-            if(dot.getmPosX()/TILE_SIZE == pos_sac[i].first && dot.getmPosY()/TILE_SIZE == pos_sac[i].second){
-                sac[i] = true;
-            }
+    for(int i=0;i<5;++i){
+        if(dot.getmPosX()/TILE_SIZE == pos_sac[i].first && dot.getmPosY()/TILE_SIZE == pos_sac[i].second){
+            sac[i] = true;
         }
+    }
 
-    if(!sac[0] || !sac[1] || !sac[2] ) return false;
+    for(int i=0;i<5;++i){
+        if(sac[i]==false) return false;
+    }
     return true;
 }
 

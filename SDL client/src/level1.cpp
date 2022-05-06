@@ -142,7 +142,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev1.checkLHC(dot,currentTexture);
 
-        if(dot.getmPosX() == (25)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+        if(dot.getmPosX() >= (25)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
             dot.mPosX = (LHC_TILEY-3)*TILE_SIZE;
@@ -168,7 +168,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev1.checkStaffCanteen(dot,currentTexture);
         
-        if(dot.getmPosX() == (28)*TILE_SIZE && dot.getmPosY() == (15)*TILE_SIZE){
+        if(dot.getmPosX() >= (27)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
             dot.mPosX = (STAFF_TILEY-2)*TILE_SIZE;

@@ -26,7 +26,7 @@ void title(int &flagLoading, LTexture* &currentTexture, int &timeLeft, LTimer &t
                 
             }
         else if(flagLoading==2){
-                currentTexture=&gEnterTexture;
+                currentTexture=&gScreen2Texture;
                 
             }
         }

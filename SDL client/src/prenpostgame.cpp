@@ -106,7 +106,22 @@ bool loadMedia()
         success = false;
     }
     
-    if( !gEnterTexture.loadFromFile( "res/Blank.png" ) )
+    if( !gScreen2Texture.loadFromFile( "res/screen2.png" ) )
+    {
+        printf( "Failed to load blank texture!\n" );
+        success = false;
+    }
+    if( !gScreen2_2Texture.loadFromFile( "res/screen2_2.png" ) )
+    {
+        printf( "Failed to load blank texture!\n" );
+        success = false;
+    }
+    if( !gScreen2_3Texture.loadFromFile( "res/screen2_3.png" ) )
+    {
+        printf( "Failed to load blank texture!\n" );
+        success = false;
+    }
+    if( !gScreen2_4Texture.loadFromFile( "res/screen2_4.png" ) )
     {
         printf( "Failed to load blank texture!\n" );
         success = false;

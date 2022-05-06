@@ -146,34 +146,35 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         dot.render(0,0);
 
         lev2.checkHostel(dot,currentTexture);
+        if(dot.getmPosX() >= (29)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
+            if(dot.hostel == "Himadri"){
 
-        if(dot.hostel == "Himadri" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_HIM_TILEY)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_HIM_TILEX+2)*TILE_SIZE;
+                
+            }   
+            if(dot.hostel == "Kailash"){
 
-            currentTexture = &gGameTexture;
-            dot.mPosX = (HOSTEL_HIM_TILEY)*TILE_SIZE;
-            dot.mPosY = (HOSTEL_HIM_TILEX+2)*TILE_SIZE;
-            
-        }   
-        if(dot.hostel == "Kailash" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_KAILASH_TILEY)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_KAILASH_TILEX+2)*TILE_SIZE;
+                
+            }   
+            if(dot.hostel == "Girnar"){
 
-            currentTexture = &gGameTexture;
-            dot.mPosX = (HOSTEL_KAILASH_TILEY)*TILE_SIZE;
-            dot.mPosY = (HOSTEL_KAILASH_TILEX+2)*TILE_SIZE;
-            
-        }   
-        if(dot.hostel == "Girnar" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_GIRNAR_TILEY+1)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_GIRNAR_TILEX+1)*TILE_SIZE;
+                
+            }   
+            if(dot.hostel == "Karakoram"){
 
-            currentTexture = &gGameTexture;
-            dot.mPosX = (HOSTEL_GIRNAR_TILEY+1)*TILE_SIZE;
-            dot.mPosY = (HOSTEL_GIRNAR_TILEX+1)*TILE_SIZE;
-            
-        }   
-        if(dot.hostel == "Karakoram" && dot.getmPosX() == (29)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
-
-            currentTexture = &gGameTexture;
-            dot.mPosX = (HOSTEL_KARA_TILEY+1)*TILE_SIZE;
-            dot.mPosY = (HOSTEL_KARA_TILEX+1)*TILE_SIZE;
-            
+                currentTexture = &gGameTexture;
+                dot.mPosX = (HOSTEL_KARA_TILEY+1)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_KARA_TILEX+1)*TILE_SIZE;
+                
+            }
         }   
     }else if(currentTexture == &gScoopsTexture){
         lev2.print();
@@ -194,7 +195,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev2.checkScoops(dot,currentTexture);
         
-        if(dot.getmPosX() == (18)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+        if(dot.getmPosX() >= (18)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
             dot.mPosX = (SCOOPS_TILEY-2)*TILE_SIZE;
@@ -220,7 +221,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         lev2.checkLibrary(dot,currentTexture);
         
-        if(dot.getmPosX() == (27)*TILE_SIZE && dot.getmPosY() == (14)*TILE_SIZE){
+        if(dot.getmPosX() >= (27)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
             currentTexture = &gGameTexture;
             dot.mPosX = (LIB_TILEY+1)*TILE_SIZE;
