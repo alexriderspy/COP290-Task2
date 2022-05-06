@@ -29,6 +29,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosX = (11)*TILE_SIZE;
             dot.mPosY = (14)*TILE_SIZE;
         }
+        std::cout<<dot.getmPosX()/TILE_SIZE<<'\n';
+        std::cout<<dot.getmPosY()/TILE_SIZE<<'\n';
+        std::cout<<dot.hostel<<'\n';
         if(dot.hostel == "Himadri"  && dot.getmPosX()/TILE_SIZE == HOSTEL_HIM_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_HIM_TILEX){
             currentTexture = &gHostelTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);

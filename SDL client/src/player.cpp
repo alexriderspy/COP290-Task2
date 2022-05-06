@@ -98,10 +98,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
-                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
-                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= (yulu?PLAYER_VEL_YULU+20:PLAYER_VEL);break;
-                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
+                case SDLK_UP: mPosY -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY+= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); break;
+                case SDLK_DOWN: mPosY += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosY-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
+                case SDLK_LEFT: mPosX -= (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX+= (yulu?PLAYER_VEL_YULU+20:PLAYER_VEL);break;
+                case SDLK_RIGHT: mPosX += (yulu?PLAYER_VEL_YULU:PLAYER_VEL); if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK ||if(map[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY) mPosX-= (yulu?PLAYER_VEL_YULU:PLAYER_VEL);break;
             }
         }
         if(mPosX <0){
@@ -127,10 +127,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DIAMOND) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DIAMOND) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DIAMOND) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LHC || mapLHC[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DIAMOND) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
@@ -156,10 +156,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==CHAIRS_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_CANTEEN) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==CHAIRS_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_CANTEEN) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==CHAIRS_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_CANTEEN) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==CHAIRS_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_CANTEEN || mapStaffCanteen[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_CANTEEN) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
@@ -185,10 +185,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DESK_SCOOPS) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DESK_SCOOPS) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DESK_SCOOPS) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_SCOOPS || mapScoops[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==DESK_SCOOPS) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
@@ -214,10 +214,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_HOSTEL || mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==LOBBY_HOSTEL) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_HOSTEL || mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==LOBBY_HOSTEL) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_HOSTEL || mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==LOBBY_HOSTEL) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_HOSTEL || mapHostel[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==LOBBY_HOSTEL) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
@@ -243,10 +243,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BLOCK) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
