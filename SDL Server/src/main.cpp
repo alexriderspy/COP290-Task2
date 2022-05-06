@@ -14,7 +14,7 @@
 #include <prenpostgame.hpp>
 #include <text.hpp>
 #include <ghost.hpp>
-#include <client.hpp>
+#include <server.hpp>
 #include <screens.hpp>
 #include <events.hpp>
 #include <levels.hpp>
@@ -60,7 +60,7 @@ int main( int argc, char* args[] )
             Text textPoints("");
             Text lives("");
 
-            Client obj;
+            Server obj;
             obj.connectCS();
 
             std::string path;
@@ -161,6 +161,10 @@ int main( int argc, char* args[] )
                 SDL_RenderClear( gRenderer );
 
                 //Render current texture
+                std::string server_data = obj.receiveCS();
+
+                std::cout<<server_data<<'\n';
+
 
                 if(currentTexture==&gGameTexture){
                     tex=0;
@@ -182,9 +186,6 @@ int main( int argc, char* args[] )
                 }
                 obj.sendCS(std::to_string(dot.mPosX)+"#"+std::to_string(dot.mPosY)+"#"+std::to_string(dot.lives)+"#"+std::to_string(dot.points)+"#"+dot.path+"#"+std::to_string(tex)+"#"+std::to_string(level)+"#");
 
-                std::string server_data = obj.receiveCS();
-
-                std::cout<<server_data<<'\n';
 
                 int cnt=0; int s=0; int i=0; 
                 while (cnt<7){

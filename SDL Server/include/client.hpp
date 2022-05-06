@@ -1,5 +1,5 @@
-#ifndef _CLIENT_H
-#define _CLIENT_H
+#ifndef _SERVER_H
+#define _SERVER_H
 #pragma once
 
 #include<constants.hpp>
@@ -13,12 +13,12 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-class Client{
+class Server{
     public:
         
     int sock;
 	struct sockaddr_in serv_addr;
-	Client();
+	Server();
 	
 	void connectCS();
 
