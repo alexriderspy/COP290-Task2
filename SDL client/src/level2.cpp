@@ -282,6 +282,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gHostelTexture){
         lev2.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_hostel.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[0].second){
 
@@ -408,6 +411,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gScoopsTexture){
         lev2.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_scoops.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[0].second){
 
@@ -482,6 +488,10 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gLibraryTexture){
         lev2.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_library.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
+
         timeText.str("");
         timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
         timeText << "Seconds since start time : " <<timeLeft;

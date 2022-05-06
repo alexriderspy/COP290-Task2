@@ -214,6 +214,9 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gLHCTexture){
         lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_LHC.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
         
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[0].second){
 
@@ -303,6 +306,9 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
     }else if(currentTexture == &gStaffCanteen){
         lev1.print();
         SDL_RenderCopy(gRenderer,currentTexture->getTexture(),NULL,NULL);
+        LTexture Bg;
+        Bg.loadFromFile("res/maze_staffCanteen.png");
+        SDL_RenderCopy(gRenderer,Bg.getTexture(),NULL,NULL);
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[0].second){
 
