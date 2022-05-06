@@ -37,12 +37,10 @@ public:
     std::vector <bool>hostel;
     std::vector<bool>scoops;
     std::vector<bool>library;
-    std::vector<bool>lawn;
     std::vector<bool>sac;
     std::vector <std::pair<int,int>>pos_hostel;
     std::vector <std::pair<int,int>>pos_scoops;
     std::vector <std::pair<int,int>>pos_library;
-    std::vector <std::pair<int,int>>pos_lawn;
     std::vector <std::pair<int,int>>pos_sac;
 
     Level2();
@@ -50,7 +48,6 @@ public:
     bool checkHostel(Player&dot,LTexture* currentTexture);
     bool checkScoops(Player&dot,LTexture* currentTexture);
     bool checkLibrary(Player&dot,LTexture* currentTexture);
-    bool checkLawn(Player&dot);
     bool checkSac(Player&dot);
     void print();
     

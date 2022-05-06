@@ -100,6 +100,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == FOOT_TILEY && dot.getmPosY()/TILE_SIZE == FOOT_TILEX){
 
+            lev1.checkFootball(dot);
             LTexture popUp;
             popUp.loadFromFile("res/football.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -112,6 +113,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[0].second){
 
+            lev1.checkFootball(dot);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -123,6 +125,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[1].second){
 
+            lev1.checkFootball(dot);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -134,6 +137,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[2].second){
 
+            lev1.checkFootball(dot);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -145,6 +149,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_football[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_football[3].second){
 
+            lev1.checkFootball(dot);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -164,7 +169,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
                 SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
                 SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
                 SDL_RenderPresent(gRenderer);
-                SDL_Delay(2000);
+                SDL_Delay(8000);
                 popUp.free();
                 dot.mPosY-=TILE_SIZE;
             }
@@ -173,28 +178,28 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         dot.render(camera.x,camera.y);
 
         //himadri
-        SDL_Rect renderHimadri = {107*TILE_SIZE-camera.x,0*TILE_SIZE-camera.y,15*TILE_SIZE,9*TILE_SIZE};
-        SDL_RenderCopy(gRenderer,gHimadriTexture.getTexture(),NULL,&renderHimadri);
+        // SDL_Rect renderHimadri = {107*TILE_SIZE-camera.x,0*TILE_SIZE-camera.y,15*TILE_SIZE,9*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gHimadriTexture.getTexture(),NULL,&renderHimadri);
 
-        //kailash
-        SDL_Rect renderKailash = {96*TILE_SIZE-camera.x,7*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
-        SDL_RenderCopy(gRenderer,gKailashTexture.getTexture(),NULL,&renderKailash);
+        // //kailash
+        // SDL_Rect renderKailash = {96*TILE_SIZE-camera.x,7*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gKailashTexture.getTexture(),NULL,&renderKailash);
 
-        //lhc
-        SDL_Rect renderLHC = {78*TILE_SIZE-camera.x,20*TILE_SIZE-camera.y,60*TILE_SIZE,30*TILE_SIZE};
-        SDL_RenderCopy(gRenderer,gLHC_exTexture.getTexture(),NULL,&renderLHC);
+        // //lhc
+        // SDL_Rect renderLHC = {78*TILE_SIZE-camera.x,20*TILE_SIZE-camera.y,60*TILE_SIZE,30*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gLHC_exTexture.getTexture(),NULL,&renderLHC);
 
-        //girnar
-        SDL_Rect renderGirnar = {47*TILE_SIZE-camera.x,4*TILE_SIZE-camera.y,14*TILE_SIZE,9*TILE_SIZE};
-        SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderGirnar);
+        // //girnar
+        // SDL_Rect renderGirnar = {47*TILE_SIZE-camera.x,4*TILE_SIZE-camera.y,14*TILE_SIZE,9*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gGirnarTexture.getTexture(),NULL,&renderGirnar);
 
-        //sac
-        SDL_Rect renderSac = {10*TILE_SIZE-camera.x,30*TILE_SIZE-camera.y,25*TILE_SIZE,30*TILE_SIZE};
-        SDL_RenderCopy(gRenderer,gSacTexture.getTexture(),NULL,&renderSac);
+        // //sac
+        // SDL_Rect renderSac = {10*TILE_SIZE-camera.x,30*TILE_SIZE-camera.y,25*TILE_SIZE,30*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gSacTexture.getTexture(),NULL,&renderSac);
         
-        //kara
-        SDL_Rect renderKara = {(-5)*TILE_SIZE-camera.x,24*TILE_SIZE-camera.y,15*TILE_SIZE,25*TILE_SIZE};
-        SDL_RenderCopy(gRenderer,gKaraTexture.getTexture(),NULL,&renderKara);
+        // //kara
+        // SDL_Rect renderKara = {(-5)*TILE_SIZE-camera.x,24*TILE_SIZE-camera.y,15*TILE_SIZE,25*TILE_SIZE};
+        // SDL_RenderCopy(gRenderer,gKaraTexture.getTexture(),NULL,&renderKara);
 
         // //girnar
         // SDL_Rect renderGirnar = {49*TILE_SIZE-camera.x,8*TILE_SIZE-camera.y,20*TILE_SIZE,12*TILE_SIZE};
@@ -212,6 +217,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[0].second){
 
+            lev1.checkLHC(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/LHC2.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -223,6 +229,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[1].second){
 
+            lev1.checkLHC(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/LHC3.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -234,6 +241,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[2].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[2].second){
 
+            lev1.checkLHC(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/LHC4.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -245,6 +253,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_LHC[3].first && dot.getmPosY()/TILE_SIZE == lev1.pos_LHC[3].second){
 
+            lev1.checkLHC(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/LHC_exit.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -297,6 +306,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[0].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[0].second){
 
+            lev1.checkStaffCanteen(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -309,6 +319,7 @@ void level1(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev1.pos_staff_canteen[1].first && dot.getmPosY()/TILE_SIZE == lev1.pos_staff_canteen[1].second){
 
+            lev1.checkStaffCanteen(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};

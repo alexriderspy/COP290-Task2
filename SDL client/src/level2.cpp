@@ -10,6 +10,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         
         if(dot.getmPosX()/TILE_SIZE == SCOOPS_TILEY && dot.getmPosY()/TILE_SIZE == SCOOPS_TILEX){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
             popUp.loadFromFile("res/scoops.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -23,10 +26,11 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosX = (11)*TILE_SIZE;
             dot.mPosY = (14)*TILE_SIZE;
         }
-        std::cout<<dot.getmPosX()/TILE_SIZE<<'\n';
-        std::cout<<dot.getmPosY()/TILE_SIZE<<'\n';
-        std::cout<<dot.hostel<<'\n';
+
         if(dot.hostel == "Himadri"  && dot.getmPosX()/TILE_SIZE == HOSTEL_HIM_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_HIM_TILEX){
+
+            
+            lev2.checkSac(dot);
 
             LTexture popUp;
             popUp.loadFromFile("res/hostel1.png");
@@ -43,6 +47,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.hostel == "Kailash"  && dot.getmPosX()/TILE_SIZE == HOSTEL_KAILASH_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_KAILASH_TILEX){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
             popUp.loadFromFile("res/hostel1.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -57,6 +64,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosY = (14)*TILE_SIZE;
         }
         if(dot.hostel == "Girnar"  && dot.getmPosX()/TILE_SIZE == HOSTEL_GIRNAR_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_GIRNAR_TILEX){
+
+            
+            lev2.checkSac(dot);
 
             LTexture popUp;
             popUp.loadFromFile("res/hostel1.png");
@@ -73,6 +83,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.hostel == "Karakoram"  && dot.getmPosX()/TILE_SIZE == HOSTEL_KARA_TILEY && dot.getmPosY()/TILE_SIZE == HOSTEL_KARA_TILEX){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
             popUp.loadFromFile("res/hostel1.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -88,6 +101,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == LIB_TILEY && dot.getmPosY()/TILE_SIZE == LIB_TILEX){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
             popUp.loadFromFile("res/library1.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -98,61 +114,14 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
             currentTexture = &gLibraryTexture;
             Mix_PlayChannel(-1,gEnterDarkness,0);
-            dot.mPosX = (3)*TILE_SIZE;
+            dot.mPosX = (6)*TILE_SIZE;
             dot.mPosY = (14)*TILE_SIZE;
         }
 
-        if(dot.getmPosX()/TILE_SIZE == LAWN_TILEY && dot.getmPosY()/TILE_SIZE == LAWN_TILEX){
-
-            LTexture popUp;
-            popUp.loadFromFile("res/biotech.png");
-            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
-            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
-            SDL_RenderPresent(gRenderer);
-            SDL_Delay(8000);
-            popUp.free();
-            
-        }
-
-        if(dot.getmPosX()/TILE_SIZE == lev2.pos_lawn[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_lawn[0].second){
-
-            LTexture popUp;
-            popUp.loadFromFile("res/congrats.png");
-            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
-            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
-            SDL_RenderPresent(gRenderer);
-            SDL_Delay(2000);
-            popUp.free();
-
-            dot.mPosX-=TILE_SIZE;
-            
-        }
-        if(dot.getmPosX()/TILE_SIZE == lev2.pos_lawn[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_lawn[1].second){
-
-            LTexture popUp;
-            popUp.loadFromFile("res/congrats.png");
-            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
-            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
-            SDL_RenderPresent(gRenderer);
-            SDL_Delay(2000);
-            popUp.free();
-
-            dot.mPosX-=TILE_SIZE;
-            
-        }
-        if(dot.getmPosX()/TILE_SIZE == lev2.pos_lawn[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_lawn[2].second){
-
-            LTexture popUp;
-            popUp.loadFromFile("res/Blank.png");
-            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
-            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
-            SDL_RenderPresent(gRenderer);
-            SDL_Delay(2000);
-            popUp.free();
-            
-            dot.mPosY+=TILE_SIZE;
-        }
         if(dot.getmPosX()/TILE_SIZE == SAC_TILEY && dot.getmPosY()/TILE_SIZE == SAC_TILEX){
+
+            
+            lev2.checkSac(dot);
 
             LTexture popUp;
             popUp.loadFromFile("res/SAC1.png");
@@ -166,6 +135,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[0].second){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -176,6 +148,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosX+=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[1].second){
+
+            
+            lev2.checkSac(dot);
 
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
@@ -188,6 +163,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[2].second){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -198,6 +176,9 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosX-=TILE_SIZE;
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[3].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[3].second){
+
+            
+            lev2.checkSac(dot);
 
             LTexture popUp;
             popUp.loadFromFile("res/SAC2.png");
@@ -210,13 +191,25 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_sac[4].first && dot.getmPosY()/TILE_SIZE == lev2.pos_sac[4].second){
 
+            
+            lev2.checkSac(dot);
+
             LTexture popUp;
-            popUp.loadFromFile("res/gate.png");
+            popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
             SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
             SDL_RenderPresent(gRenderer);
             SDL_Delay(2000);
             popUp.free();
+
+            LTexture popUp;
+            popUp.loadFromFile("res/gate.png");
+            SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
+            SDL_RenderCopy(gRenderer,popUp.getTexture(),NULL,&renderQuad);
+            SDL_RenderPresent(gRenderer);
+            SDL_Delay(8000);
+            popUp.free();
+
             dot.mPosX-=2*TILE_SIZE;
         }
         //timeLeft
@@ -278,7 +271,6 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         winflag.render(camera.x,camera.y);
 
-        lev2.checkLawn(dot);
         lev2.checkSac(dot);
 
         if(winflag.mPosX/TILE_SIZE == dot.getmPosX()/TILE_SIZE && winflag.mPosY/TILE_SIZE == dot.getmPosY()/TILE_SIZE){
@@ -293,6 +285,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[0].second){
 
+            lev2.checkHostel(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/hostel2.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -306,6 +299,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[1].second){
 
+            lev2.checkHostel(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -319,6 +313,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[2].second){
 
+            lev2.checkHostel(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -332,6 +327,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[3].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[3].second){
 
+            lev2.checkHostel(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -344,6 +340,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_hostel[4].first && dot.getmPosY()/TILE_SIZE == lev2.pos_hostel[4].second){
 
+            lev2.checkHostel(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -383,20 +380,20 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
                 currentTexture = &gGameTexture;
                 dot.mPosX = (HOSTEL_HIM_TILEY)*TILE_SIZE;
-                dot.mPosY = (HOSTEL_HIM_TILEX+2)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_HIM_TILEX+1)*TILE_SIZE;
                 
             }   
             if(dot.hostel == "Kailash"){
 
                 currentTexture = &gGameTexture;
                 dot.mPosX = (HOSTEL_KAILASH_TILEY)*TILE_SIZE;
-                dot.mPosY = (HOSTEL_KAILASH_TILEX+2)*TILE_SIZE;
+                dot.mPosY = (HOSTEL_KAILASH_TILEX+1)*TILE_SIZE;
                 
             }   
             if(dot.hostel == "Girnar"){
 
                 currentTexture = &gGameTexture;
-                dot.mPosX = (HOSTEL_GIRNAR_TILEY+1)*TILE_SIZE;
+                dot.mPosX = (HOSTEL_GIRNAR_TILEY)*TILE_SIZE;
                 dot.mPosY = (HOSTEL_GIRNAR_TILEX+1)*TILE_SIZE;
                 
             }   
@@ -414,6 +411,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[0].second){
 
+            lev2.checkScoops(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -426,6 +424,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[1].second){
 
+            lev2.checkScoops(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -438,6 +437,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_scoops[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_scoops[2].second){
 
+            lev2.checkScoops(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -475,8 +475,8 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             popUp.free();
 
             currentTexture = &gGameTexture;
-            dot.mPosX = (SCOOPS_TILEY-2)*TILE_SIZE;
-            dot.mPosY = (SCOOPS_TILEX+1)*TILE_SIZE;
+            dot.mPosX = (SCOOPS_TILEY-1)*TILE_SIZE;
+            dot.mPosY = (SCOOPS_TILEX-1)*TILE_SIZE;
             
         }   
     }else if(currentTexture == &gLibraryTexture){
@@ -500,6 +500,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[0].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[0].second){
 
+            lev2.checkLibrary(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/library2.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -512,6 +513,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
         }
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[1].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[1].second){
 
+            lev2.checkLibrary(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/library3.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -524,6 +526,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
         if(dot.getmPosX()/TILE_SIZE == lev2.pos_library[2].first && dot.getmPosY()/TILE_SIZE == lev2.pos_library[2].second){
 
+            lev2.checkLibrary(dot,currentTexture);
             LTexture popUp;
             popUp.loadFromFile("res/congrats.png");
             SDL_Rect renderQuad = {400,200,SCREEN_WIDTH/2,SCREEN_HEIGHT/2};
@@ -535,7 +538,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
             dot.mPosX-=TILE_SIZE;
         }
 
-        if(dot.getmPosX() >= (27)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
+        if(dot.getmPosX() >= (24)*TILE_SIZE && dot.getmPosY() >= (14)*TILE_SIZE){
 
             LTexture popUp;
             popUp.loadFromFile("res/Blank.png");
@@ -547,7 +550,7 @@ void level2(LTexture* &currentTexture,SDL_Rect &camera, Player &dot, Player &dot
 
             currentTexture = &gGameTexture;
             dot.mPosX = (LIB_TILEY+1)*TILE_SIZE;
-            dot.mPosY = (LIB_TILEX+3)*TILE_SIZE;
+            dot.mPosY = (LIB_TILEX+1)*TILE_SIZE;
             
         }   
     }

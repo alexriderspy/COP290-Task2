@@ -242,10 +242,10 @@ void Player::handleEvent( SDL_Event& e , LTexture* currentTexture)
             //Adjust the velocity
             switch( e.key.keysym.sym )
             {
-                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosY+= PLAYER_VEL; break;
-                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosY-= PLAYER_VEL;break;
-                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosX+= PLAYER_VEL;break;
-                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==TABLE_LIB || mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosX-= PLAYER_VEL;break;
+                case SDLK_UP: mPosY -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosY+= PLAYER_VEL; break;
+                case SDLK_DOWN: mPosY += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosY-= PLAYER_VEL;break;
+                case SDLK_LEFT: mPosX -= PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosX+= PLAYER_VEL;break;
+                case SDLK_RIGHT: mPosX += PLAYER_VEL; if(mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==OBSTACLES_LIB ||mapLibrary[getTileX(mPosX,mPosY)][getTileY(mPosX,mPosY)]==BOUNDARY_LIB ) mPosX-= PLAYER_VEL;break;
             }
         }
         if(mPosX <0){
