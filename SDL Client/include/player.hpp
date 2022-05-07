@@ -31,7 +31,7 @@ class Player
         int mapHostel[MAPHOSTEL_HEIGHT][MAPHOSTEL_WIDTH];
         int mapScoops[MAPSCOOPS_HEIGHT][MAPSCOOPS_WIDTH];
 
-
+        LTexture playerUpTexture;
         std::string pathUp;
 
         LTexture playerDownTexture;

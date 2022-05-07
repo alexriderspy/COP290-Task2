@@ -59,6 +59,8 @@ int main( int argc, char* args[] )
             Entity winflag(0,21*TILE_SIZE,41*TILE_SIZE,&gFlagTexture);
             Text textPoints("");
             Text lives("");
+            Text textPoints2("");
+            Text lives2("");
 
             Server obj;
             obj.connectCS();
@@ -161,9 +163,9 @@ int main( int argc, char* args[] )
                 SDL_RenderClear( gRenderer );
 
                 //Render current texture
-                std::string server_data = obj.receiveCS();
+                std::string client_data = obj.receiveCS();
 
-                std::cout<<server_data<<'\n';
+                std::cout<<client_data<<'\n';
 
 
                 if(currentTexture==&gGameTexture){
@@ -189,36 +191,37 @@ int main( int argc, char* args[] )
 
                 int cnt=0; int s=0; int i=0; 
                 while (cnt<7){
-                    if(server_data[i]=='#'){
+                    if(client_data[i]=='#'){
                         if(cnt == 0){
-                            dot2.mPosX=stoi(server_data.substr(s,i-s));
+                            dot2.mPosX=stoi(client_data.substr(s,i-s));
                             s=i+1; cnt++;
                         }
                         else if(cnt == 1){
-                            dot2.mPosY=stoi(server_data.substr(s,i-s));
+                            dot2.mPosY=stoi(client_data.substr(s,i-s));
                             s=i+1; cnt++;
                         }
                         else if(cnt == 2){
-                            dot2.lives=stoi(server_data.substr(s,i-s));
+                            dot2.lives=stoi(client_data.substr(s,i-s));
                             s=i+1; cnt++;
                         }
                         else if(cnt == 3){
-                            dot2.points=stoi(server_data.substr(s,i-s));
+                            dot2.points=stoi(client_data.substr(s,i-s));
                             s=i+1; cnt++;
                         }
                         else if(cnt == 4){
 
-                            path = server_data.substr(s,i-s);
+                            path = client_data.substr(s,i-s);
                             s=i+1; cnt++;
                         }
                         else if(cnt == 5){
-                            tex_server=stoi(server_data.substr(s,i-s));
+                            tex_server=stoi(client_data.substr(s,i-s));
                             s=i+1; cnt++;
                         }else if(cnt == 6){
-                            level_server = stoi(server_data.substr(s,i-s));
+                            level_server = stoi(client_data.substr(s,i-s));
                             s=i+1; cnt++;
                         }
                         i++;
+                }
                 }
                 if(dot.lives==0){
                     SDL_RenderCopy(gRenderer,gGameOverTexture.getTexture(),NULL,NULL);
@@ -261,11 +264,11 @@ int main( int argc, char* args[] )
                 }
                 else{
                     if(level == 1){
-                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev1,tex_server,path);
+                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,worms,winflag,lev1,tex_server,path);
                     }else{
-                        level2(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev2,tex_server,path);
+                        level2(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,worms,winflag,lev2,tex_server,path);
                     }
-                }
+                
                     timeText.str("");
                     timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
                     timeText << "Seconds since start time : " <<timeLeft;
@@ -325,11 +328,13 @@ int main( int argc, char* args[] )
             }
         }
 
-    }
+    
 
     SDL_StopTextInput();
     //Free resources and close SDL
     close();
 
     return 0;
+    }
+    }
 }

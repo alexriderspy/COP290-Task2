@@ -59,6 +59,8 @@ int main( int argc, char* args[] )
             Entity winflag(0,21*TILE_SIZE,41*TILE_SIZE,&gFlagTexture);
             Text textPoints("");
             Text lives("");
+            Text textPoints2("");
+            Text lives2("");
 
             Client obj;
             obj.connectCS();
@@ -162,6 +164,7 @@ int main( int argc, char* args[] )
 
                 //Render current texture
 
+
                 if(currentTexture==&gGameTexture){
                     tex=0;
                 }
@@ -219,6 +222,7 @@ int main( int argc, char* args[] )
                         }
                         i++;
                 }
+                }
                 if(dot.lives==0){
                     SDL_RenderCopy(gRenderer,gGameOverTexture.getTexture(),NULL,NULL);
                     quit=true;
@@ -260,11 +264,11 @@ int main( int argc, char* args[] )
                 }
                 else{
                     if(level == 1){
-                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev1,tex_server,path);
+                        level1(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,worms,winflag,lev1,tex_server,path);
                     }else{
-                        level2(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,winflag,lev2,tex_server,path);
+                        level2(currentTexture,camera,dot,dot2,timeText,timeLeft,score,p,textColor,textPoints,lives,timer,coins,ghosts,worms,winflag,lev2,tex_server,path);
                     }
-                }
+                
                     timeText.str("");
                     timeLeft = LEVEL1_TIME - timer.getTicks()/1000;
                     timeText << "Seconds since start time : " <<timeLeft;
@@ -324,11 +328,13 @@ int main( int argc, char* args[] )
             }
         }
 
-    }
+    
 
     SDL_StopTextInput();
     //Free resources and close SDL
     close();
 
     return 0;
+    }
+    }
 }
