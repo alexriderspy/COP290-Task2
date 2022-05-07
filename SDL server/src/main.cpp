@@ -45,7 +45,7 @@ int main( int argc, char* args[] )
             //Main loop flag
             bool quit = false;
             int flag=0,flagLoading=0;
-            int timeLeft=LEVEL_TIME;
+            int timeLeft=LEVEL1_TIME;
             std::stringstream timeText,score;
 
             SDL_Event e;
