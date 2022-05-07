@@ -61,7 +61,7 @@
 #define MAX_COINS 100
 #define MAX_GHOSTS 40
 
-#define LEVEL1_TIME 500
+#define LEVEL1_TIME 1000
 #define SCREEN1_TIME 1
 
 //main maze
